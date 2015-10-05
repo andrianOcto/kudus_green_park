@@ -1,11 +1,11 @@
-@include("template/head")
+@include("head")
 <legend>
-    <ol class="breadcrumb">
-        <li style="color:black">Park list</li>
-    </ol>
+    <h1 style="font-weight:200">Edit User</h1>
 </legend>
-&nbsp;
-<a href="park/create"><button class="btn btn-success">Add park +</button></a>
+<div class="panel panel-success">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+<a href="park/create"><button class="btn btn-primary" style="height:50px">Add park +</button></a>
 <br><br>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -34,6 +34,8 @@
         @endforeach
     </table>
 </div>
+    </div>
+</div>
 
 <!-- Modal -->
 <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -56,4 +58,4 @@
   </div>
 </div>
 
-@include("template/foot")
+@include("foot")

@@ -1,14 +1,10 @@
-@include("template/head")
-<div class="row">
-    <div class="col-sm-9 col-md-9">
-        <!-- <center ng-app="fileUpload" ng-controller="MyCtrl">
-            <div ng-if="imageShow">
-            <img  class="thumb">
-            </div>
-            <img src="{{ URL::asset('images/sample.png') }}" class="img-thumbnail" style="height:200px"><br><br>
-            <button type="button" class="btn btn-primary" ng-file-select ng-file-change="upload($files)"><span class="glyphicon glyphicon-picture"></span> edit photo</button>
-        </center>
- -->        &nbsp;
+@include('head')
+<legend>
+    <h1 style="font-weight:200">Edit User</h1>
+</legend>
+<div class="panel panel-success">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
         <form ng-app="updateUser" ng-controller="updateUserController" ng-submit="update()" ng-init="iduser='{{ $admin->iduser }}';nama='{{ $admin->nama_lengkap }}';username='{{ $admin->username }}';password='';contact='{{ $admin->contact }}';bio='{{ $admin->bio }}';email='{{ $admin->email }}'" class="form-horizontal" uploader="uploader" filters="queueLimit, customFilter" role="form">
             <img ng-show="showImage" style="height:150px" src="{{ URL::asset('files/photos/user') }}/{{ $admin->foto }}">
             <div ng-repeat="item in uploader.queue">
@@ -69,4 +65,4 @@
         </form>
     </div>
 </div>
-@include("template/foot")
+@include('foot')

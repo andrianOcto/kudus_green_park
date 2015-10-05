@@ -1,14 +1,10 @@
-@include("template/head")
-<div class="row">
-    <div class="col-sm-9 col-md-9">
-        <!-- <center ng-app="fileUpload" ng-controller="MyCtrl">
-            <div ng-if="imageShow">
-            <img  class="thumb">
-            </div>
-            <img src="{{ URL::asset('images/sample.png') }}" class="img-thumbnail" style="height:200px"><br><br>
-            <button type="button" class="btn btn-primary" ng-file-select ng-file-change="upload($files)"><span class="glyphicon glyphicon-picture"></span> edit photo</button>
-        </center>
- -->        &nbsp;
+@include('head')
+<legend>
+    <h1 style="font-weight:200">User List</h1>
+</legend>
+<div class="panel panel-success">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
         <form ng-app="form_input" ng-controller="submitController" uploader="uploader" ng-submit="uploader.uploadAll()"  filters="queueLimit, customFilter" class="form-horizontal" role="form">
         <center>
         <div ng-repeat="item in uploader.queue">
@@ -22,38 +18,38 @@
 
             <div class="form-group">
                 <label for="nama-user" class="col-sm-3 col-md-3 control-label">Nama Lengkap :</label>
-                <div class="col-sm-9 col-md-9">
+                <div class="col-sm-7 col-md-7">
                     <input ng-model="nama" type="text" required class="form-control" id="nama">
                 </div>
             </div>
             <div class="form-group">
                 <label for="username" class="col-sm-3 col-md-3 control-label">Username :</label>
-                <div class="col-sm-9 col-md-9">
+                <div class="col-sm-4 col-md-4">
                     <input ng-model="username" type="text" required class="form-control" id="username">
                 </div>
             </div>
             <div class="form-group">
                 <label for="password" class="col-sm-3 col-md-3 control-label">Password :</label>
-                <div class="col-sm-9 col-md-9">
+                <div class="col-sm-4 col-md-4">
                     <input ng-model="password" type="password" required class="form-control" id="password">
                 </div>
             </div>
             <div class="form-group">
                 <label for="email" class="col-sm-3 col-md-3 control-label">Email :</label>
-                <div class="col-sm-9 col-md-9">
+                <div class="col-sm-4 col-md-4">
                     <input ng-model="email" type="email" required class="form-control" id="email">
                 </div>
             </div>
             <div class="form-group">
                 <label for="kontak" class="col-sm-3 col-md-3 control-label">Contact :</label>
-                <div class="col-sm-9 col-md-9">
+                <div class="col-sm-4 col-md-4">
                     <input ng-model="contact" type="text" required class="form-control" id="kontak">
                 </div>
             </div>
             <div class="form-group">
                 <label for="bio" class="col-sm-3 col-md-3 control-label">Bio :</label>
-                <div class="col-sm-9 col-md-9">
-                    <textarea ng-model="bio" rows="4" id="bio" class="form-control"></textarea>
+                <div class="col-sm-7 col-md-7">
+                    <textarea ng-model="bio" rows="3" id="bio" class="form-control"></textarea>
                 </div>
             </div>
             &nbsp;
@@ -70,4 +66,4 @@
         </form>
     </div>
 </div>
-@include("template/foot")
+@include('foot')

@@ -79,7 +79,7 @@ class ApiController extends BaseController {
 				{
 					$response 	= "FAILED";
 					$statusCode = 200;
-					$message 	= "Username and password did not match.";
+					$message 	= "Username dan password tidak cocok.";
 				}
 			}
 			//if username not found

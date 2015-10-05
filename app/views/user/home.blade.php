@@ -1,11 +1,11 @@
-@include('template/head')
+@include('head')
 <legend>
-    <ol class="breadcrumb">
-        <li style="color:black">Users list</li>
-    </ol>
+    <h1 style="font-weight:200">User List</h1>
 </legend>
-&nbsp;
-<a href="user/create"><button class="btn btn-primary">Add user +</button></a>
+<div class="panel panel-success">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+        <a href="user/create"><button class="btn btn-primary" style="height:50px">Tambah user +</button></a>
 <br><br>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -23,7 +23,6 @@
             <td><img class="img-rounded" style="width:100px" src="{{ URL::asset('files/photos/user') }}/{{ $value->foto }}"></td>
             <td>{{ $value->email}}</td>
             <td class="text-center">
-                <a href="user/{{ $value->iduser }}"><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span> view</button></a>
                 <a href="user/{{ $value->iduser }}/edit"><button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> edit</button></a>
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"><span class="glyphicon glyphicon-trash"></span> delete</button>
             </td>
@@ -53,4 +52,7 @@
   </div>
 </div>
 
-@include('template/foot')
+    </div>
+</div>
+
+@include('foot')

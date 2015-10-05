@@ -1,7 +1,11 @@
-@include("template/head")
-<legend><a<h3>Add park</h3></legend>
-&nbsp;
-<form ng-app="formPark" ng-controller="ParkController" uploader="uploader" ng-submit="submitPark()" class="form-horizontal" filters="queueLimit, customFilter" role="form">
+@include("head")
+<legend>
+    <h1 style="font-weight:200">Edit Park</h1>
+</legend>
+<div class="panel panel-success">
+    <div class="panel-heading"></div>
+    <div class="panel-body">
+        <form ng-app="formPark" ng-controller="ParkController" uploader="uploader" ng-submit="submitPark()" class="form-horizontal" filters="queueLimit, customFilter" role="form">
 
 
 
@@ -104,4 +108,6 @@
                         <p ng-hide="!isError" class="text-danger"  ng-init="message='sssss'">@{{message}}</p>
                 </div>
 </form>
-@include("template/foot")
+    </div>
+</div>
+@include("foot")
