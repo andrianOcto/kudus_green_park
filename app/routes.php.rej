@@ -1,0 +1,9 @@
+diff a/app/routes.php b/app/routes.php	(rejected hunks)
+@@ -28,7 +28,6 @@
+ 	{
+ 		return View::make('home');
+ 	});
+-	Route::get('/user', function()
+ 	Route::get('/useres', function()
+ 	{
+ 		return View::make('user/home');
