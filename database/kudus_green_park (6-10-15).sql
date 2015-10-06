@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 06, 2015 at 07:47 AM
+-- Generation Time: Oct 06, 2015 at 08:15 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -136,7 +136,7 @@ CREATE TABLE IF NOT EXISTS `s_bentuk` (
 
 CREATE TABLE IF NOT EXISTS `s_desa` (
   `id` varchar(20) NOT NULL,
-  `id_kecamatan` int(10) NOT NULL,
+  `id_kecamatan` varchar(10) NOT NULL,
   `nama` varchar(30) NOT NULL,
   `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
