@@ -33,13 +33,7 @@ Route::group(array('before' => 'auth'), function() {
 	//menu utama
 	Route::get('/home', function()
 	{
-		$total_like 	= DB::table('tbl_park_liked')->count();
-		$total_visited 	= DB::table('tbl_park_visited')->count();
-		$parks 			= DB::table('park_liked_visited')->get();
-		return View::make('home')
-						->with('parks', $parks)
-						->with('total_like', $total_like)
-						->with('total_visited', $total_visited);
+		return View::make('home');
 	});
 	Route::get('/quote', function()
 	{

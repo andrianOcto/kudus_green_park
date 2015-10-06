@@ -1,14 +1,11 @@
 @include("head")
 <legend>
-    <h1 style="font-weight:200">Edit Park</h1>
+    <h1 style="font-weight:200">Add Park</h1>
 </legend>
 <div class="panel panel-success">
     <div class="panel-heading"></div>
     <div class="panel-body">
         <form ng-app="formPark" ng-controller="ParkController" uploader="uploader" ng-submit="submitPark()" class="form-horizontal" filters="queueLimit, customFilter" role="form">
-
-
-
     <div class="form-group">
         <label for="nama" class="col-sm-2 col-md-2 control-label">Nama Taman :</label>
         <div class="col-sm-9 col-md-9">
@@ -19,18 +16,6 @@
         <label for="alamat" class="col-sm-2 col-md-2 control-label">Alamat :</label>
         <div class="col-sm-9 col-md-9">
             <textarea ng-model="alamat" class="form-control" rows="3" id="alamat-taman" required></textarea>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="latitude" class="col-sm-2 col-md-2 control-label">Latitude:</label>
-        <div class="col-sm-9 col-md-9">
-            <input ng-model="latitude" type="text" class="form-control" id="latitude" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="longitude" class="col-sm-2 col-md-2 control-label">Longitude:</label>
-        <div class="col-sm-9 col-md-9">
-            <input ng-model="longitude" type="text" class="form-control" id="longitude" required>
         </div>
     </div>
     <div class="form-group">
