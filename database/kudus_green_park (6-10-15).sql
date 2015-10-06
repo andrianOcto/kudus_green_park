@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Oct 06, 2015 at 07:38 AM
+-- Generation Time: Oct 06, 2015 at 07:47 AM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -23,56 +23,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `admin`
+-- Table structure for table `m_info_rth`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
-  `username` varchar(40) NOT NULL,
-  `password` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`username`, `password`) VALUES
-('admin', '$2y$10$bM8bP0EXbMykKKVF9k8JhO71uz2Oyn8G6JyIKKI5HZlW2ZaIBoHKe'),
-('valen', 'asdfad');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `bentuk`
---
-
-CREATE TABLE IF NOT EXISTS `bentuk` (
-  `id` int(10) NOT NULL,
-  `bentuk` varchar(50) NOT NULL,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `desa`
---
-
-CREATE TABLE IF NOT EXISTS `desa` (
-  `id` varchar(20) NOT NULL,
-  `id_kecamatan` int(10) NOT NULL,
-  `nama` varchar(30) NOT NULL,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `info_rth`
---
-
-CREATE TABLE IF NOT EXISTS `info_rth` (
+CREATE TABLE IF NOT EXISTS `m_info_rth` (
   `id_rth` varchar(20) NOT NULL,
   `bentuk` int(10) NOT NULL,
   `kecamatan` varchar(10) NOT NULL,
@@ -90,10 +44,10 @@ CREATE TABLE IF NOT EXISTS `info_rth` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `info_rth`
+-- Dumping data for table `m_info_rth`
 --
 
-INSERT INTO `info_rth` (`id_rth`, `bentuk`, `kecamatan`, `desa`, `status_lahan`, `jenis`, `luas`, `jenis_tanaman`, `fungsi`, `detail_peta`, `pengelola`, `nama`, `alamat`, `deskripsi`) VALUES
+INSERT INTO `m_info_rth` (`id_rth`, `bentuk`, `kecamatan`, `desa`, `status_lahan`, `jenis`, `luas`, `jenis_tanaman`, `fungsi`, `detail_peta`, `pengelola`, `nama`, `alamat`, `deskripsi`) VALUES
 ('12', 0, '0', '0', 0, 0, 0, '', '', '', '', 'tets', 'test', 'test'),
 ('13', 0, '0', '0', 0, 0, 0, '', '', '', '', 'ahahah', 'heheheh', 'kjadsfha;djksfhakjdsfalkjsdflakjdsf'),
 ('14', 0, '0', '0', 0, 0, 0, '', '', '', '', 'taman cinta', 'semarang', 'asdf'),
@@ -102,36 +56,10 @@ INSERT INTO `info_rth` (`id_rth`, `bentuk`, `kecamatan`, `desa`, `status_lahan`,
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jenis_rth`
+-- Table structure for table `m_photo`
 --
 
-CREATE TABLE IF NOT EXISTS `jenis_rth` (
-  `id` varchar(10) NOT NULL,
-  `jenis` varchar(50) NOT NULL,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `kecamatan`
---
-
-CREATE TABLE IF NOT EXISTS `kecamatan` (
-  `id` varchar(10) NOT NULL,
-  `nama` varchar(30) NOT NULL,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `photo`
---
-
-CREATE TABLE IF NOT EXISTS `photo` (
+CREATE TABLE IF NOT EXISTS `m_photo` (
 `idphoto` int(11) NOT NULL,
   `id_rth` varchar(20) NOT NULL,
   `fileName` varchar(100) NOT NULL,
@@ -139,10 +67,10 @@ CREATE TABLE IF NOT EXISTS `photo` (
 ) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `photo`
+-- Dumping data for table `m_photo`
 --
 
-INSERT INTO `photo` (`idphoto`, `id_rth`, `fileName`, `time`) VALUES
+INSERT INTO `m_photo` (`idphoto`, `id_rth`, `fileName`, `time`) VALUES
 (1, '7', '', '2015-03-25 09:08:35'),
 (2, '8', '1427352064_E8RWTurKg8hq.jpeg', '2015-03-26 06:41:04'),
 (3, '8', '1427352064_GxFVUIZcDUDc.jpeg', '2015-03-26 06:41:04'),
@@ -175,23 +103,10 @@ INSERT INTO `photo` (`idphoto`, `id_rth`, `fileName`, `time`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `status_lahan`
+-- Table structure for table `m_testimoni`
 --
 
-CREATE TABLE IF NOT EXISTS `status_lahan` (
-  `id` int(5) NOT NULL,
-  `status` varchar(30) NOT NULL,
-  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `testimoni`
---
-
-CREATE TABLE IF NOT EXISTS `testimoni` (
+CREATE TABLE IF NOT EXISTS `m_testimoni` (
   `id` int(5) NOT NULL,
   `nama` varchar(30) NOT NULL,
   `judul` varchar(30) NOT NULL,
@@ -203,10 +118,76 @@ CREATE TABLE IF NOT EXISTS `testimoni` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `s_bentuk`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
+CREATE TABLE IF NOT EXISTS `s_bentuk` (
+  `id` int(10) NOT NULL,
+  `bentuk` varchar(50) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_desa`
+--
+
+CREATE TABLE IF NOT EXISTS `s_desa` (
+  `id` varchar(20) NOT NULL,
+  `id_kecamatan` int(10) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_jenis_rth`
+--
+
+CREATE TABLE IF NOT EXISTS `s_jenis_rth` (
+  `id` varchar(10) NOT NULL,
+  `jenis` varchar(50) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_kecamatan`
+--
+
+CREATE TABLE IF NOT EXISTS `s_kecamatan` (
+  `id` varchar(10) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_status_lahan`
+--
+
+CREATE TABLE IF NOT EXISTS `s_status_lahan` (
+  `id` int(5) NOT NULL,
+  `status` varchar(30) NOT NULL,
+  `created` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `s_user`
+--
+
+CREATE TABLE IF NOT EXISTS `s_user` (
 `iduser` int(11) NOT NULL,
   `nama_lengkap` varchar(60) NOT NULL,
   `username` varchar(45) DEFAULT NULL,
@@ -215,10 +196,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `s_user`
 --
 
-INSERT INTO `user` (`iduser`, `nama_lengkap`, `username`, `password`, `role`) VALUES
+INSERT INTO `s_user` (`iduser`, `nama_lengkap`, `username`, `password`, `role`) VALUES
 (20, 'test', 'ananana', '$2y$10$GZvS3pDc5f.kz2ZUe0YxqumUwCJ4Qwu22Qn/Z0mILJUxSPHBnny6y', NULL),
 (23, 'valentino', 'valent', '$2y$10$0RtZED7Dfu/EDRwAm4T1bOZvt9XKTTotzyJveT3fpfA7HYnqnrH/e', NULL);
 
@@ -227,27 +208,21 @@ INSERT INTO `user` (`iduser`, `nama_lengkap`, `username`, `password`, `role`) VA
 --
 
 --
--- Indexes for table `admin`
+-- Indexes for table `m_info_rth`
 --
-ALTER TABLE `admin`
- ADD PRIMARY KEY (`username`), ADD UNIQUE KEY `username_UNIQUE` (`username`);
-
---
--- Indexes for table `info_rth`
---
-ALTER TABLE `info_rth`
+ALTER TABLE `m_info_rth`
  ADD PRIMARY KEY (`id_rth`);
 
 --
--- Indexes for table `photo`
+-- Indexes for table `m_photo`
 --
-ALTER TABLE `photo`
+ALTER TABLE `m_photo`
  ADD PRIMARY KEY (`idphoto`);
 
 --
--- Indexes for table `user`
+-- Indexes for table `s_user`
 --
-ALTER TABLE `user`
+ALTER TABLE `s_user`
  ADD PRIMARY KEY (`iduser`);
 
 --
@@ -255,14 +230,14 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `photo`
+-- AUTO_INCREMENT for table `m_photo`
 --
-ALTER TABLE `photo`
+ALTER TABLE `m_photo`
 MODIFY `idphoto` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=34;
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT for table `s_user`
 --
-ALTER TABLE `user`
+ALTER TABLE `s_user`
 MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=24;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
