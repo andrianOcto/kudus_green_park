@@ -71,7 +71,7 @@ Route::get('/', function(){
 });
 
 Route::get('/rth', function(){
-	return View::make('frontend/findrth');
+	return View::make('frontend/generalrth');
 });
 
 

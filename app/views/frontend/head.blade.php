@@ -14,7 +14,7 @@
 <body style="margin:0px">
     <!--  navigation  -->
     <div class="row" style="margin-top:10px">
-        <a href="index.php"><img style="width:700px; height:150px;" src="{{ URL::asset('images/logo-kab-kudus.png') }}"></a>
+        <a href="index.php"><img style="width:700px; height:150px;" src="{{ URL::asset('images/logo.png') }}"></a>
     </div>
     <nav class="navbar navbar-default" style="border-color:#4CAF50; background-color:#4CAF50; border-radius:0px; margin-bottom:0px">
         <div class="container-fluid">
