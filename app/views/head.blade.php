@@ -28,7 +28,6 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            
             <li class="dropdown">
                 <a style="color:white" href="user/{{ Session::get('iduser'); }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Session::get('username'); }} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
