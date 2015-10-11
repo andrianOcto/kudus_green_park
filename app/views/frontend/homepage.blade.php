@@ -1,4 +1,4 @@
-@include('head')
+@include('frontend/head')
     <!--  image slide  -->
     <div class="row">
         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -91,4 +91,4 @@
                 </center>
             </div>
         </div>
-@include('foot')
+@include('frontend/foot')

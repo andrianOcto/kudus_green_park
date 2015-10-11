@@ -21,12 +21,12 @@ Route::post('park/upload', array('uses' => 'ParkController@upload'));
 Route::post('user/{iduser}/updateImage', array('uses' => 'UserController@updateImage'));
 Route::post('park/{iduser}/updateImage', array('uses' => 'ParkController@upload'));
 
-Route::group(array('before' => 'guest'), function() {
-	Route::get('/', function()
-	{
-		return View::make('login');
-	});
-});
+// Route::group(array('before' => 'guest'), function() {
+// 	Route::get('/', function()
+// 	{
+// 		return View::make('login');
+// 	});
+// });
 
 Route::group(array('before' => 'auth'), function() {
 
@@ -64,6 +64,14 @@ Route::group(array('before' => 'auth'), function() {
 App::missing(function($exception)
 {
     return View::make('login');
+});
+
+Route::get('/', function(){
+	return View::make('frontend/homepage');
+});
+
+Route::get('/rth', function(){
+	return View::make('frontend/findrth');
 });
 
 

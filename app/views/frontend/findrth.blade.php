@@ -1,4 +1,4 @@
-@include('head')
+@include('frontend/head')
     <div class="container" style="margin-top:50px">
         <div class="row">
             <div class="col-md-2">
@@ -73,4 +73,4 @@
             </div>
         </div>
     </div>
-@include('foot')
+@include('frontend/foot')
