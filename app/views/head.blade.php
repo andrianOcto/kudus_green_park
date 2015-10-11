@@ -28,11 +28,12 @@
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav navbar-right">
-            <li><img class="img-circle" style="width:40px; margin-top:5px; margin-left:15px" src="{{ URL::asset('files/photos/user') }}/{{ Session::get('foto') }}"></li>
+            
             <li class="dropdown">
                 <a style="color:white" href="user/{{ Session::get('iduser'); }}" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{ Session::get('username'); }} <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                    <li><a href="/logout" style="text-align:center; color:black"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>  logout</a></li>
+                    <li><center><img class="img-circle" style="width:70px; margin-top:5px;" src="{{ URL::asset('files/photos/user') }}/{{ Session::get('foto') }}"></center></li>
+                    <li><a href="/logout" style="text-align:center; color:black; margin-top:10px"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>  logout</a></li>
                 </ul>
             </li>
             
@@ -47,7 +48,10 @@
                 <center><img src="{{ URL::asset('images/logo-kab-kudus.png') }}" style="width:80px; padding-top:20px; padding-bottom:30px;"></center>
                 <ul class="nav nav-pills nav-stacked">
                     <li style="border-right: 4px solid #428bca"><a href="/home"><p align="right" style="color:black"><b style="padding-right:10px">Dashboard</b></p></a></li>
-                    <li style="border-right: 4px solid #5cb85c"><a href="/park"><p align="right" style="color:black"><b style="padding-right:10px">Park</b></p></a></li>
+                    <li style="border-right: 4px solid #5cb85c"><a href="/park"><p align="right" style="color:black"><b style="padding-right:10px">Data RTH</b></p></a></li>
+                    <li style="border-right: 4px solid #f0ad4e"><a href="/user"><p align="right" style="color:black"><b style="padding-right:10px">Jenis RTH</b></p></a></li>
+                    <li style="border-right: 4px solid #428bca"><a href="/home"><p align="right" style="color:black"><b style="padding-right:10px">Kecamatan</b></p></a></li>
+                    <li style="border-right: 4px solid #5cb85c"><a href="/park"><p align="right" style="color:black"><b style="padding-right:10px">Desa</b></p></a></li>
                     <li style="border-right: 4px solid #f0ad4e"><a href="/user"><p align="right" style="color:black"><b style="padding-right:10px">Users</b></p></a></li>
                 </ul>
             </div>
