@@ -60,15 +60,11 @@ class ParkController extends BaseController {
     	$input 				= Input::all();
     	$nama				= (isset($input['nama_park'])) 	? $input['nama_park']:null;
     	$alamat				= (isset($input['alamat'])) 	? $input['alamat']:null;
-    	$longitude			= (isset($input['longitude'])) 	? $input['longitude']:null;
-    	$latitude			= (isset($input['latitude'])) 	? $input['latitude']:null;
     	$deskripsi			= (isset($input['deskripsi'])) 	? $input['deskripsi']:null;
     	$photos				= (isset($input['foto'])) 		? $input['foto']:null;
 
-    	$park->nama_park	= $nama;
+    	$park->nama	 		= $nama;
     	$park->alamat		= $alamat;
-    	$park->longitude	= $longitude;
-    	$park->latitude		= $latitude;
     	$park->deskripsi	= $deskripsi;
 
     	$park->save();
@@ -92,8 +88,6 @@ class ParkController extends BaseController {
     	$idpark				= (isset($input['idpark'])) 	? $input['idpark']:null;
     	$nama_park			= (isset($input['nama_park'])) 	? $input['nama_park']:null;
     	$alamat				= (isset($input['alamat'])) 	? $input['alamat']:null;
-    	$longitude			= (isset($input['longitude'])) 	? $input['longitude']:null;
-    	$latitude			= (isset($input['latitude'])) 	? $input['latitude']:null;
     	$deskripsi			= (isset($input['deskripsi'])) 	? $input['deskripsi']:null;
     	$listDel			= (isset($input['listDel'])) 	? $input['listDel']:null;
     	$photos				= (isset($input['foto'])) 		? $input['foto']:null;
@@ -101,10 +95,8 @@ class ParkController extends BaseController {
 
     	$park 				= Park::find($idpark);
 
-    	$park->nama_park	= $nama_park;
+    	$park->nama 		= $nama_park;
     	$park->alamat		= $alamat;
-    	$park->longitude	= $longitude;
-    	$park->latitude		= $latitude;
     	$park->deskripsi	= $deskripsi;
 
     	$park->save();

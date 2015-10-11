@@ -21,7 +21,7 @@
         @foreach($park as $key => $value)
         <tr>
             <td>{{ $value->idpark }}</td>
-            <td>{{ $value->nama_park }}</td>
+            <td>{{ $value->nama }}</td>
             <td><img class="img-rounded" style="width:150px" src="{{ URL::asset('files/photos/park') }}/{{ $foto[$i] }}"></td>
             <td>{{ $value->alamat }}</td>
             <td class="text-center">

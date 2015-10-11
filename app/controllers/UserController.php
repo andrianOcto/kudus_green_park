@@ -56,18 +56,10 @@ class UserController extends BaseController {
     	$nama					= (isset($input['nama'])) 		? $input['nama']:null;
     	$username				= (isset($input['username'])) 	? $input['username']:null;
 		$password				= (isset($input['password'])) 	? $input['password']:null;
-		$email					= (isset($input['email'])) 		? $input['email']:null;
-		$contact				= (isset($input['contact'])) 	? $input['contact']:null;
-		$bio					= (isset($input['bio'])) 		? $input['bio']:null;
-
 
 		$admin->nama_lengkap	= $nama;
 		$admin->username	 	= $username;
 		$admin->password	 	= Hash::make($password);
-		$admin->email	 		= $email;
-		$admin->bio	 			= $bio;
-		$admin->contact 		= $contact;
-		$admin->foto 			= Session::get('pathImage');
 
 		$admin->save();
     }
@@ -79,21 +71,12 @@ class UserController extends BaseController {
     	$nama					= (isset($input['nama'])) 		? $input['nama']:null;
     	$username				= (isset($input['username'])) 	? $input['username']:null;
 		$password				= (isset($input['password'])) 	? $input['password']:null;
-		$email					= (isset($input['email'])) 		? $input['email']:null;
-		$contact				= (isset($input['contact'])) 	? $input['contact']:null;
-		$bio					= (isset($input['bio'])) 		? $input['bio']:null;
 
 		$admin 					= Admin::find($iduser);
 
 		$admin->nama_lengkap	= $nama;
 		$admin->username	 	= $username;
 		$admin->password	 	= Hash::make($password);
-		$admin->email	 		= $email;
-		$admin->bio	 			= $bio;
-		$admin->contact 		= $contact;
-		$admin->foto 			= Session::get('pathImage');
-		Session::put('foto',$admin->foto);
-
 		$admin->save();	
     }
 
