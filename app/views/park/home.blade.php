@@ -1,11 +1,11 @@
 @include("head")
 <legend>
-    <h1 style="font-weight:200">Edit User</h1>
+    <h1 style="font-weight:200">Ruang Terbuka Hijau</h1>
 </legend>
 <div class="panel panel-success">
     <div class="panel-heading"></div>
     <div class="panel-body">
-<a href="park/create"><button class="btn btn-primary" style="height:50px">Add park +</button></a>
+<a href="park/create"><button class="btn btn-primary" style="height:50px">Add RTH +</button></a>
 <br><br>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -20,13 +20,13 @@
         ?>
         @foreach($park as $key => $value)
         <tr>
-            <td>{{ $value->idpark }}</td>
+            <td>{{ $value->id_rth }}</td>
             <td>{{ $value->nama }}</td>
             <td><img class="img-rounded" style="width:150px" src="{{ URL::asset('files/photos/park') }}/{{ $foto[$i] }}"></td>
             <td>{{ $value->alamat }}</td>
             <td class="text-center">
-                <a href="park/{{ $value->idpark }}"><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span> view</button></a>
-                <a href="park/{{ $value->idpark }}/edit"><button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> edit</button></a>
+                <a href="park/{{ $value->id_rth }}"><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span> view</button></a>
+                <a href="park/{{ $value->id_rth }}/edit"><button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> edit</button></a>
                 <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"><span class="glyphicon glyphicon-trash"></span> delete</button>
             </td>
         </tr>

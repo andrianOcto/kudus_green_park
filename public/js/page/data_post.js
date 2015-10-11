@@ -389,11 +389,17 @@ formPark.controller('ParkController', ['$scope', '$http','FileUploader', functio
 			method	: 'POST',
 			url		: 'http://localhost:8000/submitPark',
 			params	: {
+                id_rth      : $scope.id_rth,
 				nama_park	: $scope.nama_park,
+                jenis       : $scope.jenis,
+                kecamatan   : $scope.kecamatan,
+                desa        : $scope.desa,
+                status_lahan        : $scope.status_lahan,
+                luas        : $scope.luas,
+                jenis_tanaman       : $scope.jenis_tanaman,
+                pengelola   : $scope.pengelola,
 				alamat		: $scope.alamat,
-				longitude	: $scope.longitude,
-				latitude	: $scope.latitude,
-				deskripsi	: $scope.deskripsi,
+				fungsi  	: $scope.fungsi,
 				foto		: JSON.stringify(arrayImage)
 			}
 		}).success(function(data){

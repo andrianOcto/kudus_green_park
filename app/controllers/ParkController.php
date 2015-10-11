@@ -17,11 +17,13 @@ class ParkController extends BaseController {
 
 	public function index()
 	{
-		$park = Park::all();
+		$park 		= Park::all();
+		$kecamatan 	= Kecamatan::all();
+		$desa 		= Desa::all();
 		$i=0;
 		$arrayPhoto = array();
 		foreach ($park as $key => $value) {
-			$foto	= Photo::where('idpark', '=', $value->idpark)->first();
+			$foto	= Photo::where('id_rth', '=', $value->id_rth)->first();
 			if($foto!=null)
 				$arrayPhoto[$i] = $foto->fileName;
 			else 
@@ -30,12 +32,17 @@ class ParkController extends BaseController {
 			$i++;
 		}
 
-		return View::make('park/home')->with('park', $park)->with('foto',$arrayPhoto);
+		return View::make('park/home')->with('park', $park)
+							->with('foto',$arrayPhoto);
 	}
 
 	public function create()
 	{
-		return View::make('park/add-park');
+		$kecamatan 	= Kecamatan::all();
+		$desa 		= Desa::all();
+		return View::make('park/add-park')
+							->with('kecamatan',$kecamatan)
+							->with('desa',$desa);
 	}
 
 	public function edit($id)
@@ -48,7 +55,7 @@ class ParkController extends BaseController {
 	public function show($id)
 	{
 		$park 	= Park::find($id);
-		$foto	= Photo::where('idpark', '=', $id)->get();
+		$foto	= Photo::where('id_rth', '=', $id)->get();
 		// print_r($foto);
 		return View::make('park/view-park')->with('park', $park)->with('foto',$foto);
 	}
@@ -58,14 +65,30 @@ class ParkController extends BaseController {
     	$park 				= new Park;
 
     	$input 				= Input::all();
+    	$id_rth				= (isset($input['id_rth'])) 	? $input['id_rth']:null; 
     	$nama				= (isset($input['nama_park'])) 	? $input['nama_park']:null;
+    	$jenis				= (isset($input['jenis'])) 		? $input['jenis']:null;
+        $kecamatan			= (isset($input['kecamatan'])) 	? $input['kecamatan']:null;
+        $desa				= (isset($input['desa'])) 		? $input['desa']:null;
+        $status_lahan		= (isset($input['status_lahan'])) ? $input['status_lahan']:null;
+        $luas				= (isset($input['luas'])) 		? $input['luas']:null;
+        $jenis_tanaman		= (isset($input['jenis_tanaman'])) ? $input['jenis_tanaman']:null;
+        $pengelola			= (isset($input['pengelola'])) 	? $input['pengelola']:null;
     	$alamat				= (isset($input['alamat'])) 	? $input['alamat']:null;
-    	$deskripsi			= (isset($input['deskripsi'])) 	? $input['deskripsi']:null;
+    	$fungsi				= (isset($input['fungsi'])) 	? $input['fungsi']:null;
     	$photos				= (isset($input['foto'])) 		? $input['foto']:null;
 
+    	$park->id_rth		= $id_rth;
     	$park->nama	 		= $nama;
+    	$park->jenis 		= $jenis;
+		$park->kecamatan 	= $kecamatan;
+		$park->desa 		= $desa;
+		$park->status_lahan = $status_lahan;
+		$park->luas 		= $luas;
+		$park->jenis_tanaman= $jenis_tanaman;
+		$park->pengelola 	= $pengelola;
     	$park->alamat		= $alamat;
-    	$park->deskripsi	= $deskripsi;
+    	$park->fungsi		= $fungsi;
 
     	$park->save();
 		
@@ -74,7 +97,7 @@ class ParkController extends BaseController {
 		for($i=0;$i<count($arrayPhoto);$i++)
 		{
 			$Photo 				= new Photo;
-			$Photo->idpark		= $park->idpark;
+			$Photo->id_rth		= $id_rth;
 			$Photo->fileName 	= $arrayPhoto[$i]."";
 			$Photo->save();
 		}

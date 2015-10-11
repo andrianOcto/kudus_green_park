@@ -1,15 +1,85 @@
 @include("head")
 <legend>
-    <h1 style="font-weight:200">Add Park</h1>
+    <h1 style="font-weight:200">Add RTH</h1>
 </legend>
 <div class="panel panel-success">
     <div class="panel-heading"></div>
     <div class="panel-body">
         <form ng-app="formPark" ng-controller="ParkController" uploader="uploader" ng-submit="submitPark()" class="form-horizontal" filters="queueLimit, customFilter" role="form">
     <div class="form-group">
-        <label for="nama" class="col-sm-2 col-md-2 control-label">Nama Taman :</label>
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Kode RTH :</label>
+        <div class="col-sm-9 col-md-9">
+            <input ng-model="id_rth" type="text" class="form-control" id="id-rth" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Nama RTH :</label>
         <div class="col-sm-9 col-md-9">
             <input ng-model="nama_park" type="text" class="form-control" id="nama-taman" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Jenis RTH :</label>
+        <div class="col-sm-9 col-md-9">
+            <select class="form-control" ng-model="jenis" id="jenis" ng-init='jenis=0'>
+                <option value="0">-Pilih Jenis-</option>
+                <option value="1">Taman Kota</option>
+                <option value="2">Hutan Kota</option>
+                <option value="3">Pulau Jalan dan Median Jalan</option>
+                <option value="4">Sempadan Sungai dan Mata Air</option>
+                <option value="5">Pemakaman</option>
+                <option value="6">Fungsi Tertentu</option>
+            </select> 
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Kecamatan :</label>
+        <div class="col-sm-9 col-md-9">
+            <select class="form-control" ng-model="kecamatan" id="kecamatan" ng-init="kecamatan=0">
+                <option value="0">-Pilih Kecamatan-</option>
+                @foreach($kecamatan as $key =>$value)
+                    <option value="{{$value->id}}">{{$value->nama}}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Desa :</label>
+        <div class="col-sm-9 col-md-9">
+            <select class="form-control" ng-model="desa" id="desa" ng-init="desa=0">
+                <option value="0">-Pilih Desa-</option>
+                @foreach($desa as $key =>$value)
+                    <option value="{{$value->id}}">{{$value->nama}}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Status Lahan :</label>
+        <div class="col-sm-9 col-md-9">
+            <select class="form-control" ng-model="status_lahan" id="status_lahan" ng-init='status_lahan=0'>
+                <option value="0">-Pilih Status Lahan-</option>
+                <option value="1">aman</option>
+                <option value="2">sengketa</option>
+            </select> 
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Luas :</label>
+        <div class="col-sm-9 col-md-9">
+            <input ng-model="luas" type="text" class="form-control" id="luas" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Jenis Tanaman :</label>
+        <div class="col-sm-9 col-md-9">
+            <input ng-model="jenis_tanaman" type="text" class="form-control" id="jenis-tanaman" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Pengelola :</label>
+        <div class="col-sm-9 col-md-9">
+            <input ng-model="pengelola" type="text" class="form-control" id="pengelola" required>
         </div>
     </div>
     <div class="form-group">
@@ -19,9 +89,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="deskripsi" class="col-sm-2 col-md-2 control-label">Deskripsi :</label>
+        <label for="deskripsi" class="col-sm-2 col-md-2 control-label">Fungsi :</label>
         <div class="col-sm-9 col-md-9">
-            <textarea ng-model="deskripsi" class="form-control" rows="4" id="deskripsi-taman" required></textarea>
+            <textarea ng-model="fungsi" class="form-control" rows="4" id="fungsi-taman" required></textarea>
         </div>
     </div>
     <div class="form-group">
