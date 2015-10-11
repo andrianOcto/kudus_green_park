@@ -87,7 +87,7 @@ class ApiController extends BaseController {
 			{
 				$response 	= "FAILED";
 				$statusCode = 200;
-				$message 	= "Username not found.";
+				$message 	= "Username tidak ditemukan.";
 			}
 		}
 

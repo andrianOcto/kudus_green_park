@@ -30,10 +30,15 @@
                 
                 <form ng-submit="submitLogin()">
                     <div class="col-sm-10 col-md-10 col-md-offset-1" style="padding-bottom:30px">
-                    
-                            <input style="height:50px" type="text" ng-model="username" class="form-control" placeholder="username" required>
-                            &nbsp;
-                            <input style="height:50px" type="password" ng-model="password" class="form-control" placeholder="password" required>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="username" aria-describedby="basic-addon2" style="height:50px" type="text" ng-model="username" required>
+                        <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></span>
+                    </div>
+                    &nbsp;
+                    <div class="input-group">
+                        <input type="password" class="form-control" placeholder="password" aria-describedby="basic-addon2" style="height:50px" type="password" ng-model="password" required>
+                        <span class="input-group-addon" id="basic-addon2"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></span>
+                    </div>    
                     </div>
                         
                     <center><button style="width:30%" ng-hide="loading" type="submit" class="btn btn-primary">login</button>
