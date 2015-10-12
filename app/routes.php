@@ -21,7 +21,7 @@ Route::post('park/upload', array('uses' => 'ParkController@upload'));
 Route::post('user/{iduser}/updateImage', array('uses' => 'UserController@updateImage'));
 Route::post('park/{iduser}/updateImage', array('uses' => 'ParkController@upload'));
 Route::get('desa/{id}', array('uses' => 'ApiController@getDesa'));
-
+Route::get('rth/{id}', array('uses' => 'ApiController@getDetailRTH'));
 // Route::group(array('before' => 'guest'), function() {
 // 	Route::get('/', function()
 // 	{
@@ -92,6 +92,7 @@ Route::get('/rth', function(){
 						->with('kecamatan', $kecamatan)
 						->with('desa', $desa);
 });
+
 
 
 

@@ -41,14 +41,7 @@
             console.log(id_kecamatan);
         });
 
-        function desa(id){
-            $.ajax(function(){
-                type:"GET",
-                success:function(data){
-                    console.log(data);
-                }
-            });
-        }
+        
     </script>
   </body>
 </html>

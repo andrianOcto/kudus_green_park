@@ -72,7 +72,7 @@
                         </a>
                         </div>
                         <div class="media-body">
-                            <a href="#" style="color:black; text-decoration:none"><h4 class="media-heading">Media heading</h4></a>
+                            <a href="rth/{{ $value->id_rth }}" style="color:black; text-decoration:none"><h4 class="media-heading">Media heading</h4></a>
                             <p>{{ $value->nama }}<br>
                             {{ $value->alamat }}<br>
                             {{ $value->pengelola }}</p>

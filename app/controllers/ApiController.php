@@ -208,5 +208,18 @@ class ApiController extends BaseController {
     	$desa = Desa::where('id_kecamatan','=', $id)->get();
     	return Response::json($desa)->header('access-control-allow-origin', '*');
     }
+
+    public function getDetailRTH($id){
+    	$rth = Park::find($id);
+    	$kecamatan 	= Kecamatan::all();
+		$desa 		= Desa::all();
+		$foto		= Photo::where('id_rth', '=', $id)->get();
+
+    	return View::make('frontend/findrth')
+    						->with('rth', $rth)
+							->with('kecamatan', $kecamatan)
+							->with('desa', $desa)
+							->with('foto',$foto);
+    }
 }
 
