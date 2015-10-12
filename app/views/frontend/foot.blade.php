@@ -43,9 +43,9 @@
 
         function desa(id){
             $.ajax(function(){
-                url:"http://localhost:8000/get_desa/"+id,
+                type:"GET",
                 success:function(data){
-
+                    console.log(data);
                 }
             });
         }
