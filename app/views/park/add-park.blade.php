@@ -23,12 +23,9 @@
         <div class="col-sm-9 col-md-9">
             <select class="form-control" ng-model="jenis" id="jenis" ng-init='jenis=0'>
                 <option value="0">-Pilih Jenis-</option>
-                <option value="1">Taman Kota</option>
-                <option value="2">Hutan Kota</option>
-                <option value="3">Pulau Jalan dan Median Jalan</option>
-                <option value="4">Sempadan Sungai dan Mata Air</option>
-                <option value="5">Pemakaman</option>
-                <option value="6">Fungsi Tertentu</option>
+                @foreach($jenisrth as $key => $value)
+                <option value="{{$value->id}}">{{$value->jenis}}</option>
+                @endforeach
             </select> 
         </div>
     </div>
@@ -59,8 +56,9 @@
         <div class="col-sm-9 col-md-9">
             <select class="form-control" ng-model="status_lahan" id="status_lahan" ng-init='status_lahan=0'>
                 <option value="0">-Pilih Status Lahan-</option>
-                <option value="1">aman</option>
-                <option value="2">sengketa</option>
+                @foreach($status as $key => $value)
+                <option value="{{$value->id}}">{{$value->status}}</option>
+                @endforeach
             </select> 
         </div>
     </div>
