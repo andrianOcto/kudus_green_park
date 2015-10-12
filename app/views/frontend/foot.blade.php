@@ -39,9 +39,29 @@
         $('#kecamatan').change(function(){
             var id_kecamatan = $(this).val();
             console.log(id_kecamatan);
+            desa(id_kecamatan);
+
         });
 
-        
+        function desa(id){
+           $.ajax({
+          type: 'GET',
+          url:'http://localhost:8000/desa/'+id,
+          success: function(data) {
+            //called when successful
+            var nama = '<option>-Pilih Desa-</option>';
+              for(var i in data){
+                  nama += '<option value="'+data[i].id+'">'+ data[i].nama+'</option>';                        
+              }
+              $('#desa').html(nama);    
+           console.log(data);
+          },
+          error: function(e) {
+            //called when there is an error
+            //console.log(e.message);
+          }
+        });
+       }
     </script>
   </body>
 </html>

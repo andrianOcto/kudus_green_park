@@ -22,6 +22,7 @@ Route::post('user/{iduser}/updateImage', array('uses' => 'UserController@updateI
 Route::post('park/{iduser}/updateImage', array('uses' => 'ParkController@upload'));
 Route::get('desa/{id}', array('uses' => 'ApiController@getDesa'));
 Route::get('rth/{id}', array('uses' => 'ApiController@getDetailRTH'));
+Route::post('/findrth', array('uses' => 'ApiController@getRTH'));
 // Route::group(array('before' => 'guest'), function() {
 // 	Route::get('/', function()
 // 	{
@@ -75,6 +76,7 @@ Route::get('/rth', function(){
 	$park 		= Park::all();
 	$kecamatan 	= Kecamatan::all();
 	$desa 		= Desa::all();
+	$jenis		= Jenis::all();
 	$i=0;
 	$arrayPhoto = array();
 	foreach ($park as $key => $value) {
@@ -90,7 +92,8 @@ Route::get('/rth', function(){
 	return View::make('frontend/generalrth')->with('park', $park)
 						->with('foto',$arrayPhoto)
 						->with('kecamatan', $kecamatan)
-						->with('desa', $desa);
+						->with('desa', $desa)
+						->with('jenis', $jenis);
 });
 
 

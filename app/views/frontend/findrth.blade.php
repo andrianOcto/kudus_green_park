@@ -3,17 +3,14 @@
         <div class="row">
             <div class="col-md-2">
                 <!-- filter kecamatan -->
-                <form method="POST">
+                <form method="POST" action="findrth">
                 <div class="form-group">
                     <label for="nama" class="control-label">Jenis RTH</label>
                         <select class="form-control" name="jenis" id="jenis">
                             <option>-Pilih Jenis RTH-</option>
-                            <option value="1">Taman Kota</option>
-                            <option value="2">Hutan Kota</option>
-                            <option value="3">Pulau Jalan dan Median Jalan</option>
-                            <option value="4">Sempadan Sungai dan Mata Air</option>
-                            <option value="5">Pemakaman</option>
-                            <option value="6">Fungsi Tertentu</option>
+                            @foreach($jenis as $key => $value)
+                                <option value="{{$value->id}}">{{$value->jenis}}</option>    
+                            @endforeach
                         </select>
                 </div>
                 <div class="form-group">
@@ -28,7 +25,7 @@
                 <div class="form-group">
                     <label for="nama" class="control-label">Desa</label>
                         <select class="form-control" name="desa" id="desa">
-                            <option>-Pilih desa-</option>
+                            <option></option>
                         </select>
                 </div>
                 <input type="submit" class="btn btn-primary">
@@ -57,8 +54,18 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Status Lahan :</label>
+                        <?php 
+                            $status = $rth->status_lahan;
+                            if($status==1){
+                                $status_lahan = "Tanah Pemda";
+                            }elseif ($status==2) {
+                                $status_lahan = "Tanah Desa";
+                            }elseif ($status==3) {
+                                $status_lahan = "Tanah Perorangan";
+                            }
+                        ?>
                         <div class="col-sm-4">
-                            <label class="form-control">Tanah Desa</label>
+                            <label class="form-control"><?php echo $status_lahan ?></label>
                         </div>
                     </div>
                     <div class="form-group">

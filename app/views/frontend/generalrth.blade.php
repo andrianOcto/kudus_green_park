@@ -3,17 +3,14 @@
     <div class="row">
         <div class="col-md-2">
             <!-- filter kecamatan -->
-            <form method="POST">
-                <div class="form-group">
+            <form method="POST" action="findrth">
+                <div class="form-group" >
                     <label for="nama" class="control-label">Jenis RTH</label>
                         <select class="form-control" name="jenis" id="jenis">
                             <option>-Pilih Jenis RTH-</option>
-                            <option value="1">Taman Kota</option>
-                            <option value="2">Hutan Kota</option>
-                            <option value="3">Pulau Jalan dan Median Jalan</option>
-                            <option value="4">Sempadan Sungai dan Mata Air</option>
-                            <option value="5">Pemakaman</option>
-                            <option value="6">Fungsi Tertentu</option>
+                            @foreach($jenis as $key => $value)
+                                <option value="{{$value->id}}">{{$value->jenis}}</option>    
+                            @endforeach
                         </select>
                 </div>
                 <div class="form-group">
@@ -72,10 +69,10 @@
                         </a>
                         </div>
                         <div class="media-body">
-                            <a href="rth/{{ $value->id_rth }}" style="color:black; text-decoration:none"><h4 class="media-heading">Media heading</h4></a>
-                            <p>{{ $value->nama }}<br>
+                            <a href="rth/{{ $value->id_rth }}" style="color:black; text-decoration:none"><h4 class="media-heading">{{ $value->nama }}</h4></a>
+                            <p>{{ $value->pengelola }}<br>
                             {{ $value->alamat }}<br>
-                            {{ $value->pengelola }}</p>
+                            {{ $value->fungsi }}</p>
                         </div>
                     </div>
                 </div>

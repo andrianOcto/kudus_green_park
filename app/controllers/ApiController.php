@@ -213,13 +213,50 @@ class ApiController extends BaseController {
     	$rth = Park::find($id);
     	$kecamatan 	= Kecamatan::all();
 		$desa 		= Desa::all();
+		$jenis		= Jenis::all();
 		$foto		= Photo::where('id_rth', '=', $id)->get();
 
     	return View::make('frontend/findrth')
     						->with('rth', $rth)
 							->with('kecamatan', $kecamatan)
 							->with('desa', $desa)
-							->with('foto',$foto);
+							->with('foto',$foto)
+							->with('jenis', $jenis);
     }
+
+    public function getRTH(){
+    	$input 			= Input::all();
+    	$jenis				= (isset($input['jenis'])) 		? $input['jenis']:null;
+        $kecamatan			= (isset($input['kecamatan'])) 	? $input['kecamatan']:null;
+        $desa				= (isset($input['desa'])) 		? $input['desa']:null;
+
+        
+	    $park 		= Park::where('jenis', '=', $jenis)
+	    					->where('kecamatan', '=', $kecamatan)
+	    					->where('desa', '=', $desa)
+	    					->get();
+		$kecamatan 	= Kecamatan::all();
+		$desa 		= Desa::all();
+		$jenis		= Jenis::all();
+		$i=0;
+		$arrayPhoto = array();
+		foreach ($park as $key => $value) {
+			$foto	= Photo::where('id_rth', '=', $value->id_rth)->first();
+			if($foto!=null)
+				$arrayPhoto[$i] = $foto->fileName;
+			else 
+				$arrayPhoto[$i] = "default.jpg";
+
+			$i++;
+		}
+
+		return View::make('frontend/generalrth')->with('park', $park)
+							->with('foto',$arrayPhoto)
+							->with('kecamatan', $kecamatan)
+							->with('desa', $desa)
+							->with('jenis', $jenis);
+
+		// return Response::json($park);
+	}
 }
 
