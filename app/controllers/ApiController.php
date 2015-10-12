@@ -203,5 +203,10 @@ class ApiController extends BaseController {
 	public function missingMethod($parameters = array()) {
         echo "API not found. \n";
     }
+
+    public function getDesa($id){
+    	$desa = Desa::where('id_kecamatan','=', $id)->get();
+    	return Response::json($desa)->header('access-control-allow-origin', '*');
+    }
 }
 

@@ -29,12 +29,26 @@
         <p style="text-align:center"><b>RTH Kudus &copy; 2015</b></p>
     </div>
 
-    <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
+    <script src="{{ URL::asset('js/jQuery-2.1.4.min.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('js/lib/angular.min.js') }}"></script> 
     <script src="{{ URL::asset('js/angular-file-upload.min.js') }}"></script> 
     <script src="{{ URL::asset('js/page/userSubmit.js') }}"></script> 
     <script src="{{ URL::asset('js/page/data_post.js') }}"></script> 
-    
+    <script type="text/javascript">
+        $('#kecamatan').change(function(){
+            var id_kecamatan = $(this).val();
+            console.log(id_kecamatan);
+        });
+
+        function desa(id){
+            $.ajax(function(){
+                url:"http://localhost:8000/get_desa/"+id,
+                success:function(data){
+
+                }
+            });
+        }
+    </script>
   </body>
 </html>
