@@ -210,7 +210,15 @@ class ApiController extends BaseController {
     }
 
     public function getDetailRTH($id){
-    	$rth = Park::find($id);
+    	// $rth = Park::find($id);
+    	$rth = DB::table('m_info_rth')
+    					->join('s_kecamatan', 'm_info_rth.kecamatan', '=', 's_kecamatan.id')
+    					->join('s_desa', 'm_info_rth.desa', '=', 's_desa.id')
+    					->join('s_status_lahan', 'm_info_rth.status_lahan', '=', 's_status_lahan.id')
+    					->join('s_jenis_rth', 'm_info_rth.jenis', '=', 's_jenis_rth.id')
+    					->where('m_info_rth.id_rth', '=', $id)
+    					->select('m_info_rth.id_rth','m_info_rth.jenis_tanaman', 'm_info_rth.fungsi', 'm_info_rth.luas', 'm_info_rth.fungsi', 'm_info_rth.pengelola', 'm_info_rth.alamat', 'm_info_rth.nama as nama_rth', 's_jenis_rth.jenis', 's_desa.nama as desa', 's_kecamatan.nama as kecamatan', 's_status_lahan.status')
+    					->first();
     	$kecamatan 	= Kecamatan::all();
 		$desa 		= Desa::all();
 		$jenis		= Jenis::all();
@@ -222,6 +230,8 @@ class ApiController extends BaseController {
 							->with('desa', $desa)
 							->with('foto',$foto)
 							->with('jenis', $jenis);
+    					// return Response::json($mbuh);
+
     }
 
     public function getRTH(){

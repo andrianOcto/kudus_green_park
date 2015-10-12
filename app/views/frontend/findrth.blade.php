@@ -32,7 +32,7 @@
             </form>
             </div>
             <div class="col-md-10">
-                <h2>{{$rth->nama}}</h2>
+                <h2>{{$rth->nama_rth}}</h2>
                 <br>
                 @foreach($foto as $key => $value)
                     <img class="img-thumbnail" src="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" style="height:200px">
@@ -40,6 +40,30 @@
                 <br>
                 <h4>Keterangan:</h4>
                 <form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Kode RTH :</label>
+                        <div class="col-sm-4">
+                            <label class="form-control">{{$rth->id_rth}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Jenis RTH :</label>
+                        <div class="col-sm-4">
+                            <label class="form-control">{{$rth->jenis}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Kecamatan :</label>
+                        <div class="col-sm-4">
+                            <label class="form-control">{{$rth->kecamatan}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Desa :</label>
+                        <div class="col-sm-4">
+                            <label class="form-control">{{$rth->desa}}</label>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Bentuk dan Luas :</label>
                         <div class="col-sm-4">
@@ -54,24 +78,26 @@
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Status Lahan :</label>
-                        <?php 
-                            $status = $rth->status_lahan;
-                            if($status==1){
-                                $status_lahan = "Tanah Pemda";
-                            }elseif ($status==2) {
-                                $status_lahan = "Tanah Desa";
-                            }elseif ($status==3) {
-                                $status_lahan = "Tanah Perorangan";
-                            }
-                        ?>
                         <div class="col-sm-4">
-                            <label class="form-control"><?php echo $status_lahan ?></label>
+                            <label class="form-control">{{$rth->status}}</label>
                         </div>
                     </div>
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Pengelola :</label>
                         <div class="col-sm-4">
                             <label class="form-control">{{$rth->pengelola}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Fungsi :</label>
+                        <div class="col-sm-4">
+                            <label class="form-control">{{$rth->fungsi}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Alamat :</label>
+                        <div class="col-sm-4">
+                            <label class="form-control">{{$rth->alamat}}</label>
                         </div>
                     </div>
                     <div class="form-group">
