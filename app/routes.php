@@ -20,7 +20,9 @@ Route::post('user/upload', array('uses' => 'UserController@upload'));
 Route::post('park/upload', array('uses' => 'ParkController@upload'));
 Route::post('user/{iduser}/updateImage', array('uses' => 'UserController@updateImage'));
 Route::post('park/{iduser}/updateImage', array('uses' => 'ParkController@upload'));
-
+Route::get('desa/{id}', array('uses' => 'ApiController@getDesa'));
+Route::get('rth/{id}', array('uses' => 'ApiController@getDetailRTH'));
+Route::post('/findrth', array('uses' => 'ApiController@getRTH'));
 // Route::group(array('before' => 'guest'), function() {
 // 	Route::get('/', function()
 // 	{
@@ -71,8 +73,29 @@ Route::get('/', function(){
 });
 
 Route::get('/rth', function(){
-	return View::make('frontend/generalrth');
+	$park 		= Park::all();
+	$kecamatan 	= Kecamatan::all();
+	$desa 		= Desa::all();
+	$jenis		= Jenis::all();
+	$i=0;
+	$arrayPhoto = array();
+	foreach ($park as $key => $value) {
+		$foto	= Photo::where('id_rth', '=', $value->id_rth)->first();
+		if($foto!=null)
+			$arrayPhoto[$i] = $foto->fileName;
+		else 
+			$arrayPhoto[$i] = "default.jpg";
+
+		$i++;
+	}
+
+	return View::make('frontend/generalrth')->with('park', $park)
+						->with('foto',$arrayPhoto)
+						->with('kecamatan', $kecamatan)
+						->with('desa', $desa)
+						->with('jenis', $jenis);
 });
+
 
 
 

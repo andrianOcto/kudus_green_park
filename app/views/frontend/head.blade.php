@@ -31,7 +31,7 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a style="color:white" href="rth">TEMUKAN RUANG TERBUKA HIJAU</a></li>
+                    <li><a style="color:white" href="/rth">TEMUKAN RUANG TERBUKA HIJAU</a></li>
                     <li><a style="color:white" href="#">TENTANG RUANG TERBUKA HIJAU</a></li>
                     <li><a style="color:white" href="#">TENTANG KAMI</a></li>
                 </ul>
