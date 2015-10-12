@@ -20,6 +20,7 @@ class ParkController extends BaseController {
 		$park 		= Park::all();
 		$kecamatan 	= Kecamatan::all();
 		$desa 		= Desa::all();
+        $jenisrth   = Jenis::all();
 		$i=0;
 		$arrayPhoto = array();
 		foreach ($park as $key => $value) {
@@ -40,9 +41,13 @@ class ParkController extends BaseController {
 	{
 		$kecamatan 	= Kecamatan::all();
 		$desa 		= Desa::all();
+        $jenisrth   = Jenis::all();
+        $status     = StatusTanah::all();
 		return View::make('park/add-park')
 							->with('kecamatan',$kecamatan)
-							->with('desa',$desa);
+							->with('desa',$desa)
+                            ->with('jenisrth',$jenisrth)
+                            ->with('status',$status);
 	}
 
 	public function edit($id)
