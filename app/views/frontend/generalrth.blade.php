@@ -58,10 +58,10 @@
             </div> -->
         </div>
         <div class="col-md-10">
-            <div class="row">
+            <div class="row" style="margin:0px">
                 <?php $i=0; ?>
                 @foreach($park as $key => $value)
-                <div class="col-md-6 col-sm-6" style="border: 1px solid black; border-radius:5px; padding:10px; margin-right:20px; margin-bottom:20px; width:45%">
+                <div class="col-md-6 col-sm-6" style="border: 1px solid black; border-radius:5px; padding:10px; margin-right:20px; margin-bottom:20px; width:45%; height:155px; background-color:white">
                     <div class="media">
                         <div class="media-left">
                         <a href="rth/{{ $value->id_rth }}">

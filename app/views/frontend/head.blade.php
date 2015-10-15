@@ -10,11 +10,24 @@
     <title>RTH Kab. Kudus</title>
     
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    
+    <style>
+        .row{
+            margin-left:0px;
+            margin-right:0px;
+        }
+        body{
+            background-color: #e3fcd7;
+        }
+    </style>
   </head>
 <body style="margin:0px">
     <!--  navigation  -->
     <div class="row" style="margin-top:10px">
-        <a href="index.php"><img style="width:700px; height:150px;" src="{{ URL::asset('images/logo.png') }}"></a>
+        <a href="index.php"><img style="width:400px; height:150px;" src="{{ URL::asset('images/Go-Green.png') }}"></a>
+<!--        <h1 style="font-weight:400; position:absolute; top:20px">Kudus</h1><br>-->
+<!--        <h2 style="font-weight:300; position:absolute; top:30px">"Kota di tengah taman"</h2>-->
+        <img src="{{ URL::asset('images/logo-kab-kudus.png') }}" style="width:100px; position:absolute; right:70px">
     </div>
     <nav class="navbar navbar-default" style="border-color:#4CAF50; background-color:#4CAF50; border-radius:0px; margin-bottom:0px">
         <div class="container-fluid">
@@ -32,8 +45,8 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a style="color:white" href="/rth">TEMUKAN RUANG TERBUKA HIJAU</a></li>
-                    <li><a style="color:white" href="#">TENTANG RUANG TERBUKA HIJAU</a></li>
-                    <li><a style="color:white" href="#">TENTANG KAMI</a></li>
+                    <li><a style="color:white" href="/tentangrth">TENTANG RUANG TERBUKA HIJAU</a></li>
+                    <li><a style="color:white" href="/tentangkami">TENTANG KAMI</a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
