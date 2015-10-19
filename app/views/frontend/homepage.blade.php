@@ -68,7 +68,7 @@
                     <p>posted: 10 oktober 2015/04:04</p>
                     <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
                     <br>
-                    <a class="btn btn-success btn-small">baca selengkapnya</a>
+                    <a href="/detailevent" class="btn btn-success btn-small">baca selengkapnya</a>
                 </div>
             </div>
             <div class="media" style="padding-bottom:20px">
@@ -76,11 +76,11 @@
                     <img style="width:150px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
                 </div>
                 <div class="media-body" style="padding-left:20px">
-                    <a href="#" style="color:black; text-decoration:none"><h2 style="font-weight:300" class="media-heading">Judul Artikel</h2></a>
+                    <a href="/detailevent" style="color:black; text-decoration:none"><h2 style="font-weight:300" class="media-heading">Judul Artikel</h2></a>
                     <p>posted: 10 oktober 2015/04:04</p>
                     <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
                     <br>
-                    <a class="btn btn-success btn-small">baca selengkapnya</a>
+                    <a href="/detailevent" class="btn btn-success btn-small">baca selengkapnya</a>
                 </div>
             </div>
             <div class="media" style="padding-bottom:20px">
@@ -88,11 +88,11 @@
                     <img style="width:150px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
                 </div>
                 <div class="media-body" style="padding-left:20px">
-                    <a href="#" style="color:black; text-decoration:none"><h2 style="font-weight:300" class="media-heading">Judul Artikel</h2></a>
+                    <a href="/detailevent" style="color:black; text-decoration:none"><h2 style="font-weight:300" class="media-heading">Judul Artikel</h2></a>
                     <p>posted: 10 oktober 2015/04:04</p>
                     <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
                     <br>
-                    <a class="btn btn-success btn-small">baca selengkapnya</a>
+                    <a href="/detailevent" class="btn btn-success btn-small">baca selengkapnya</a>
                 </div>
             </div>
             <div class="media" style="padding-bottom:20px">
@@ -100,11 +100,11 @@
                     <img style="width:150px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
                 </div>
                 <div class="media-body" style="padding-left:20px">
-                    <a href="#" style="color:black; text-decoration:none"><h2 style="font-weight:300" class="media-heading">Judul Artikel</h2></a>
+                    <a href="/detailevent" style="color:black; text-decoration:none"><h2 style="font-weight:300" class="media-heading">Judul Artikel</h2></a>
                     <p>posted: 10 oktober 2015/04:04</p>
                     <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
                     <br>
-                    <a class="btn btn-success btn-small">baca selengkapnya</a>
+                    <a href="/detailevent" class="btn btn-success btn-small">baca selengkapnya</a>
                 </div>
             </div>
         </div>
@@ -112,22 +112,34 @@
     
     <div class="container">
         <div class="row" style="margin-top:50px">
-            <div class="col-sm-6" style="text-align:center">
-                <img src="{{ URL::asset('images/testimoni.png') }}" style="width:400px">
+            <div class="col-sm-6">
+                <div class="media" style="padding-bottom:20px">
+                    <div class="media-left">
+                        <img style="width:130px; height:130px" class="media-object img-circle" src="{{ URL::asset('files/photos/park/1444615029_G7Y9qohwdop2.jpg') }}">
+                    </div>
+                    <div class="media-body" style="padding-left:20px">
+                        <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
+                        <br>
+                        <p>Co Founder Null Pointer Media</p>
+                    </div>
+                </div>
             </div>
-            <div class="col-sm-6" style="text-align:center">
-                <img src="{{ URL::asset('images/testimoni.png') }}" style="width:400px">
-            </div>
-            <div class="col-sm-6" style="text-align:center; margin-top:30px">
-                <img src="{{ URL::asset('images/testimoni.png') }}" style="width:400px">
-            </div>
-            <div class="col-sm-6" style="text-align:center; margin-top:30px">
-                <img src="{{ URL::asset('images/testimoni.png') }}" style="width:400px">
+            <div class="col-sm-6">
+                <div class="media" style="padding-bottom:20px">
+                    <div class="media-left">
+                        <img style="width:130px; height:130px" class="media-object img-circle" src="{{ URL::asset('files/photos/park/1444615029_G7Y9qohwdop2.jpg') }}">
+                    </div>
+                    <div class="media-body" style="padding-left:20px">
+                        <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
+                        <br>
+                        <p>Co Founder Null Pointer Media</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
     
-    <div class="container" style="width:80%;margin-top:60px">
+    <div class="container" style="width:60%;margin-top:60px">
             <div class="embed-responsive embed-responsive-16by9">
                 <center>
                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/qS8-XInj_qg" frameborder="0" allowfullscreen></iframe>

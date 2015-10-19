@@ -276,5 +276,9 @@ class ApiController extends BaseController {
     public function getTentangRTH(){
         return View::make('frontend/tentangrth');
     }
+    
+    public function getDetailEvent(){
+        return View::make('frontend/detailevent');
+    }
 }
 

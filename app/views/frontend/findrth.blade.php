@@ -32,11 +32,24 @@
             </form>
             </div>
             <div class="col-md-10">
-                <h2>{{$rth->nama_rth}}</h2>
+                <center><h2>{{$rth->nama_rth}}</h2></center>
                 <br>
+<!--
                 @foreach($foto as $key => $value)
-                    <img class="img-thumbnail" src="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" style="height:200px">
+                    <img class="img-rounded" src="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" style="height:200px">
                 @endforeach
+-->
+                <center>
+                <img class="img-rounded" id="zoom" src="{{ URL::asset('files/photos/park/thumb') }}/{{ $value->fileName }}" data-zoom-image="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" height="300">
+                <br><br>
+                <div id="gallery" style="width:500px;">
+                    @foreach($foto as $key => $value)
+                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ URL::asset('files/photos/park/thumb') }}/{{ $value->fileName }}" data-zoom-image="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}">
+                        <img class="img-rounded" src="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" height="80px">
+                    </a>
+                    @endforeach
+                </div>
+                </center>
                 <br>
                 <div class="row" style="font-size:1.8em; line-height:1.8; font-weight:300; margin-top:40px">
                     <div class="col-sm-4" style="text-align:right">Kode RTH :</div>
@@ -51,10 +64,12 @@
                     <div class="col-sm-7" style="text-align:left">{{$rth->luas}}</div>
                     <div class="col-sm-4" style="text-align:right">Jenis Tanaman :</div>
                     <div class="col-sm-7" style="text-align:left">{{$rth->jenis_tanaman}}</div>
+<!--
                     <div class="col-sm-4" style="text-align:right">Status Lahan :</div>
                     <div class="col-sm-7" style="text-align:left">{{$rth->status}}</div>
                     <div class="col-sm-4" style="text-align:right">Pengelola :</div>
                     <div class="col-sm-7" style="text-align:left">{{$rth->pengelola}}</div>
+-->
                     <div class="col-sm-4" style="text-align:right">Fungsi :</div>
                     <div class="col-sm-7" style="text-align:left">{{$rth->fungsi}}</div>
                     <div class="col-sm-4" style="text-align:right">Alamat :</div>
@@ -69,40 +84,5 @@
         </div>
     </div>
 
-    <script>
-    $(document).ready(function () {
-        $("#zoom").elevateZoom({
-            gallery : "gallery",
-            galleryActiveClass: "active",
-            zoomType: "inner",
-            cursor: "crosshair",
-            zoomWindowFadeIn: 500,
-            zoomWindowFadeOut: 750
-        }); 
-
-    $("#select").change(function(e){
-       var currentValue = $("#select").val();
-       if(currentValue == 1){    
-           smallImage = 'http://www.elevateweb.co.uk/wp-content/themes/radial/zoom/images/small/image1.png';
-           largeImage = 'http://www.elevateweb.co.uk/wp-content/themes/radial/zoom/images/large/image1.jpg';
-       }
-       if(currentValue == 2){    
-           smallImage = 'http://www.elevateweb.co.uk/wp-content/themes/radial/zoom/images/small/image2.png';
-           largeImage = 'http://www.elevateweb.co.uk/wp-content/themes/radial/zoom/images/large/image2.jpg';
-       }
-       if(currentValue == 3){    
-           smallImage = 'http://www.elevateweb.co.uk/wp-content/themes/radial/zoom/images/small/image3.png';
-           largeImage = 'http://www.elevateweb.co.uk/wp-content/themes/radial/zoom/images/large/image3.jpg';
-       }
-       if(currentValue == 4){    
-           smallImage = 'http://www.elevateweb.co.uk/wp-content/themes/radial/zoom/images/small/image4.png';
-           largeImage = 'http://www.elevateweb.co.uk/wp-content/themes/radial/zoom/images/large/image4.jpg';
-       }
-        
-    $('#gallery a').removeClass('active').eq(currentValue-1).addClass('active'); 
-        var ez =   $('#zoom').data('elevateZoom');
-            ez.swaptheimage(smallImage, largeImage); 
-        });
-    });
-    </script>
+    
 @include('frontend/foot')
