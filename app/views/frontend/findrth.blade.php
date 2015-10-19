@@ -32,82 +32,57 @@
             {{ Form::close() }}
             </div>
             <div class="col-md-10">
-                <h2>{{$rth->nama_rth}}</h2>
+                <center><h2>{{$rth->nama_rth}}</h2></center>
                 <br>
+<!--
                 @foreach($foto as $key => $value)
-                    <img class="img-thumbnail" src="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" style="height:200px">
+                    <img class="img-rounded" src="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" style="height:200px">
                 @endforeach
+-->
+                <center>
+                <img class="img-rounded" id="zoom" src="{{ URL::asset('files/photos/park/thumb') }}/{{ $value->fileName }}" data-zoom-image="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" height="300">
+                <br><br>
+                <div id="gallery" style="width:500px;">
+                    @foreach($foto as $key => $value)
+                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ URL::asset('files/photos/park/thumb') }}/{{ $value->fileName }}" data-zoom-image="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}">
+                        <img class="img-rounded" src="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" height="80px">
+                    </a>
+                    @endforeach
+                </div>
+                </center>
                 <br>
-                <h4>Keterangan:</h4>
-                <form class="form-horizontal">
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Kode RTH :</label>
-                        <div class="col-sm-4">
-                            <label class="form-control">{{$rth->id_rth}}</label>
-                        </div>
+                <div class="row" style="font-size:1.8em; line-height:1.8; font-weight:300; margin-top:40px">
+                    <div class="col-sm-4" style="text-align:right">Kode RTH :</div>
+                    <div class="col-sm-7" style="text-align:left">{{$rth->id_rth}}</div>
+                    <div class="col-sm-4" style="text-align:right">Jenis RTH :</div>
+                    <div class="col-sm-7" style="text-align:left">{{$rth->jenis}}</div>
+                    <div class="col-sm-4" style="text-align:right">Kecamatan :</div>
+                    <div class="col-sm-7" style="text-align:left">{{$rth->kecamatan}}</div>
+                    <div class="col-sm-4" style="text-align:right">Desa :</div>
+                    <div class="col-sm-7" style="text-align:left">{{$rth->desa}}</div>
+                    <div class="col-sm-4" style="text-align:right">Bentuk dan Luas :</div>
+                    <div class="col-sm-7" style="text-align:left">{{$rth->luas}}</div>
+                    <div class="col-sm-4" style="text-align:right">Jenis Tanaman :</div>
+                    <div class="col-sm-7" style="text-align:left">{{$rth->jenis_tanaman}}</div>
+<!--
+                    <div class="col-sm-4" style="text-align:right">Status Lahan :</div>
+                    <div class="col-sm-7" style="text-align:left">{{$rth->status}}</div>
+                    <div class="col-sm-4" style="text-align:right">Pengelola :</div>
+                    <div class="col-sm-7" style="text-align:left">{{$rth->pengelola}}</div>
+-->
+                    <div class="col-sm-4" style="text-align:right">Fungsi :</div>
+                    <div class="col-sm-7" style="text-align:left">{{$rth->fungsi}}</div>
+                    <div class="col-sm-4" style="text-align:right">Alamat :</div>
+                    <div class="col-sm-7" style="text-align:left">{{$rth->alamat}}</div>
+                    <div class="col-sm-4" style="text-align:right">Lokasi :</div>
+                    <div class="col-sm-7" style="text-align:left">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.8299452059696!2d110.79948599999997!3d-6.790536999999971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70dcac333a0f6d%3A0x4027a76e352f320!2sKaliwungu%2C+Kudus+Regency%2C+Central+Java!5e0!3m2!1sen!2sid!4v1441844808618" width="600" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Jenis RTH :</label>
-                        <div class="col-sm-4">
-                            <label class="form-control">{{$rth->jenis}}</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Kecamatan :</label>
-                        <div class="col-sm-4">
-                            <label class="form-control">{{$rth->kecamatan}}</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Desa :</label>
-                        <div class="col-sm-4">
-                            <label class="form-control">{{$rth->desa}}</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Bentuk dan Luas :</label>
-                        <div class="col-sm-4">
-                            <label class="form-control">{{$rth->luas}}</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Jenis Tanaman :</label>
-                        <div class="col-sm-4">
-                            <label class="form-control">{{$rth->jenis_tanaman}}</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Status Lahan :</label>
-                        <div class="col-sm-4">
-                            <label class="form-control">{{$rth->status}}</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Pengelola :</label>
-                        <div class="col-sm-4">
-                            <label class="form-control">{{$rth->pengelola}}</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Fungsi :</label>
-                        <div class="col-sm-4">
-                            <label class="form-control">{{$rth->fungsi}}</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Alamat :</label>
-                        <div class="col-sm-4">
-                            <label class="form-control">{{$rth->alamat}}</label>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-3 control-label">Lokasi :</label>
-                        <div class="col-sm-9">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.8299452059696!2d110.79948599999997!3d-6.790536999999971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70dcac333a0f6d%3A0x4027a76e352f320!2sKaliwungu%2C+Kudus+Regency%2C+Central+Java!5e0!3m2!1sen!2sid!4v1441844808618" width="600" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
-                        </div>
-                    </div>
-                </form>
+                </div>
+                
             </div>
         </div>
     </div>
+
+    
 @include('frontend/foot')

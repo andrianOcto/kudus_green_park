@@ -275,5 +275,17 @@ class ApiController extends BaseController {
 
 		// return Response::json($park);
 	}
+    
+    public function getTentangKami(){
+        return View::make('frontend/tentangkami');
+    }
+    
+    public function getTentangRTH(){
+        return View::make('frontend/tentangrth');
+    }
+    
+    public function getDetailEvent(){
+        return View::make('frontend/detailevent');
+    }
 }
 

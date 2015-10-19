@@ -96,6 +96,9 @@ Route::get('/rth', function(){
 						->with('jenis', $jenis);
 });
 
+Route::get('/tentangkami','ApiController@getTentangKami');
+Route::get('/tentangrth','ApiController@getTentangRTH');
+Route::get('/detailevent','ApiController@getDetailEvent');
 
 
 
