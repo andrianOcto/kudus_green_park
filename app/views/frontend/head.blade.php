@@ -6,14 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
     <title>RTH Kab. Kudus</title>
-    
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
-<<<<<<< HEAD
     <script src="{{ URL::asset('js/lib/angular.min.js') }}"></script> 
-=======
-    
     <style>
         .row{
             margin-left:0px;
@@ -23,7 +18,6 @@
             background-color: #e3fcd7;
         }
     </style>
->>>>>>> 7b828e4ab981d178fb9a6c1db0816af17d3ca9cb
   </head>
 <body style="margin:0px">
     <!--  navigation  -->
