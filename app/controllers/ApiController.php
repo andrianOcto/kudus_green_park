@@ -240,10 +240,6 @@ class ApiController extends BaseController {
         $kecamatan			= (isset($input['kecamatan'])) 	? $input['kecamatan']:null;
         $desa				= (isset($input['desa'])) 		? $input['desa']:null;
 
-	    // $park 		= Park::where('jenis', '=', $jenis)
-	    // 					->where('kecamatan', '=', $kecamatan)
-	    // 					->where('desa', '=', $desa)
-	    // 					->get();
 	    $query = DB::table('m_info_rth');
 	    			if($jenis != "all"){
 	    				$query->where('jenis', '=', $jenis);
