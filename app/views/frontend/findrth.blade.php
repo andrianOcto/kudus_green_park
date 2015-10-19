@@ -3,11 +3,11 @@
         <div class="row">
             <div class="col-md-2">
                 <!-- filter kecamatan -->
-                <form method="POST" action="findrth">
+                {{ Form::open(array('url' => 'findrth', 'method' => 'POST')) }}
                 <div class="form-group">
                     <label for="nama" class="control-label">Jenis RTH</label>
                         <select class="form-control" name="jenis" id="jenis">
-                            <option>-Pilih Jenis RTH-</option>
+                            <option value="all">-Pilih Jenis RTH-</option>
                             @foreach($jenis as $key => $value)
                                 <option value="{{$value->id}}">{{$value->jenis}}</option>    
                             @endforeach
@@ -16,7 +16,7 @@
                 <div class="form-group">
                     <label for="nama" class="control-label">Kecamatan</label>
                         <select class="form-control" name="kecamatan" id="kecamatan">
-                            <option>-Pilih Kecamatan-</option>
+                            <option value="all">-Pilih Kecamatan-</option>
                             @foreach($kecamatan as $key => $value)
                             <option value="{{ $value->id }}">{{ $value->nama }}</option>
                             @endforeach
@@ -25,11 +25,11 @@
                 <div class="form-group">
                     <label for="nama" class="control-label">Desa</label>
                         <select class="form-control" name="desa" id="desa">
-                            <option></option>
+                            <option value="all">-Pilih Desa-</option>
                         </select>
                 </div>
                 <input type="submit" class="btn btn-primary">
-            </form>
+            {{ Form::close() }}
             </div>
             <div class="col-md-10">
                 <h2>{{$rth->nama_rth}}</h2>

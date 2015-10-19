@@ -10,6 +10,7 @@
     <title>RTH Kab. Kudus</title>
     
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    <script src="{{ URL::asset('js/lib/angular.min.js') }}"></script> 
   </head>
 <body style="margin:0px">
     <!--  navigation  -->

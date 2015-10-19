@@ -31,7 +31,6 @@
 
     <script src="{{ URL::asset('js/jQuery-2.1.4.min.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
-    <script src="{{ URL::asset('js/lib/angular.min.js') }}"></script> 
     <script src="{{ URL::asset('js/angular-file-upload.min.js') }}"></script> 
     <script src="{{ URL::asset('js/page/userSubmit.js') }}"></script> 
     <script src="{{ URL::asset('js/page/data_post.js') }}"></script> 
