@@ -78,7 +78,6 @@ generalRth.controller('filterCtrl',['$scope','$http',function($scope,$http)
                 if($jml < 1){
                     echo "tidak ditemukan";
                 }
-
                 ?>
                 @foreach($park as $key => $value)
                 <div class="col-md-6 col-sm-6" style="border: 1px solid black; border-radius:5px; padding:10px; margin-right:20px; margin-bottom:20px; width:45%; height:155px; background-color:white">
