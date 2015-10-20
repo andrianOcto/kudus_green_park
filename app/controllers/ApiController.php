@@ -246,10 +246,12 @@ class ApiController extends BaseController {
 	    			}
 	    			if($kecamatan != "all"){
 	    				$query->where('kecamatan', '=', $kecamatan);
+
+	    				if($desa != "all"){
+	    					$query->where('desa', '=', $desa);	
+	    				}
 	    			}
-	    			if($desa != "all"){
-	    				$query->where('desa', '=', $desa);
-	    			}
+	    			
 	   	$park = $query->get();
 
 		$kecamatan 	= Kecamatan::all();
@@ -273,7 +275,6 @@ class ApiController extends BaseController {
 							->with('desa', $desa)
 							->with('jenis', $jenis);
 
-		// return Response::json($park);
 	}
     
     public function getTentangKami(){
