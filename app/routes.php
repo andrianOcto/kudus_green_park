@@ -65,6 +65,14 @@ Route::group(array('before' => 'auth'), function() {
 	//Route Kecamatan
 	Route::resource('kecamatan','KecamatanController');
 	Route::get('kecamatan/{id}/destroy',['as'=>'kecamatan.delete','uses'=>'KecamatanController@destroy']);
+
+	//Route Jenis RTH
+	Route::resource('jenis','JenisRTHController');
+	Route::get('jenis/{id}/destroy',['as'=>'jenis.delete','uses'=>'JenisRTHController@destroy']);
+
+	//Route Setting Video
+	Route::resource('video','VideoController');
+
 });
 
 App::missing(function($exception)
@@ -73,7 +81,14 @@ App::missing(function($exception)
 });
 
 Route::get('/', function(){
-	return View::make('frontend/homepage');
+	$video = Video::all();
+	$url="";
+	foreach ($video as $item)
+	{
+	    $url=$item->url;
+	}
+
+	return View::make('frontend/homepage')->with('url', $url);
 });
 
 Route::get('/rth', function(){

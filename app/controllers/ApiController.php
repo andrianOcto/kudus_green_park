@@ -417,7 +417,209 @@ class ApiController extends BaseController {
 
 	}
 
+	//API create Jenis RTH
+
+	public function getCreatejenis()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$idJenis		= (isset($input['id'])) ? $input['id']:null;
+		$namaJenis		= (isset($input['nama'])) ? $input['nama']:null;
+
+		//if username didn't set
+		if(!isset($input['id'])){
+			$missingParameter[] = "id";
+		}
+
+		//if password didn't set
+		if(!isset($input['nama'])){
+			$missingParameter[] = "nama";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+			$jenis = Jenis::find($idJenis);
+			
+			//Kecamatan sudah ada
+			if(isset($jenis))
+			{
+					$response 	= "FAILED";
+					$statusCode = 200;
+					$message 	= "jenis RTH sudah ada dalam database.";
+			}
+
+			//kecamatan tidak ada dan dimasukkan kedalam database
+			else 
+			{
+				$jenis = new Jenis;
+
+				$jenis->id = $idJenis;
+				$jenis->jenis = $namaJenis;
+
+				$jenis->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Create success.";
+			}
+			
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
+	public function getEditjenis()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$idJenis			= (isset($input['id'])) ? $input['id']:null;
+		$namaJenis			= (isset($input['nama'])) ? $input['nama']:null;
+
+		//if username didn't set
+		if(!isset($input['id'])){
+			$missingParameter[] = "id";
+		}
+
+		//if password didn't set
+		if(!isset($input['nama'])){
+			$missingParameter[] = "nama";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+			$jenis = Jenis::find($idJenis);
+			
 	
+				$jenis->jenis = $namaJenis	;
+
+				$jenis->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Edit success.";
+			
+			
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
+	public function getEditvideo()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$url			= (isset($input['url'])) ? $input['url']:null;
+		$oldUrl				= (isset($input['oldUrl'])) ? $input['oldUrl']:null;
+		//if username didn't set
+		if(!isset($input['url'])){
+			$missingParameter[] = "url";
+		}
+
+		//if username didn't set
+		if(!isset($input['oldUrl'])){
+			$missingParameter[] = "url";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+			$jenis = Video::find($oldUrl);
+			
+	
+				$jenis->url = $url	;
+
+				$jenis->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Edit success.";
+			
+			
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
 
     public function getTentangKami(){
         return View::make('frontend/tentangkami');
