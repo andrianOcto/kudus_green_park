@@ -61,6 +61,10 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('user/{id}/destroy',['as'=>'user.delete','uses'=>'UserController@destroy']);
 	// park delete route
 	Route::get('park/{id}/destroy',['as'=>'park.delete','uses'=>'ParkController@destroy']);
+
+	//Route Kecamatan
+	Route::resource('kecamatan','KecamatanController');
+	Route::get('kecamatan/{id}/destroy',['as'=>'kecamatan.delete','uses'=>'KecamatanController@destroy']);
 });
 
 App::missing(function($exception)

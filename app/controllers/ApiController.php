@@ -278,6 +278,147 @@ class ApiController extends BaseController {
 
 	}
     
+	public function getCreatekecamatan()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$idKecamatan		= (isset($input['id'])) ? $input['id']:null;
+		$namaKecamatan		= (isset($input['nama'])) ? $input['nama']:null;
+
+		//if username didn't set
+		if(!isset($input['id'])){
+			$missingParameter[] = "id";
+		}
+
+		//if password didn't set
+		if(!isset($input['nama'])){
+			$missingParameter[] = "nama";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+			$kecamatan = Kecamatan::find($idKecamatan);
+			
+			//Kecamatan sudah ada
+			if(isset($kecamatan))
+			{
+					$response 	= "FAILED";
+					$statusCode = 200;
+					$message 	= "Kecamatan sudah ada dalam database.";
+			}
+
+			//kecamatan tidak ada dan dimasukkan kedalam database
+			else 
+			{
+				$kecamatan = new Kecamatan;
+
+				$kecamatan->id = $idKecamatan;
+				$kecamatan->nama = $namaKecamatan;
+
+				$kecamatan->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Create success.";
+			}
+			
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
+	public function getEditkecamatan()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$idKecamatan		= (isset($input['id'])) ? $input['id']:null;
+		$namaKecamatan		= (isset($input['nama'])) ? $input['nama']:null;
+
+		//if username didn't set
+		if(!isset($input['id'])){
+			$missingParameter[] = "id";
+		}
+
+		//if password didn't set
+		if(!isset($input['nama'])){
+			$missingParameter[] = "nama";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+			$kecamatan = Kecamatan::find($idKecamatan);
+			
+
+				$kecamatan->nama = $namaKecamatan;
+
+				$kecamatan->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Edit success.";
+			
+			
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
+	
+
     public function getTentangKami(){
         return View::make('frontend/tentangkami');
     }
