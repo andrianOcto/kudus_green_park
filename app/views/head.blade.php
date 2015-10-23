@@ -12,12 +12,15 @@
     
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ URL::asset('css/jquery.ad-gallery.css') }}" rel="stylesheet">
+    <link href="{{ URL::asset('css/jquery.dataTables.css') }}" rel="stylesheet">
         <script src="{{ URL::asset('js/jquery.min.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('js/lib/angular.min.js') }}"></script> 
     <script src="{{ URL::asset('js/angular-file-upload.min.js') }}"></script> 
     <script src="{{ URL::asset('js/page/userSubmit.js') }}"></script> 
     <script src="{{ URL::asset('js/page/data_post.js') }}"></script> 
+    <script src="{{ URL::asset('js/jquery.dataTables.js') }}"></script> 
+  
   </head>
 
   <body>
@@ -53,7 +56,7 @@
                 <center><img src="{{ URL::asset('images/logo-kab-kudus.png') }}" style="width:80px; padding-top:20px; padding-bottom:30px;"></center>
                 <ul class="nav nav-pills nav-stacked">
                     <li style="border-right: 4px solid #428bca"><a href="/home"><p align="right" style="color:black"><b style="padding-right:10px">Dashboard</b></p></a></li>
-                    <li style="border-right: 4px solid #5cb85c"><a href="/park"><p align="right" style="color:black"><b style="padding-right:10px">Setting Video</b></p></a></li>
+                    <li style="border-right: 4px solid #5cb85c"><a href="/video"><p align="right" style="color:black"><b style="padding-right:10px">Setting Video</b></p></a></li>
                     <li style="border-right: 4px solid #5cb85c"><a href="/park"><p align="right" style="color:black"><b style="padding-right:10px">Data RTH</b></p></a></li>
                     <li style="border-right: 4px solid #f0ad4e"><a href="/jenis"><p align="right" style="color:black"><b style="padding-right:10px">Jenis RTH</b></p></a></li>
                     <li style="border-right: 4px solid #428bca"><a href="/kecamatan"><p align="right" style="color:black"><b style="padding-right:10px">Kecamatan</b></p></a></li>

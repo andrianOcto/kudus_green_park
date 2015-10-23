@@ -8,7 +8,6 @@
         </center>
     </div>
 
-    <script src="{{ URL::asset('js/jQuery-2.1.4.min.js') }}"></script>
     <script src="{{ URL::asset('js/bootstrap.min.js') }}"></script>
     <script src="{{ URL::asset('js/angular-file-upload.min.js') }}"></script> 
     <script src="{{ URL::asset('js/page/userSubmit.js') }}"></script> 
@@ -52,7 +51,8 @@
             zoomWindowFadeIn: 500,
             zoomWindowFadeOut: 750
         }); 
-
+        
+        
     $("#select").change(function(e){
        var currentValue = $("#select").val();
        

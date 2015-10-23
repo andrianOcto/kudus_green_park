@@ -22,7 +22,9 @@ Route::post('user/{iduser}/updateImage', array('uses' => 'UserController@updateI
 Route::post('park/{iduser}/updateImage', array('uses' => 'ParkController@upload'));
 Route::get('desa/{id}', array('uses' => 'ApiController@getDesa'));
 Route::get('rth/{id}', array('uses' => 'ApiController@getDetailRTH'));
-Route::post('/findrth', array('uses' => 'ApiController@getRTH'));
+Route::get('/findrth', array('uses' => 'ApiController@getRTH'));
+
+
 // Route::group(array('before' => 'guest'), function() {
 // 	Route::get('/', function()
 // 	{
@@ -92,7 +94,9 @@ Route::get('/', function(){
 });
 
 Route::get('/rth', function(){
-	$park 		= Park::all();
+	$id=1;
+	$parkPage	= Park::paginate(10);
+	$park 		= Park::paginate(10);
 	$kecamatan 	= Kecamatan::all();
 	$desa 		= Desa::all();
 	$jenis		= Jenis::all();
@@ -112,8 +116,10 @@ Route::get('/rth', function(){
 						->with('foto',$arrayPhoto)
 						->with('kecamatan', $kecamatan)
 						->with('desa', $desa)
-						->with('jenis', $jenis);
+						->with('jenis', $jenis)
+						->with('id',$id);
 });
+
 
 Route::get('/tentangkami','ApiController@getTentangKami');
 Route::get('/tentangrth','ApiController@getTentangRTH');
