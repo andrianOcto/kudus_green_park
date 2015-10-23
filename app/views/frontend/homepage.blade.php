@@ -40,18 +40,18 @@
     <div class="container" style="width:60%; margin-top:20px">
         <center>
             <h1 style="font-weight:400; padding-bottom:20px">Ruang Terbuka Hijau</h1>
-            <p>Identifikasi kondisi RTH ini dilakukan terhadap RTH eksisting yang ada saat ini di wilayah perencanaan dengan berdasar pada data dan hasil pengamatan di lapangan. Identifikasi RTH ini dilakukan dengan berdasarkan pengelompokan jenis RTH mengacu Peraturan Menteri Pekerjaan umum Nomor 5/PRT/M/2008 tentang Pedoman Penyediaan dan Pemanfaatan Ruang Terbuka Hijau di Kawasan Perkotaan</p>
-            <a href="#" class="btn btn-success" style="margin-top:10px">Baca Selengkapnya...</a>
+            <p>adalah area memanjang/jalur dan atau mengelompok, yang penggunaannya lebih bersifat terbuka, tempat tumbuh tanaman, baik yang tumbuh tanaman secara alamiah maupun yang sengaja ditanam (Peraturan Menteri Pekerjaan Umum Nomor 5/PRT/M/2008).</p>
+            <a href="/tentangrth" class="btn btn-success" style="margin-top:10px">Baca Selengkapnya</a>
         </center>
     </div>
     
     <div class="row" style="margin-top:50px; background-color:white; padding-top:50px; padding-bottom:50px">
     <div class="container">
         <div class="col-md-6 col-xs-12">
-            <center><img src="{{ URL::asset('images/Kudus.jpg') }}" style="width:400px"></center>
+            <center><img src="{{ URL::asset('images/Kudus.jpg') }}" style="width:400px; margin-top:100px"></center>
         </div>
         <div class="col-md-6 col-xs-12"></div>
-            <center><img src="{{ URL::asset('images/jenis-rth.png') }}" style="width:400px"></center>
+            <center><img src="{{ URL::asset('images/rthjenis.png') }}" style="width:500px"></center>
     </div>
     </div>
     </div>
