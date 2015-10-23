@@ -7,6 +7,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>RTH Kab. Kudus</title>
+
+        <script src="{{ URL::asset('js/jQuery-2.1.4.min.js') }}"></script>
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <script src="{{ URL::asset('js/lib/angular.min.js') }}"></script> 
     <style>

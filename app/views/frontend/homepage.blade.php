@@ -142,7 +142,7 @@
     <div class="container" style="width:60%;margin-top:60px">
             <div class="embed-responsive embed-responsive-16by9">
                 <center>
-                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/qS8-XInj_qg" frameborder="0" allowfullscreen></iframe>
+                <iframe class="embed-responsive-item" src="{{$url}}" frameborder="0" allowfullscreen></iframe>
                 </center>
             </div>
         </div>

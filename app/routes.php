@@ -22,7 +22,9 @@ Route::post('user/{iduser}/updateImage', array('uses' => 'UserController@updateI
 Route::post('park/{iduser}/updateImage', array('uses' => 'ParkController@upload'));
 Route::get('desa/{id}', array('uses' => 'ApiController@getDesa'));
 Route::get('rth/{id}', array('uses' => 'ApiController@getDetailRTH'));
-Route::post('/findrth', array('uses' => 'ApiController@getRTH'));
+Route::get('/findrth', array('uses' => 'ApiController@getRTH'));
+
+
 // Route::group(array('before' => 'guest'), function() {
 // 	Route::get('/', function()
 // 	{
@@ -61,6 +63,18 @@ Route::group(array('before' => 'auth'), function() {
 	Route::get('user/{id}/destroy',['as'=>'user.delete','uses'=>'UserController@destroy']);
 	// park delete route
 	Route::get('park/{id}/destroy',['as'=>'park.delete','uses'=>'ParkController@destroy']);
+
+	//Route Kecamatan
+	Route::resource('kecamatan','KecamatanController');
+	Route::get('kecamatan/{id}/destroy',['as'=>'kecamatan.delete','uses'=>'KecamatanController@destroy']);
+
+	//Route Jenis RTH
+	Route::resource('jenis','JenisRTHController');
+	Route::get('jenis/{id}/destroy',['as'=>'jenis.delete','uses'=>'JenisRTHController@destroy']);
+
+	//Route Setting Video
+	Route::resource('video','VideoController');
+
 });
 
 App::missing(function($exception)
@@ -69,11 +83,20 @@ App::missing(function($exception)
 });
 
 Route::get('/', function(){
-	return View::make('frontend/homepage');
+	$video = Video::all();
+	$url="";
+	foreach ($video as $item)
+	{
+	    $url=$item->url;
+	}
+
+	return View::make('frontend/homepage')->with('url', $url);
 });
 
 Route::get('/rth', function(){
-	$park 		= Park::all();
+	$id=1;
+	$parkPage	= Park::paginate(10);
+	$park 		= Park::paginate(10);
 	$kecamatan 	= Kecamatan::all();
 	$desa 		= Desa::all();
 	$jenis		= Jenis::all();
@@ -93,8 +116,10 @@ Route::get('/rth', function(){
 						->with('foto',$arrayPhoto)
 						->with('kecamatan', $kecamatan)
 						->with('desa', $desa)
-						->with('jenis', $jenis);
+						->with('jenis', $jenis)
+						->with('id',$id);
 });
+
 
 Route::get('/tentangkami','ApiController@getTentangKami');
 Route::get('/tentangrth','ApiController@getTentangRTH');

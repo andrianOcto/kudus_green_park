@@ -5,8 +5,203 @@ var form_input 		= angular.module('form_input', ['angularFileUpload']);
 var formPark	 	= angular.module('formPark', ['angularFileUpload']);
 var updateUser	 	= angular.module('updateUser', ['angularFileUpload']);
 var updatePark	 	= angular.module('updatePark', ['angularFileUpload']);
+var kecamatan      = angular.module('kecamatan', []);
+var jenis           = angular.module('jenis', []);
+var video           = angular.module('video', []);
 
+//Kecamatan proses request data
+kecamatan.controller('kecamatanController',['$scope','$http',function($scope,$http)
+{   
+    $scope.isError  =false;
+    $scope.message  ="";
+    $scope.loading  =false;
 
+    $scope.createKecamatan=function()
+    {
+        $scope.loading  =true;
+        //request get ke API
+        $http({
+            method  : 'GET',
+            url     : '../api/createkecamatan',
+            params  : {
+                id    : $scope.idKecamatan,
+                nama    : $scope.namaKecamatan
+            }
+        }).success(function (data){
+            console.log(data);
+            if(data.response === "OK" && data.status_code == 200 && data.message === "Create success.")
+            {
+               window.location.href = '/kecamatan';
+            }
+            else
+            {
+                console.log("masuk");
+                $scope.loading  = false;
+                $scope.isError  = true;
+                $scope.message  = data.message;
+            }
+            
+            $scope.message  = data.message;
+        }).error(function(errMessage){
+            console.log("masuk");
+            $scope.loading  = false;
+            $scope.isError  = true;
+            $scope.message  = errMessage;
+        })
+    };
+
+    $scope.editKecamatan=function()
+    {
+        $scope.loading  =true;
+        //request get ke API
+        $http({
+            method  : 'GET',
+            url     : '../../../api/editkecamatan',
+            params  : {
+                id    : $scope.id,
+                nama    : $scope.nama
+            }
+        }).success(function (data){
+            console.log(data);
+            if(data.response === "OK" && data.status_code == 200 && data.message === "Edit success.")
+            {
+               window.location.href = '/kecamatan';
+            }
+            else
+            {
+                console.log("masuk");
+                $scope.loading  = false;
+                $scope.isError  = true;
+                $scope.message  = data.message;
+            }
+            
+            $scope.message  = data.message;
+        }).error(function(errMessage){
+            console.log("masuk");
+            $scope.loading  = false;
+            $scope.isError  = true;
+            $scope.message  = errMessage;
+        })
+    }
+}]);
+
+//Jenis RTH proses request data
+jenis.controller('jenisController',['$scope','$http',function($scope,$http)
+{   
+    $scope.isError  =false;
+    $scope.message  ="";
+    $scope.loading  =false;
+
+    $scope.createJenis=function()
+    {
+        $scope.loading  =true;
+        //request get ke API
+        $http({
+            method  : 'GET',
+            url     : '../api/createjenis',
+            params  : {
+                id    : $scope.idJenis,
+                nama    : $scope.namaJenis
+            }
+        }).success(function (data){
+            console.log(data);
+            if(data.response === "OK" && data.status_code == 200 && data.message === "Create success.")
+            {
+               window.location.href = '/jenis';
+            }
+            else
+            {
+                console.log("masuk");
+                $scope.loading  = false;
+                $scope.isError  = true;
+                $scope.message  = data.message;
+            }
+            
+            $scope.message  = data.message;
+        }).error(function(errMessage){
+            console.log("masuk");
+            $scope.loading  = false;
+            $scope.isError  = true;
+            $scope.message  = errMessage;
+        })
+    };
+
+    $scope.editJenis=function()
+    {
+        $scope.loading  =true;
+        //request get ke API
+        $http({
+            method  : 'GET',
+            url     : '../../../api/editjenis',
+            params  : {
+                id    : $scope.idJenis,
+                nama    : $scope.nama
+            }
+        }).success(function (data){
+            console.log(data);
+            if(data.response === "OK" && data.status_code == 200 && data.message === "Edit success.")
+            {
+               window.location.href = '/jenis';
+            }
+            else
+            {
+                console.log("masuk");
+                $scope.loading  = false;
+                $scope.isError  = true;
+                $scope.message  = data.message;
+            }
+            
+            $scope.message  = data.message;
+        }).error(function(errMessage){
+            console.log("masuk");
+            $scope.loading  = false;
+            $scope.isError  = true;
+            $scope.message  = errMessage;
+        })
+    }
+}]);
+
+//Video proses request data
+video.controller('videoController',['$scope','$http',function($scope,$http)
+{   
+    $scope.isError  =false;
+    $scope.message  ="";
+    $scope.loading  =false;
+
+    $scope.editVideo=function()
+    {
+        $scope.loading  =true;
+        //request get ke API
+        $http({
+            method  : 'GET',
+            url     : '../api/editvideo',
+            params  : {
+                url    : $scope.url,
+                oldUrl    : $scope.oldUrl
+            }
+        }).success(function (data){
+            console.log($scope.url);
+            if(data.response === "OK" && data.status_code == 200 && data.message === "Edit success.")
+            {
+               window.location.href = '/video';
+            }
+            else
+            {
+                console.log("masuk");
+                $scope.loading  = false;
+                $scope.isError  = true;
+                $scope.message  = data.message;
+            }
+            
+            $scope.message  = data.message;
+        }).error(function(errMessage){
+            console.log("masuk");
+            $scope.loading  = false;
+            $scope.isError  = true;
+            $scope.message  = errMessage;
+        })
+    }
+}]);
 
 // store user's data 
 form_input.controller('submitController',['$scope','$http','FileUploader',function($scope,$http,FileUploader)
@@ -345,6 +540,7 @@ updateUser
         };
     }]);
 
+
 formPark.controller('ParkController', ['$scope', '$http','FileUploader', function($scope, $http,FileUploader)
 {
 
@@ -475,6 +671,7 @@ formPark
             }
         };
     }]);
+
 
 
 updatePark.controller('updateParkController', ['$scope', '$http','FileUploader', function($scope, $http,FileUploader)

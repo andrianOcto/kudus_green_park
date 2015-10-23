@@ -235,10 +235,15 @@ class ApiController extends BaseController {
     }
 
     public function getRTH(){
-    	$input 			= Input::all();
+    	$id=1;
+    	$input 				= Input::all();
     	$jenis				= (isset($input['jenis'])) 		? $input['jenis']:null;
         $kecamatan			= (isset($input['kecamatan'])) 	? $input['kecamatan']:null;
         $desa				= (isset($input['desa'])) 		? $input['desa']:null;
+
+    	$jenisForm				= (isset($input['jenis'])) 		? $input['jenis']:null;
+        $kecamatanForm			= (isset($input['kecamatan'])) 	? $input['kecamatan']:null;
+        $desaForm				= (isset($input['desa'])) 		? $input['desa']:null;
 
 	    $query = DB::table('m_info_rth');
 	    			if($jenis != "all"){
@@ -246,13 +251,16 @@ class ApiController extends BaseController {
 	    			}
 	    			if($kecamatan != "all"){
 	    				$query->where('kecamatan', '=', $kecamatan);
-
-	    				if($desa != "all"){
-	    					$query->where('desa', '=', $desa);	
-	    				}
 	    			}
-	    			
-	   	$park = $query->get();
+
+	    			if($desa != "all"){
+	    				$query->where('desa', '=', $desa);	
+	    			}
+	    
+
+	   	$park = $query->paginate(10);
+
+	   	
 
 		$kecamatan 	= Kecamatan::all();
 		$desa 		= Desa::all();
@@ -269,14 +277,365 @@ class ApiController extends BaseController {
 			$i++;
 		}
 
+		$paginator = Paginator::make($arrayPhoto, 10, 2);
+
 		return View::make('frontend/generalrth')->with('park', $park)
 							->with('foto',$arrayPhoto)
 							->with('kecamatan', $kecamatan)
 							->with('desa', $desa)
-							->with('jenis', $jenis);
+							->with('jenis', $jenis)
+							->with('paginator',$paginator)
+							->with('idFind',1)
+							->with('jenisForm',$jenisForm)
+							->with('kecamatanForm',$kecamatanForm)
+							->with('desaForm',$desaForm)
+							;
 
 	}
     
+	public function getCreatekecamatan()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$idKecamatan		= (isset($input['id'])) ? $input['id']:null;
+		$namaKecamatan		= (isset($input['nama'])) ? $input['nama']:null;
+
+		//if username didn't set
+		if(!isset($input['id'])){
+			$missingParameter[] = "id";
+		}
+
+		//if password didn't set
+		if(!isset($input['nama'])){
+			$missingParameter[] = "nama";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+			$kecamatan = Kecamatan::find($idKecamatan);
+			
+			//Kecamatan sudah ada
+			if(isset($kecamatan))
+			{
+					$response 	= "FAILED";
+					$statusCode = 200;
+					$message 	= "Kecamatan sudah ada dalam database.";
+			}
+
+			//kecamatan tidak ada dan dimasukkan kedalam database
+			else 
+			{
+				$kecamatan = new Kecamatan;
+
+				$kecamatan->id = $idKecamatan;
+				$kecamatan->nama = $namaKecamatan;
+
+				$kecamatan->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Create success.";
+			}
+			
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
+	public function getEditkecamatan()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$idKecamatan		= (isset($input['id'])) ? $input['id']:null;
+		$namaKecamatan		= (isset($input['nama'])) ? $input['nama']:null;
+
+		//if username didn't set
+		if(!isset($input['id'])){
+			$missingParameter[] = "id";
+		}
+
+		//if password didn't set
+		if(!isset($input['nama'])){
+			$missingParameter[] = "nama";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+			$kecamatan = Kecamatan::find($idKecamatan);
+			
+
+				$kecamatan->nama = $namaKecamatan;
+
+				$kecamatan->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Edit success.";
+			
+			
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
+	//API create Jenis RTH
+
+	public function getCreatejenis()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$idJenis		= (isset($input['id'])) ? $input['id']:null;
+		$namaJenis		= (isset($input['nama'])) ? $input['nama']:null;
+
+		//if username didn't set
+		if(!isset($input['id'])){
+			$missingParameter[] = "id";
+		}
+
+		//if password didn't set
+		if(!isset($input['nama'])){
+			$missingParameter[] = "nama";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+			$jenis = Jenis::find($idJenis);
+			
+			//Kecamatan sudah ada
+			if(isset($jenis))
+			{
+					$response 	= "FAILED";
+					$statusCode = 200;
+					$message 	= "jenis RTH sudah ada dalam database.";
+			}
+
+			//kecamatan tidak ada dan dimasukkan kedalam database
+			else 
+			{
+				$jenis = new Jenis;
+
+				$jenis->id = $idJenis;
+				$jenis->jenis = $namaJenis;
+
+				$jenis->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Create success.";
+			}
+			
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
+	public function getEditjenis()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$idJenis			= (isset($input['id'])) ? $input['id']:null;
+		$namaJenis			= (isset($input['nama'])) ? $input['nama']:null;
+
+		//if username didn't set
+		if(!isset($input['id'])){
+			$missingParameter[] = "id";
+		}
+
+		//if password didn't set
+		if(!isset($input['nama'])){
+			$missingParameter[] = "nama";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+			$jenis = Jenis::find($idJenis);
+			
+	
+				$jenis->jenis = $namaJenis	;
+
+				$jenis->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Edit success.";
+			
+			
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
+	public function getEditvideo()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$url			= (isset($input['url'])) ? $input['url']:null;
+		$oldUrl				= (isset($input['oldUrl'])) ? $input['oldUrl']:null;
+		//if username didn't set
+		if(!isset($input['url'])){
+			$missingParameter[] = "url";
+		}
+
+		//if username didn't set
+		if(!isset($input['oldUrl'])){
+			$missingParameter[] = "url";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+			$jenis = Video::find($oldUrl);
+			
+	
+				$jenis->url = $url	;
+
+				$jenis->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Edit success.";
+			
+			
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
+
     public function getTentangKami(){
         return View::make('frontend/tentangkami');
     }

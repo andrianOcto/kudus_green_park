@@ -17,7 +17,7 @@ generalRth.controller('filterCtrl',['$scope','$http',function($scope,$http)
     <div class="row">
         <div class="col-md-2">
             <!-- filter kecamatan -->
-            {{ Form::open(array('url' => 'findrth', 'method' => 'POST')) }}
+            {{ Form::open(array('url' => 'findrth', 'method' => 'GET')) }}
                 <div class="form-group" >
                     <label for="nama" class="control-label">Jenis RTH</label>
                         <select class="form-control" name="jenis" id="jenis">
@@ -72,24 +72,26 @@ generalRth.controller('filterCtrl',['$scope','$http',function($scope,$http)
         </div>
         <div class="col-md-10">
             <div class="row" style="margin:0px">
+            <div id="pagination">
                 <?php $i=0;
-                $jml = count($park);
+
                 
+                $jml = count($park);
                 if($jml < 1){
                     echo "tidak ditemukan";
                 }
-
                 ?>
+
                 @foreach($park as $key => $value)
                 <div class="col-md-6 col-sm-6" style="border: 1px solid black; border-radius:5px; padding:10px; margin-right:20px; margin-bottom:20px; width:45%; height:155px; background-color:white">
                     <div class="media">
                         <div class="media-left">
-                        <a href="rth/{{ $value->id_rth }}">
+                        <a href="../../rth/{{ $value->id_rth }}">
                             <img style="width:100px" class="media-object" src="{{ URL::asset('files/photos/park') }}/{{ $foto[$i] }}">
                         </a>
                         </div>
                         <div class="media-body">
-                            <a href="rth/{{ $value->id_rth }}" style="color:black; text-decoration:none"><h4 class="media-heading">{{ $value->nama }}</h4></a>
+                            <a href="../../rth/{{ $value->id_rth }}" style="color:black; text-decoration:none"><h4 class="media-heading">{{ $value->nama }}</h4></a>
                             <p>{{ $value->pengelola }}<br>
                             {{ $value->alamat }}<br>
                             {{ $value->fungsi }}</p>
@@ -97,7 +99,19 @@ generalRth.controller('filterCtrl',['$scope','$http',function($scope,$http)
                     </div>
                 </div>
                 <?php $i++; ?>
+                
                 @endforeach
+                
+            </div>
+
+
+            <?php 
+            //digunakan untuk mencampilkan navigator paginasi laravel
+            if(!isset($idFind))
+                echo $park->links();
+            else 
+                echo $park->appends(array('jenis' => $jenisForm, 'kecamatan' => $kecamatanForm,'desa' => $desaForm))->links();
+                ?>
                 <!-- end foreach -->
             </div>
         </div>
