@@ -20,15 +20,16 @@
             <td>{{ $value->jenis }}</td>
             <td class="text-center">
                 <a href="jenis/{{ $value->id }}/edit"><button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> edit</button></a>
-                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"><span class="glyphicon glyphicon-trash"></span> delete</button>
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete{{ $value->id }}"><span class="glyphicon glyphicon-trash"></span> delete</button>
             </td>
         </tr>
         @endforeach
     </table>
 </div>
 
+@foreach($admin as $key => $value)
 <!-- Modal -->
-<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-delete{{ $value->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -47,7 +48,7 @@
     </div>
   </div>
 </div>
-
+@endforeach
     </div>
 </div>
 
