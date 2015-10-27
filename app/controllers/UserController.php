@@ -2,18 +2,6 @@
 
 class UserController extends BaseController {
 
-	/*
-	|--------------------------------------------------------------------------
-	| Default Home Controller
-	|--------------------------------------------------------------------------
-	|
-	| You may wish to use controllers instead of, or in addition to, Closure
-	| based routes. That's great! Here is an example controller method to
-	| get you started. To route to this controller, just add the route:
-	|
-	|	Route::get('/', 'HomeController@showWelcome');
-	|
-	*/
 
 	public function index()
 	{
@@ -56,10 +44,18 @@ class UserController extends BaseController {
     	$nama					= (isset($input['nama'])) 		? $input['nama']:null;
     	$username				= (isset($input['username'])) 	? $input['username']:null;
 		$password				= (isset($input['password'])) 	? $input['password']:null;
+		$email					= (isset($input['email'])) 		? $input['email']:null;
+		$contact				= (isset($input['contact'])) 	? $input['contact']:null;
+		$bio					= (isset($input['bio'])) 		? $input['bio']:null;
+
 
 		$admin->nama_lengkap	= $nama;
 		$admin->username	 	= $username;
 		$admin->password	 	= Hash::make($password);
+		$admin->email	 		= $email;
+		$admin->bio	 			= $bio;
+		$admin->contact 		= $contact;
+		$admin->foto 			= Session::get('pathImage');
 
 		$admin->save();
     }
@@ -71,12 +67,21 @@ class UserController extends BaseController {
     	$nama					= (isset($input['nama'])) 		? $input['nama']:null;
     	$username				= (isset($input['username'])) 	? $input['username']:null;
 		$password				= (isset($input['password'])) 	? $input['password']:null;
+		$email					= (isset($input['email'])) 		? $input['email']:null;
+		$contact				= (isset($input['contact'])) 	? $input['contact']:null;
+		$bio					= (isset($input['bio'])) 		? $input['bio']:null;
 
 		$admin 					= Admin::find($iduser);
 
 		$admin->nama_lengkap	= $nama;
 		$admin->username	 	= $username;
 		$admin->password	 	= Hash::make($password);
+		$admin->email	 		= $email;
+		$admin->bio	 			= $bio;
+		$admin->contact 		= $contact;
+		$admin->foto 			= Session::get('pathImage');
+		Session::put('foto',$admin->foto);
+
 		$admin->save();	
     }
 

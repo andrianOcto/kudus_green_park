@@ -6,6 +6,7 @@ var formPark	 	= angular.module('formPark', ['angularFileUpload']);
 var updateUser	 	= angular.module('updateUser', ['angularFileUpload']);
 var updatePark	 	= angular.module('updatePark', ['angularFileUpload']);
 var kecamatan      = angular.module('kecamatan', []);
+var desa            = angular.module('desa', []);
 var jenis           = angular.module('jenis', []);
 var video           = angular.module('video', []);
 
@@ -66,6 +67,83 @@ kecamatan.controller('kecamatanController',['$scope','$http',function($scope,$ht
             if(data.response === "OK" && data.status_code == 200 && data.message === "Edit success.")
             {
                window.location.href = '/kecamatan';
+            }
+            else
+            {
+                console.log("masuk");
+                $scope.loading  = false;
+                $scope.isError  = true;
+                $scope.message  = data.message;
+            }
+            
+            $scope.message  = data.message;
+        }).error(function(errMessage){
+            console.log("masuk");
+            $scope.loading  = false;
+            $scope.isError  = true;
+            $scope.message  = errMessage;
+        })
+    }
+}]);
+
+desa.controller('desaController',['$scope','$http',function($scope,$http)
+{   
+    $scope.isError  =false;
+    $scope.message  ="";
+    $scope.loading  =false;
+
+    $scope.createDesa=function()
+    {
+        $scope.loading  =true;
+        //request get ke API
+        $http({
+            method  : 'GET',
+            url     : '../api/createdesa',
+            params  : {
+                id              : $scope.idDesa,
+                id_kecamatan    : $scope.kecamatan,
+                nama            : $scope.nama
+            }
+        }).success(function (data){
+            console.log(data);
+            if(data.response === "OK" && data.status_code == 200 && data.message === "Create success.")
+            {
+               window.location.href = '/sdesa';
+            }
+            else
+            {
+                console.log("masuk");
+                $scope.loading  = false;
+                $scope.isError  = true;
+                $scope.message  = data.message;
+            }
+            
+            $scope.message  = data.message;
+        }).error(function(errMessage){
+            console.log("masuk");
+            $scope.loading  = false;
+            $scope.isError  = true;
+            $scope.message  = errMessage;
+        })
+    };
+
+    $scope.editDesa=function()
+    {
+        $scope.loading  =true;
+        //request get ke API
+        $http({
+            method  : 'GET',
+            url     : '../../../api/editdesa',
+            params  : {
+                id              : $scope.idDesa,
+                id_kecamatan    : $scope.kecamatan,
+                nama            : $scope.nama
+            }
+        }).success(function (data){
+            console.log(data);
+            if(data.response === "OK" && data.status_code == 200 && data.message === "Edit success.")
+            {
+               window.location.href = '/sdesa';
             }
             else
             {
@@ -270,17 +348,14 @@ form_input.controller('submitController',['$scope','$http','FileUploader',functi
 			method  : 'POST',
 			url 	: 'http://localhost:8000/submit',
 			params  : {
-				nama 	 : $scope.nama,
-				username : $scope.username,
-				password : $scope.password,
-				email 	 : $scope.email,
-				contact  : $scope.contact,
-				bio		 : $scope.bio
+				judul 	 : $scope.judul,
+                kategori : $scope.kategori,
+				deskripsi: $scope.deskripsi,
 			}
 		}).success(function(data){
 			$scope.loading = false;
 			$scope.message = "Submit Success";
-			window.location.href = '/user';
+			window.location.href = '/event';
 
 		}).error(function(errMessage){
 			$scope.loading	= true;
@@ -421,20 +496,17 @@ updateUser.controller('updateUserController',['$scope','$http','FileUploader',fu
 
             $http({
                 method  : 'POST',
-                url     : 'http://localhost:8000/updateUser/'+$scope.iduser,
+                url     : 'http://localhost:8000/updateEvent/'+$scope.id_event,
                 params  : {
-                    iduser   : $scope.iduser,
-                    nama     : $scope.nama,
-                    username : $scope.username,
-                    password : $scope.password,
-                    email    : $scope.email,
-                    contact  : $scope.contact,
-                    bio      : $scope.bio
+                    id_event  : $scope.id_event,
+                    kategori  : $scope.kategori,
+                    judul     : $scope.judul,
+                    deskripsi : $scope.deskripsi
                 }
             }).success(function(data){
                 $scope.loading = false;
                 $scope.message = "Update Success";
-                window.location.href = '/user';
+                window.location.href = '/event';
 
             }).error(function(errMessage){
                 $scope.loading  = true;
@@ -450,20 +522,16 @@ updateUser.controller('updateUserController',['$scope','$http','FileUploader',fu
 
 		$http({
 			method  : 'POST',
-			url 	: 'http://localhost:8000/updateUser/'+$scope.iduser,
+			url     : 'http://localhost:8000/updateEvent/'+$scope.id_event,
 			params  : {
-				iduser	 : $scope.iduser,
-				nama 	 : $scope.nama,
-				username : $scope.username,
-				password : $scope.password,
-				email 	 : $scope.email,
-				contact  : $scope.contact,
-				bio		 : $scope.bio
+				id_event  : $scope.id_event,
+                judul     : $scope.judul,
+                deskripsi : $scope.deskripsi
 			}
 		}).success(function(data){
 			$scope.loading = false;
 			$scope.message = "Update Success";
-			window.location.href = '/user';
+			window.location.href = '/event';
 
 		}).error(function(errMessage){
 			$scope.loading	= true;

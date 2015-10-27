@@ -292,6 +292,11 @@ class ApiController extends BaseController {
 							;
 
 	}
+
+	public function getKecamatan(){
+		$kecamatan = Kecamatan::all();
+    	return Response::json($kecamatan)->header('access-control-allow-origin', '*');
+	}
     
 	public function getCreatekecamatan()
 	{
@@ -354,6 +359,148 @@ class ApiController extends BaseController {
 				$statusCode = 200;
 				$message 	= "Create success.";
 			}
+			
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
+	public function getCreatedesa()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$idKecamatan		= (isset($input['id_kecamatan'])) ? $input['id_kecamatan']:null;
+		$idDesa				= (isset($input['id'])) ? $input['id']:null;
+		$nama				= (isset($input['nama'])) ? $input['nama']:null;
+
+		
+		if(!isset($input['id'])){
+			$missingParameter[] = "id";
+		}
+		//if password didn't set
+		if(!isset($input['nama'])){
+			$missingParameter[] = "nama";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+			$desa 		= Desa::find($idDesa);
+			
+			//Kecamatan sudah ada
+			if(isset($desa))
+			{
+					$response 	= "FAILED";
+					$statusCode = 200;
+					$message 	= "Desa sudah ada dalam database.";
+			}
+
+			//kecamatan tidak ada dan dimasukkan kedalam database
+			else 
+			{
+				$desa = new Desa;
+
+				$desa->id = $idDesa;
+				$desa->id_kecamatan = $idKecamatan;
+				$desa->nama = $nama;
+
+				$desa->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Create success.";
+			}
+			
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
+	public function getEditdesa()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$idKecamatan		= (isset($input['id_kecamatan'])) ? $input['id_kecamatan']:null;
+		$idDesa				= (isset($input['id'])) ? $input['id']:null;
+		$nama				= (isset($input['nama'])) ? $input['nama']:null;
+
+		//if username didn't set
+		if(!isset($input['id'])){
+			$missingParameter[] = "id";
+		}
+
+		//if password didn't set
+		if(!isset($input['nama'])){
+			$missingParameter[] = "nama";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+				$desa = Desa::find($idDesa);
+			
+
+				$desa->nama 		= $nama;
+				$desa->id_kecamatan = $idKecamatan;
+
+				$desa->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Edit success.";
+			
 			
 		}
 
