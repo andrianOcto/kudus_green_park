@@ -16,13 +16,14 @@ Route::get('api/park/{idpark}', array('uses' => 'ApiController@getPark'));
 Route::controller('api','ApiController');
 Route::post('/', array('uses' => 'UserController@doLogin'));
 Route::post('setSession', array('uses' => 'AuthController@postSetsession'));
-Route::post('user/upload', array('uses' => 'UserController@upload'));
+Route::post('event/upload', array('uses' => 'EventController@upload'));
 Route::post('park/upload', array('uses' => 'ParkController@upload'));
-Route::post('user/{iduser}/updateImage', array('uses' => 'UserController@updateImage'));
+Route::post('event/{id_event}/updateImage', array('uses' => 'EventController@updateImage'));
 Route::post('park/{iduser}/updateImage', array('uses' => 'ParkController@upload'));
 Route::get('desa/{id}', array('uses' => 'ApiController@getDesa'));
 Route::get('rth/{id}', array('uses' => 'ApiController@getDetailRTH'));
 Route::get('/findrth', array('uses' => 'ApiController@getRTH'));
+Route::get('/getKecamatan', array('uses' => 'ApiController@getKecamatan'));
 
 
 // Route::group(array('before' => 'guest'), function() {
@@ -48,19 +49,22 @@ Route::group(array('before' => 'auth'), function() {
 	// resource route user
 	Route::resource('user','UserController');
 
+	// resource route event
+	Route::resource('event','EventController');
+
 	// resource route park
 	Route::resource('park', 'ParkController');
 
 	// submit user's data route
-	Route::post('/submit', array('uses' => 'UserController@store'));
+	Route::post('/submit', array('uses' => 'EventController@store'));
 	// update user's data route
-	Route::post('/updateUser/{iduser}', array('uses' => 'UserController@update'));
+	Route::post('/updateEvent/{id_event}', array('uses' => 'EventController@update'));
 	// submit park's data route
 	Route::post('/submitPark', array('uses' => 'ParkController@store'));
 	// update park's data route
 	Route::post('/updatePark/{idpark}', array('uses' => 'ParkController@update'));
 	// user delete route
-	Route::get('user/{id}/destroy',['as'=>'user.delete','uses'=>'UserController@destroy']);
+	Route::get('event/{id}/destroy',['as'=>'event.delete','uses'=>'EventController@destroy']);
 	// park delete route
 	Route::get('park/{id}/destroy',['as'=>'park.delete','uses'=>'ParkController@destroy']);
 
@@ -68,6 +72,9 @@ Route::group(array('before' => 'auth'), function() {
 	Route::resource('kecamatan','KecamatanController');
 	Route::get('kecamatan/{id}/destroy',['as'=>'kecamatan.delete','uses'=>'KecamatanController@destroy']);
 
+	//Route Kecamatan
+	Route::resource('sdesa','DesaController');
+	Route::get('sdesa/{id}/destroy',['as'=>'sdesa.delete','uses'=>'DesaController@destroy']);
 	//Route Jenis RTH
 	Route::resource('jenis','JenisRTHController');
 	Route::get('jenis/{id}/destroy',['as'=>'jenis.delete','uses'=>'JenisRTHController@destroy']);
