@@ -11,15 +11,19 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="{{ URL::asset('images/rth1.jpg') }}" style="width:100%; height:500px">
-                    <div class="carousel-caption">
-                        <p>Keterangan terkait gambar 1 yang ditampilkan</p>
+                    <img src="{{ URL::asset('images/rth1.png') }}" style="width:100%">
+                    <div class="carousel-caption" style="margin-bottom:10px; left:0; right:0">
+                        <p>RUANG TERBUKA HIJAU</p>
+                        <p>adalah area memanjang/jalur dan atau mengelompok, yang penggunaannya lebih bersifat terbuka, <br />tempat tumbuh tanaman, baik yang tumbuh tanaman secara alamiah maupun yang sengaja ditanam<br />(Peraturan Menteri Pekerjaan Umum Nomor 5/PRT/M/2008).</p>
+            <a href="/tentangrth" class="btn btn-primary" style="margin-top:10px">Baca Selengkapnya</a>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="{{ URL::asset('images/rth2.jpg') }}" style="width:100%; height:500px">
-                    <div class="carousel-caption">
-                        <p>Keterangan terkait gambar 2 yang ditampilkan</p>
+                    <img src="{{ URL::asset('images/rth2.png') }}" style="width:100%">
+                    <div class="carousel-caption" style="margin-bottom:10px; left:0; right:0">
+                        <p>RUANG TERBUKA HIJAU</p>
+                        <p>adalah area memanjang/jalur dan atau mengelompok, yang penggunaannya lebih bersifat terbuka, <br />tempat tumbuh tanaman, baik yang tumbuh tanaman secara alamiah maupun yang sengaja ditanam<br />(Peraturan Menteri Pekerjaan Umum Nomor 5/PRT/M/2008).</p>
+            <a href="/tentangrth" class="btn btn-primary" style="margin-top:10px">Baca Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -37,85 +41,83 @@
     </div>
     
     <!--  content homepage  -->
-    <div class="container" style="width:60%; margin-top:20px">
-        <center>
-            <h1 style="font-weight:400; padding-bottom:20px">Ruang Terbuka Hijau</h1>
-            <p>adalah area memanjang/jalur dan atau mengelompok, yang penggunaannya lebih bersifat terbuka, tempat tumbuh tanaman, baik yang tumbuh tanaman secara alamiah maupun yang sengaja ditanam (Peraturan Menteri Pekerjaan Umum Nomor 5/PRT/M/2008).</p>
-            <a href="/tentangrth" class="btn btn-success" style="margin-top:10px">Baca Selengkapnya</a>
-        </center>
-    </div>
-    
-    <div class="row" style="margin-top:50px; background-color:white; padding-top:50px; padding-bottom:50px">
-    <div class="container">
-        <div class="col-md-6 col-xs-12">
-            <center><img src="{{ URL::asset('images/Kudus.jpg') }}" style="width:400px; margin-top:100px"></center>
-        </div>
-        <div class="col-md-6 col-xs-12"></div>
-            <center><img src="{{ URL::asset('images/rthjenis.png') }}" style="width:500px"></center>
-    </div>
-    </div>
-    </div>
-    
-    <div class="container" style="width:70%">
-        <div class="row" style="margin-top:50px; border-bottom:1px solid grey; padding-bottom:70px">
-            <h1 style="text-align:center; padding-bottom:30px; font-weight:400">Events</h1>
-            <div class="media" style="padding-bottom:20px">
-                <div class="media-left">
-                    <img style="width:150px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
-                </div>
-                <div class="media-body" style="padding-left:20px">
-                    <a href="#" style="color:black; text-decoration:none"><h2 style="font-weight:300" class="media-heading">Judul Artikel</h2></a>
-                    <p>posted: 10 oktober 2015/04:04</p>
-                    <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
-                    <br>
-                    <a href="/detailevent" class="btn btn-success btn-small">baca selengkapnya</a>
-                </div>
+    <div style="background-image:url({{ URL::asset('images/watermark_rth.png') }}); background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
+    <div class="container" >
+        <div class="row" style="margin-top:50px; padding-bottom:70px">
+            <div class="col-md-6">
+                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="#" style="color:black; font-size:1.5em; text-transform: uppercase;">
+                    <!-- judul post -->
+                    Judul Artikel
+                    </a></div>
+                <p style="text-align:justify; padding:5px">
+                    <!-- image post -->
+                    <img style="float:left; width:150px; margin-right:20px; margin-bottom:20px; margin-top:5px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
+                    <!-- timestamp post -->
+                    diposting: 10 oktober 2015 | 04:04<br /> <br />
+                    
+                    <!-- post -->
+                    Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait. Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait...
+                </p>
+                <a href="#" class="btn btn-success">selengkapnya</a>
             </div>
-            <div class="media" style="padding-bottom:20px">
-                <div class="media-left">
-                    <img style="width:150px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
-                </div>
-                <div class="media-body" style="padding-left:20px">
-                    <a href="/detailevent" style="color:black; text-decoration:none"><h2 style="font-weight:300" class="media-heading">Judul Artikel</h2></a>
-                    <p>posted: 10 oktober 2015/04:04</p>
-                    <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
-                    <br>
-                    <a href="/detailevent" class="btn btn-success btn-small">baca selengkapnya</a>
-                </div>
+            <div class="col-md-6">
+                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="#" style="color:black; font-size:1.5em; text-transform: uppercase;">
+                    <!-- judul post -->
+                    Judul Artikel
+                    </a></div>
+                <p style="text-align:justify; padding:5px">
+                    <!-- image post -->
+                    <img style="float:left; width:150px; margin-right:20px; margin-bottom:20px; margin-top:5px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
+                    <!-- timestamp post -->
+                    diposting: 10 oktober 2015 | 04:04<br /> <br />
+                    
+                    <!-- post -->
+                    Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait. Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait...
+                </p>
+                <a href="#" class="btn btn-success">selengkapnya</a>
             </div>
-            <div class="media" style="padding-bottom:20px">
-                <div class="media-left">
-                    <img style="width:150px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
-                </div>
-                <div class="media-body" style="padding-left:20px">
-                    <a href="/detailevent" style="color:black; text-decoration:none"><h2 style="font-weight:300" class="media-heading">Judul Artikel</h2></a>
-                    <p>posted: 10 oktober 2015/04:04</p>
-                    <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
-                    <br>
-                    <a href="/detailevent" class="btn btn-success btn-small">baca selengkapnya</a>
-                </div>
+            <div class="col-md-6">
+                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="#" style="color:black; font-size:1.5em; text-transform: uppercase;">
+                    <!-- judul post -->
+                    Judul Artikel
+                    </a></div>
+                <p style="text-align:justify; padding:5px">
+                    <!-- image post -->
+                    <img style="float:left; width:150px; margin-right:20px; margin-bottom:20px; margin-top:5px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
+                    <!-- timestamp post -->
+                    diposting: 10 oktober 2015 | 04:04<br /> <br />
+                    
+                    <!-- post -->
+                    Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait. Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait...
+                </p>
+                <a href="#" class="btn btn-success">selengkapnya</a>
             </div>
-            <div class="media" style="padding-bottom:20px">
-                <div class="media-left">
-                    <img style="width:150px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
-                </div>
-                <div class="media-body" style="padding-left:20px">
-                    <a href="/detailevent" style="color:black; text-decoration:none"><h2 style="font-weight:300" class="media-heading">Judul Artikel</h2></a>
-                    <p>posted: 10 oktober 2015/04:04</p>
-                    <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
-                    <br>
-                    <a href="/detailevent" class="btn btn-success btn-small">baca selengkapnya</a>
-                </div>
+            <div class="col-md-6">
+                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="#" style="color:black; font-size:1.5em; text-transform: uppercase;">
+                    <!-- judul post -->
+                    Judul Artikel
+                    </a></div>
+                <p style="text-align:justify; padding:5px">
+                    <!-- image post -->
+                    <img style="float:left; width:150px; margin-right:20px; margin-bottom:20px; margin-top:5px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
+                    <!-- timestamp post -->
+                    diposting: 10 oktober 2015 | 04:04<br /> <br />
+                    
+                    <!-- post -->
+                    Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait. Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait...
+                </p>
+                <a href="#" class="btn btn-success">selengkapnya</a>
             </div>
         </div>
     </div>
     
     <div class="container">
+        <center><h2 style="font-weight:400; border-bottom:1px solid grey; width:30%; padding-bottom:5px">KATA BELIAU</h2></center>
         <div class="row" style="margin-top:50px">
             <div class="col-sm-6">
                 <div class="media" style="padding-bottom:20px">
                     <div class="media-left">
-                        <img style="width:130px; height:130px" class="media-object img-circle" src="{{ URL::asset('files/photos/park/1444615029_G7Y9qohwdop2.jpg') }}">
+                        <img style="width:100px; height:100px" class="media-object img-circle" src="{{ URL::asset('files/photos/park/1444615029_G7Y9qohwdop2.jpg') }}">
                     </div>
                     <div class="media-body" style="padding-left:20px">
                         <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
@@ -127,7 +129,7 @@
             <div class="col-sm-6">
                 <div class="media" style="padding-bottom:20px">
                     <div class="media-left">
-                        <img style="width:130px; height:130px" class="media-object img-circle" src="{{ URL::asset('files/photos/park/1444615029_G7Y9qohwdop2.jpg') }}">
+                        <img style="width:100px; height:100px" class="media-object img-circle" src="{{ URL::asset('files/photos/park/1444615029_G7Y9qohwdop2.jpg') }}">
                     </div>
                     <div class="media-body" style="padding-left:20px">
                         <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
@@ -139,11 +141,13 @@
         </div>
     </div>
     
-    <div class="container" style="width:60%;margin-top:60px">
+    
+    <div class="container" style="width:50%; margin-top:60px; padding-bottom:70px">
             <div class="embed-responsive embed-responsive-16by9">
                 <center>
                 <iframe class="embed-responsive-item" src="{{$url}}" frameborder="0" allowfullscreen></iframe>
                 </center>
             </div>
         </div>
+</div>
 @include('frontend/foot')

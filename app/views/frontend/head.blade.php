@@ -19,34 +19,51 @@
         body{
             background-color: #e3fcd7;
         }
+        .nav-tabs > li.active > a, 
+        .nav-tabs > li.active > a:focus, 
+        .nav-tabs > li.active > a:hover {
+            background-color: #4CAF50;
+            color: white;
+            border-color: #4CAF50;
+        }
+        .nav-tabs > li > a:hover {
+            background-image: url("{{ URL::asset('images/back_green.png') }}");
+            color: black;
+            background-color: transparent;
+        }
+        .nav-tabs > li > a{
+            color: black;
+            font-weight: 500;
+        }
     </style>
   </head>
 <body style="margin:0px">
     <!--  navigation  -->
     <div class="row" style="margin-top:10px">
-        <a href="index.php"><img style="width:400px; height:150px;" src="{{ URL::asset('images/Go-Green.png') }}"></a>
+        <a href="/"><img style="max-width:98%" src="{{ URL::asset('images/banner_rth.png') }}"></a>
 <!--        <h1 style="font-weight:400; position:absolute; top:20px">Kudus</h1><br>-->
 <!--        <h2 style="font-weight:300; position:absolute; top:30px">"Kota di tengah taman"</h2>-->
-        <img src="{{ URL::asset('images/logo-kab-kudus.png') }}" style="width:100px; position:absolute; right:70px">
+<!--        <img src="{{ URL::asset('images/tex_logo.png') }}" style="width:700px; position:absolute; right:70px">-->
     </div>
     <nav class="navbar navbar-default" style="border-color:#4CAF50; background-color:#4CAF50; border-radius:0px; margin-bottom:0px">
         <div class="container-fluid">
             <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <button style="border-color:transparent" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                    <span style="background-color:white" class="icon-bar"></span>
+                    <span style="background-color:white" class="icon-bar"></span>
+                    <span style="background-color:white" class="icon-bar"></span>
                 </button>
             </div>
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a style="color:white" href="/rth">TEMUKAN RUANG TERBUKA HIJAU</a></li>
-                    <li><a style="color:white" href="/tentangrth">TENTANG RUANG TERBUKA HIJAU</a></li>
-                    <li><a style="color:white" href="/tentangkami">TENTANG KAMI</a></li>
+                    <li><a style="color:white" href="/"><strong>HOME</strong></a></li>
+                    <li><a style="color:white" href="/rth"><strong>TEMUKAN RUANG TERBUKA HIJAU</strong></a></li>
+                    <li><a style="color:white" href="/tentangrth"><strong>TENTANG RUANG TERBUKA HIJAU</strong></a></li>
+                    <li><a style="color:white" href="/tentangkami"><strong>TENTANG KAMI</strong></a></li>
                 </ul>
             </div><!-- /.navbar-collapse -->
         </div><!-- /.container-fluid -->
