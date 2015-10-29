@@ -1,46 +1,82 @@
-@include("template/head")
+@include("head")
 <legend>
     <ol class="breadcrumb">
         <li style="color:black"><a href="../park">Park list</a></li>
         <li style="color:black">view park</li>
     </ol>
 </legend>
-<h3>{{ $park->nama_park }}</h3>
+<center><h3>{{ $park->nama }}</h3></center>
 &nbsp;<br>
 
 <div id="container">
-    <div id="gallery" class="ad-gallery">
-        <div class="ad-image-wrapper">
-        </div>
-        <div class="ad-nav">
-            <div class="ad-thumbs">
-              <ul class="ad-thumb-list">
-                  @foreach($foto as $key => $value)
-                <li>
-                  <a href="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}">
-                    <img src="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" style="height:50px" class="image0">
-                  </a>
-                </li>
+    <div class="row">
+        <div class="col-sm-5">
+    <!--
+                @foreach($foto as $key => $value)
+                    <img class="img-rounded" src="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" style="height:200px">
                 @endforeach
-              </ul>
-            </div>
+-->
+                <center>
+                <img class="img-rounded" id="zoom" src="{{ URL::asset('files/photos/park/thumb') }}/{{ $value->fileName }}" data-zoom-image="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" width="100%">
+                <br><br>
+                <div id="gallery" style="width:100%">
+                    @foreach($foto as $key => $value)
+                    <a href="#" class="elevatezoom-gallery active" data-update="" data-image="{{ URL::asset('files/photos/park/thumb') }}/{{ $value->fileName }}" data-zoom-image="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}">
+                        <img class="img-rounded" src="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" height="80px">
+                    </a>
+                    @endforeach
+                </div>
+                </center>
+        </div>
+
+<div class="col-sm-7">
+<table style="border:none; line-height:1.8; font-size:1.2em">
+    <tr>
+        <td style="width:35%; vertical-align: text-top;">Kode RTH</td>
+        <td style="width:5%; vertical-align: text-top;">: </td>
+        <td style="width:60%; vertical-align: text-top;">{{$park->id_rth}}</td>
+    </tr>
+    <tr>
+        <td style="width:35%; vertical-align: text-top;">Jenis RTH</td>
+        <td style="width:5%; vertical-align: text-top;">: </td>
+        <td style="width:60%; vertical-align: text-top;">{{$park->jenis}}</td>
+    </tr>
+    <tr>
+        <td style="width:35%; vertical-align: text-top;">Kecamatan</td>
+        <td style="width:5%; vertical-align: text-top;">: </td>
+        <td style="width:60%; vertical-align: text-top;">{{$park->kecamatan}}</td>
+    </tr>
+    <tr>
+        <td style="width:35%; vertical-align: text-top;">Desa/Kelurahan</td>
+        <td style="width:5%; vertical-align: text-top;">: </td>
+        <td style="width:60%; vertical-align: text-top;">{{$park->desa}}</td>
+    </tr>
+    <tr>
+        <td style="width:35%; vertical-align: text-top;">Bentuk dan Luas</td>
+        <td style="width:5%; vertical-align: text-top;">: </td>
+        <td style="width:60%; vertical-align: text-top;">{{$park->luas}}</td>
+    </tr>
+    <tr>
+        <td style="width:35%; vertical-align: text-top;">Jenis Tanaman</td>
+        <td style="width:5%; vertical-align: text-top;">: </td>
+        <td style="width:60%; vertical-align: text-top;">{{$park->jenis_tanaman}}</td>
+    </tr>
+    <tr>
+        <td style="width:35%; vertical-align: text-top;">Fungsi</td>
+        <td style="width:5%; vertical-align: text-top;">: </td>
+        <td style="width:60%; vertical-align: text-top;">{{$park->fungsi}}</td>
+    </tr>
+    <tr>
+        <td style="width:35%; vertical-align: text-top;">Alamat</td>
+        <td style="width:5%; vertical-align: text-top;">: </td>
+        <td style="width:60%; vertical-align: text-top;">{{$park->alamat}}</td>
+    </tr>
+</table>
+<br><br>
+<button type="button" class="btn btn-danger btn-lg"><span class="glyphicon glyphicon-pencil"></span> edit</button>
         </div>
     </div>
 </div>
-
-<!--
-@foreach($foto as $key => $value)
-<img class="img-thumbnail" src="{{ URL::asset('files/photos/park') }}/{{ $value->fileName }}" style="height:250px">
-@endforeach
--->
-
-&nbsp;<br><br>
-<p>{{ $park->alamat }}</p>
-<p>{{ $park->longitude }}  <button type="button" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-search"></span> view on map</button></p>
-<p>{{ $park->deskripsi }}</p>
-<br><br>
-<button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-pencil"></span> edit</button>
-  
     <script type="text/javascript">
       $(function() {
         var galleries = $('.ad-gallery').adGallery();
@@ -68,4 +104,4 @@
         );
       });
     </script>
-@include("template/foot")
+@include("foot")

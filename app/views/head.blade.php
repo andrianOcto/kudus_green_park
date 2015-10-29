@@ -20,7 +20,12 @@
     <script src="{{ URL::asset('js/page/userSubmit.js') }}"></script> 
     <script src="{{ URL::asset('js/page/data_post.js') }}"></script> 
     <script src="{{ URL::asset('js/jquery.dataTables.js') }}"></script> 
-  
+    <script src="{{ URL::asset('js/jquery.ad-gallery.js') }}"></script>
+    <style type="text/css">
+        #gallery{
+            padding: 10px;
+        }
+    </style>
   </head>
 
   <body>

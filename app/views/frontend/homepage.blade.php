@@ -11,19 +11,25 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                 <div class="item active">
-                    <img src="{{ URL::asset('images/rth1.png') }}" style="width:100%">
-                    <div class="carousel-caption" style="margin-bottom:10px; left:0; right:0">
-                        <p>RUANG TERBUKA HIJAU</p>
-                        <p>adalah area memanjang/jalur dan atau mengelompok, yang penggunaannya lebih bersifat terbuka, <br />tempat tumbuh tanaman, baik yang tumbuh tanaman secara alamiah maupun yang sengaja ditanam<br />(Peraturan Menteri Pekerjaan Umum Nomor 5/PRT/M/2008).</p>
-            <a href="/tentangrth" class="btn btn-primary" style="margin-top:10px">Baca Selengkapnya</a>
+                    <img src="{{ URL::asset('images/c_rth_3.png') }}" style="width:100%">
+                    <div class="carousel-caption" style="margin-bottom:10px; left:50px; right:0; text-align:left">
+                        <h4>RUANG TERBUKA HIJAU</h4>
+                        <p style="font-size:1.3em">adalah area memanjang/jalur dan atau mengelompok, yang penggunaannya lebih bersifat terbuka, <br />tempat tumbuh tanaman, baik yang tumbuh tanaman secara alamiah maupun yang sengaja ditanam<br />(Peraturan Menteri Pekerjaan Umum Nomor 5/PRT/M/2008).</p>
+            <a href="/tentangrth" class="btn btn-primary" style="margin-top:10px; font-size:1.3em">Baca Selengkapnya</a>
                     </div>
                 </div>
                 <div class="item">
-                    <img src="{{ URL::asset('images/rth2.png') }}" style="width:100%">
+                    <img src="{{ URL::asset('images/c_rth_2.png') }}" style="width:100%">
+                    <div class="carousel-caption" style="margin-bottom:10px; left:0; right:50px; text-align:right;">
+                        <h4>RUANG TERBUKA HIJAU</h4>
+                        <p style="font-size:1.3em">adalah area memanjang/jalur dan atau mengelompok, yang penggunaannya lebih bersifat terbuka, <br />tempat tumbuh tanaman, baik yang tumbuh tanaman secara alamiah maupun yang sengaja ditanam<br />(Peraturan Menteri Pekerjaan Umum Nomor 5/PRT/M/2008).</p>
+            <a href="/tentangrth" class="btn btn-primary" style="margin-top:10px; font-size:1.3em">Baca Selengkapnya</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <img src="{{ URL::asset('images/c_rth_1.png') }}" style="width:100%">
                     <div class="carousel-caption" style="margin-bottom:10px; left:0; right:0">
-                        <p>RUANG TERBUKA HIJAU</p>
-                        <p>adalah area memanjang/jalur dan atau mengelompok, yang penggunaannya lebih bersifat terbuka, <br />tempat tumbuh tanaman, baik yang tumbuh tanaman secara alamiah maupun yang sengaja ditanam<br />(Peraturan Menteri Pekerjaan Umum Nomor 5/PRT/M/2008).</p>
-            <a href="/tentangrth" class="btn btn-primary" style="margin-top:10px">Baca Selengkapnya</a>
+                        
                     </div>
                 </div>
             </div>

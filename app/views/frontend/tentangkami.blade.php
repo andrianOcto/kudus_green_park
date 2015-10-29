@@ -3,6 +3,7 @@
 <div class="container"  style="padding-top:50px; padding-bottom:70px">
     <div class="row">
         <h1>PEMERINTAH KABUPATEN KUDUS</h1>
+        <img src="{{ URL::asset('images/bupati_kudus.png') }}" style="margin-top:10px">
         <p style="margin-top:30px"><strong>Visi Pemerintah Kabupaten Kudus</strong> yaitu "Terwujudnya Kudus Yang Semakin Sejahtera" dengan <strong>misi</strong> pemberdayaan usaha mikro,kecil dan menengah (UMKM) bagi peningkatan kesejahteraan masyarakat, mewujudkan wajib belajar 12 (dua belas) tahun yang terjangkau dan berkualitas, tersedianya fasilitas dan pelayanan kesehatan yang murah dan terjangkau, perlindungan usaha dan kesempatan kerja secara luas dan menyeluruh, meningkatkan perekonomian daerah yang berdaya saing, pembangunan infrastruktur yang berkelanjutan, perwujudan tata kelola pemerintahan yang baik ( Good Governnance), mewujudkan masyarakat yang religius, berbudaya dan berkeadilan sosial. Misi Kabupaten Kudus Terwujudnya Kudus yang Semakin Sejahteraâ€ yang terjabar dalam 4 pilar yaitu :</p>
         <p>
             <ol>

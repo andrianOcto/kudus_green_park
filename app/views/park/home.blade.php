@@ -10,11 +10,11 @@
 <div class="table-responsive">
     <table class="table table-striped">
         <tr class="success">
-            <th>No.</th>
-            <th>Taman</th>
-            <th>Photo</th>
-            <th>Alamat</th>
-            <th></th>
+            <th style="width:15%%">Kode</th>
+            <th style="width:20%">Nama RTH</th>
+            <th style="width:15%">Photo</th>
+            <th style="width:30%%">Alamat</th>
+            <th style="width:20%%"></th>
         </tr>
         <?php $i=0; 
         ?>
@@ -43,7 +43,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h5>are you sure want to delete this park?</h5>
+        <h5>yakin ingin menghapus data RTH?</h5>
       </div>
       <?php if(isset($value)) 
       {
