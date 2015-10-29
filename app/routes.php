@@ -82,6 +82,9 @@ Route::group(array('before' => 'auth'), function() {
 	//Route Setting Video
 	Route::resource('video','VideoController');
 
+	// Route delete user
+	Route::get('user/{id}/destroy',['as'=>'user.delete','uses'=>'UserController@destroy']);
+
 });
 
 App::missing(function($exception)
@@ -128,9 +131,15 @@ Route::get('/rth', function(){
 });
 
 
-Route::get('/tentangkami','ApiController@getTentangKami');
-Route::get('/tentangrth','ApiController@getTentangRTH');
-Route::get('/detailevent','ApiController@getDetailEvent');
+Route::get('/tentangkami',function(){
+	return View::make('frontend/tentangkami');
+});
+Route::get('/tentangrth', function(){
+	return View::make('frontend/tentangrth');
+});
+Route::get('/detailevent', function(){
+	return View::make('frontend/detailevent');
+});
 
 
 

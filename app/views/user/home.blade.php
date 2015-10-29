@@ -13,16 +13,12 @@
             <th>No.</th>
             <th>User</th>
             <th>Username</th>
-<!--            <th>Photo</th>-->
-<!--            <th>email</th>-->
             <th></th>
         </tr>
         @foreach($admin as $key => $value)
         <tr>
             <td>{{ $value->iduser }}</td>
             <td>{{ $value->nama_lengkap }}</td>
-<!--            <td><img class="img-rounded" style="width:100px" src="{{ URL::asset('files/photos/user') }}/{{ $value->foto }}"></td>-->
-<!--            <td>{{ $value->email}}</td>-->
             <td>{{ $value->username }}</td>
             <td class="text-center">
                 <a href="user/{{ $value->iduser }}/edit"><button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> edit</button></a>
