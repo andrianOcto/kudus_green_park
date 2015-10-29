@@ -53,8 +53,16 @@ class ParkController extends BaseController {
 	public function edit($id)
 	{
 		$park = Park::find($id);
-		$foto	= Photo::where('idpark', '=', $id)->get();
-		return View::make('park/edit-park')->with('park', $park)->with('foto',$foto);
+		$foto	= Photo::where('id_rth', '=', $id)->get();
+		$kecamatan 	= Kecamatan::all();
+		$desa 		= Desa::all();
+        $jenisrth   = Jenis::all();
+        $status     = StatusTanah::all();
+		return View::make('park/edit-park')->with('park', $park)->with('foto',$foto)
+											->with('kecamatan',$kecamatan)
+											->with('desa',$desa)
+				                            ->with('jenisrth',$jenisrth)
+				                            ->with('status',$status);
 	}
 
 	public function show($id)
@@ -113,23 +121,37 @@ class ParkController extends BaseController {
     public function update($idpark)
     {
     	$input 				= Input::all();
-    	$idpark				= (isset($input['idpark'])) 	? $input['idpark']:null;
-    	$nama_park			= (isset($input['nama_park'])) 	? $input['nama_park']:null;
+    	$id_rth				= (isset($input['id_rth'])) 	? $input['id_rth']:null; 
+    	$nama				= (isset($input['nama_park'])) 	? $input['nama_park']:null;
+    	$jenis				= (isset($input['jenis'])) 		? $input['jenis']:null;
+        $kecamatan			= (isset($input['kecamatan'])) 	? $input['kecamatan']:null;
+        $desa				= (isset($input['desa'])) 		? $input['desa']:null;
+        $status_lahan		= (isset($input['status_lahan'])) ? $input['status_lahan']:null;
+        $luas				= (isset($input['luas'])) 		? $input['luas']:null;
+        $jenis_tanaman		= (isset($input['jenis_tanaman'])) ? $input['jenis_tanaman']:null;
+        $pengelola			= (isset($input['pengelola'])) 	? $input['pengelola']:null;
     	$alamat				= (isset($input['alamat'])) 	? $input['alamat']:null;
-    	$deskripsi			= (isset($input['deskripsi'])) 	? $input['deskripsi']:null;
+    	$fungsi				= (isset($input['fungsi'])) 	? $input['fungsi']:null;
     	$listDel			= (isset($input['listDel'])) 	? $input['listDel']:null;
     	$photos				= (isset($input['foto'])) 		? $input['foto']:null;
 
 
-    	$park 				= Park::find($idpark);
+    	$park 				= Park::find($id_rth);
 
-    	$park->nama 		= $nama_park;
+    	$park->nama	 		= $nama;
+    	$park->jenis 		= $jenis;
+		$park->kecamatan 	= $kecamatan;
+		$park->desa 		= $desa;
+		$park->status_lahan = $status_lahan;
+		$park->luas 		= $luas;
+		$park->jenis_tanaman= $jenis_tanaman;
+		$park->pengelola 	= $pengelola;
     	$park->alamat		= $alamat;
-    	$park->deskripsi	= $deskripsi;
+    	$park->fungsi		= $fungsi;
 
     	$park->save();
 
-    	$arrayPhoto			= json_decode($listDel, true);
+    	$arrayPhoto				= json_decode($listDel, true);
     	$arrayPhotoAdd			= json_decode($photos, true);
 
 		$destinationPath  = public_path().'/files/photos/park';
@@ -148,7 +170,7 @@ class ParkController extends BaseController {
 		for($i=0;$i<count($arrayPhotoAdd);$i++)
 		{
 			$Photo 				= new Photo;
-			$Photo->idpark		= $park->idpark;
+			$Photo->id_rth		= $id_rth;
 			$Photo->fileName 	= $arrayPhotoAdd[$i]."";
 			$Photo->save();
 		}
@@ -160,7 +182,7 @@ class ParkController extends BaseController {
 	{
 		$park = Park::find($id);
 		$destinationPath  = public_path().'/files/photos/park';
-		$foto	= Photo::where('idpark', '=', $id)->get();
+		$foto	= Photo::where('id_rth', '=', $id)->get();
 
 		foreach ($foto as $key => $value) {
 			File::delete($destinationPath."/".$value->fileName);

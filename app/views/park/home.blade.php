@@ -13,7 +13,6 @@
             <th>No.</th>
             <th>Taman</th>
             <th>Photo</th>
-            <th>Alamat</th>
             <th></th>
         </tr>
         <?php $i=0; 
@@ -23,7 +22,6 @@
             <td>{{ $value->id_rth }}</td>
             <td>{{ $value->nama }}</td>
             <td><img class="img-rounded" style="width:150px" src="{{ URL::asset('files/photos/park') }}/{{ $foto[$i] }}"></td>
-            <td>{{ $value->alamat }}</td>
             <td class="text-center">
                 <a href="park/{{ $value->id_rth }}"><button type="button" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-eye-open"></span> view</button></a>
                 <a href="park/{{ $value->id_rth }}/edit"><button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> edit</button></a>
@@ -49,7 +47,7 @@
       {
         ?>
       <div class="modal-footer">
-        <a href="park/{{ $value->idpark }}/destroy"><button type="button" class="btn btn-danger btn-sm">delete</button></a>
+        <a href="park/{{ $value->id_rth }}/destroy"><button type="button" class="btn btn-danger btn-sm">delete</button></a>
       </div>
       <?php 
         }

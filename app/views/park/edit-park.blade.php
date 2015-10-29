@@ -5,12 +5,79 @@
 <div class="panel panel-success">
     <div class="panel-heading"></div>
     <div class="panel-body">
-<form ng-app="updatePark" ng-controller="updateParkController" uploader="uploader" ng-submit="submitPark()" ng-init="idpark='{{ $park->idpark }}';nama_park='{{ $park->nama_park }}';alamat='{{ $park->alamat }}';latitude='{{ $park->latitude }}';longitude='{{ $park->longitude }}';deskripsi='{{ $park->deskripsi }}';" class="form-horizontal" role="form">
+<form ng-app="updatePark" ng-controller="updateParkController" uploader="uploader" ng-submit="submitPark()" ng-init="id_rth='{{ $park->id_rth }}';nama_park='{{ $park->nama }}';jenis='{{ $park->jenis }}';kecamatan='{{ $park->kecamatan }}';desa='{{ $park->desa }}';status_lahan='{{ $park->status_lahan }}';luas='{{ $park->luas }}';jenis_tanaman='{{ $park->jenis_tanaman }}';pengelola='{{ $park->pengelola }}';fungsi='{{ $park->fungsi }}';alamat='{{ $park->alamat }}';" class="form-horizontal" role="form">
     <div class="form-group">
-        <label for="nama" class="col-sm-2 col-md-2 control-label">Nama Taman :</label>
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Kode RTH :</label>
         <div class="col-sm-9 col-md-9">
-            <input type="hidden" ng-model='idpark'>
+            <input ng-model="id_rth" type="text" readonly class="form-control" id="id-rth" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Nama RTH :</label>
+        <div class="col-sm-9 col-md-9">
             <input ng-model="nama_park" type="text" class="form-control" id="nama-taman" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Jenis RTH :</label>
+        <div class="col-sm-9 col-md-9">
+            <select class="form-control" ng-model="jenis" id="jenis">
+                <option value="0">-Pilih Jenis-</option>
+                @foreach($jenisrth as $key => $value)
+                <option value="{{$value->id}}">{{$value->jenis}}</option>
+                @endforeach
+            </select> 
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Kecamatan :</label>
+        <div class="col-sm-9 col-md-9">
+            <select class="form-control" ng-model="kecamatan" id="kecamatan">
+                <option value="0">-Pilih Kecamatan-</option>
+                @foreach($kecamatan as $key =>$value)
+                    <option value="{{$value->id}}">{{$value->nama}}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Desa :</label>
+        <div class="col-sm-9 col-md-9">
+            <select class="form-control" ng-model="desa" id="desa">
+                <option value="0">-Pilih Desa-</option>
+                @foreach($desa as $key =>$value)
+                    <option value="{{$value->id}}">{{$value->nama}}</option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Status Lahan :</label>
+        <div class="col-sm-9 col-md-9">
+            <select class="form-control" ng-model="status_lahan" id="status_lahan" >
+                <option value="0">-Pilih Status Lahan-</option>
+                @foreach($status as $key => $value)
+                <option value="{{$value->id}}">{{$value->status}}</option>
+                @endforeach
+            </select> 
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Luas :</label>
+        <div class="col-sm-9 col-md-9">
+            <input ng-model="luas" type="text" class="form-control" id="luas" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Jenis Tanaman :</label>
+        <div class="col-sm-9 col-md-9">
+            <input ng-model="jenis_tanaman" type="text" class="form-control" id="jenis-tanaman" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Pengelola :</label>
+        <div class="col-sm-9 col-md-9">
+            <input ng-model="pengelola" type="text" class="form-control" id="pengelola" required>
         </div>
     </div>
     <div class="form-group">
@@ -20,21 +87,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="latitude" class="col-sm-2 col-md-2 control-label">Latitude:</label>
+        <label for="deskripsi" class="col-sm-2 col-md-2 control-label">Fungsi :</label>
         <div class="col-sm-9 col-md-9">
-            <input ng-model="latitude" type="text" class="form-control" id="latitude" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="longitude" class="col-sm-2 col-md-2 control-label">Longitude:</label>
-        <div class="col-sm-9 col-md-9">
-            <input ng-model="longitude" type="text" class="form-control" id="longitude" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="deskripsi" class="col-sm-2 col-md-2 control-label">Deskripsi :</label>
-        <div class="col-sm-9 col-md-9">
-            <textarea ng-model="deskripsi" class="form-control" rows="4" id="deskripsi-taman" required></textarea>
+            <textarea ng-model="fungsi" class="form-control" rows="4" id="fungsi-taman" required></textarea>
         </div>
     </div>
   
