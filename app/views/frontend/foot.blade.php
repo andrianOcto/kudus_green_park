@@ -1,4 +1,4 @@
-    <div class="row" style="margin-left:0px; margin-right:0px; margin-top:100px; background-color:#009688; padding:3px">
+    <div class="row" style="margin-left:0px; margin-right:0px; background-color:#009688; padding:3px">
     </div>
     <div class="row" style="padding:10px; background-color:#00796B">
         <center>

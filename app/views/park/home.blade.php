@@ -41,7 +41,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h5>are you sure want to delete this park?</h5>
+        <h5>yakin ingin menghapus data RTH?</h5>
       </div>
       <?php if(isset($value)) 
       {

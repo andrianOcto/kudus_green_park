@@ -13,65 +13,52 @@ generalRth.controller('filterCtrl',['$scope','$http',function($scope,$http)
     
 }]);
 </script>
-<div class="container" style="margin-top:50px" ng-app="generalRth" ng-controller="filterCtrl">
+
+
+<div style="background-image:url({{ URL::asset('images/watermark_rth.png') }}); background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
+<div class="container" style="padding-top:50px; padding-bottom:70px">
     <div class="row">
-        <div class="col-md-2">
-            <!-- filter kecamatan -->
-            {{ Form::open(array('url' => 'findrth', 'method' => 'GET')) }}
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel panel-default" style="border-color:#4CAF50; background-color:transparent">
+        <div class="panel-heading" role="tab" id="headingOne" style="background-image:url('{{ URL::asset('images/back_green.png') }}'); background-color:transparent">
+          <h4 class="panel-title">
+            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+              Cari Ruang Terbuka Hijau Berdasarkan:
+            </a>
+          </h4>
+        </div>
+        
+        <!-- filtering with collapse -->
+        <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body" style="border-top:none">
+            {{ Form::open(array('url' => 'findrth', 'method' => 'GET', 'class'=>'form-inline')) }}
                 <div class="form-group" >
-                    <label for="nama" class="control-label">Jenis RTH</label>
-                        <select class="form-control" name="jenis" id="jenis">
-                            <option value="all">-Pilih Jenis RTH-</option>
-                            @foreach($jenis as $key => $value)
-                                <option value="{{$value->id}}">{{$value->jenis}}</option>    
-                            @endforeach
-                        </select>
+                    <select class="form-control" name="jenis" id="jenis">
+                        <option value="all">-Pilih Jenis RTH-</option>
+                        @foreach($jenis as $key => $value)
+                            <option value="{{$value->id}}">{{$value->jenis}}</option>    
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="nama" class="control-label">Kecamatan</label>
-                        <select class="form-control" name="kecamatan" id="kecamatan">
-                            <option value="all">-Pilih Kecamatan-</option>
-                            @foreach($kecamatan as $key => $value)
-                            <option value="{{ $value->id }}">{{ $value->nama }}</option>
-                            @endforeach
-                        </select>
+                    <select class="form-control" name="kecamatan" id="kecamatan">
+                        <option value="all">-Pilih Kecamatan-</option>
+                        @foreach($kecamatan as $key => $value)
+                        <option value="{{ $value->id }}">{{ $value->nama }}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <div class="form-group">
-                    <label for="nama" class="control-label">Desa</label>
-                        <select class="form-control" name="desa" id="desa">
-                            <option value="all">-Pilih desa-</option>
-                        </select>
+                    <select class="form-control" name="desa" id="desa">
+                        <option value="all">-Pilih desa-</option>
+                    </select>
                 </div>
                 <input type="submit" class="btn btn-primary">
             {{ Form::close() }}
-          <!--   <div class="list-group">
-                <a href="#" class="list-group-item active">Kecamatan</a>
-                <a href="#" class="list-group-item">Bae</a>
-                <a href="#" class="list-group-item">Jati</a>
-                <a href="#" class="list-group-item">Kaliwingu</a>
-                <a href="#" class="list-group-item">Gebog</a>
-                <a href="#" class="list-group-item">Mejobo</a>
-            </div>
-            
-            <div class="list-group">
-                <a href="#" class="list-group-item active">Desa / Kelurahan</a>
-                <a href="#" class="list-group-item">Getasrabi</a>
-                <a href="#" class="list-group-item">Klumpit</a>
-                <a href="#" class="list-group-item">Gribig</a>
-                <a href="#" class="list-group-item">Karangmalang</a>
-                <a href="#" class="list-group-item">Padurenan</a>
-            </div>
-            
-            <div class="list-group">
-                <a href="#" class="list-group-item active">Jenis RTH</a>
-                <a href="#" class="list-group-item">Taman</a>
-                <a href="#" class="list-group-item">Hutan Kota</a>
-                <a href="#" class="list-group-item">Jalur Hijau Jalan</a>
-                <a href="#" class="list-group-item">Fungsi Tertentu</a>
-            </div> -->
+          </div>
         </div>
-        <div class="col-md-10">
-            <div class="row" style="margin:0px">
+        </div>
+        </div>
             <div id="pagination">
                 <?php $i=0;
 
@@ -83,8 +70,9 @@ generalRth.controller('filterCtrl',['$scope','$http',function($scope,$http)
                 ?>
 
                 @foreach($park as $key => $value)
-                <div class="col-md-6 col-sm-6" style="border: 1px solid black; border-radius:5px; padding:10px; margin-right:20px; margin-bottom:20px; width:45%; height:155px; background-color:white">
-                    <div class="media">
+                <div class="col-md-6" style="padding:10px; margin-bottom:20px">
+                    <img src="{{ URL::asset('images/list_border.png') }}" style="position:absolute; width:100%; height:100%; z-index:-10">
+                    <div class="media" style="padding-left:10px; padding-right:20px">
                         <div class="media-left">
                         <a href="../../rth/{{ $value->id_rth }}">
                             <img style="width:100px" class="media-object" src="{{ URL::asset('files/photos/park') }}/{{ $foto[$i] }}">
@@ -104,17 +92,21 @@ generalRth.controller('filterCtrl',['$scope','$http',function($scope,$http)
                 
             </div>
 
-
+            </div>
+            
+    <div class="row">
+        <center>
             <?php 
-            //digunakan untuk mencampilkan navigator paginasi laravel
+            //digunakan untuk menampilkan navigator paginasi laravel
             if(!isset($idFind))
                 echo $park->links();
             else 
                 echo $park->appends(array('jenis' => $jenisForm, 'kecamatan' => $kecamatanForm,'desa' => $desaForm))->links();
                 ?>
                 <!-- end foreach -->
-            </div>
-        </div>
+            </center>
     </div>
+    </div>
+</div>
 </div>
 @include('frontend/foot')
