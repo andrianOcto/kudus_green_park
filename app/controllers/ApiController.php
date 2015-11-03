@@ -5,7 +5,7 @@ class ApiController extends BaseController {
 	//Route to halaman index
 	public function getIndex()
 	{
-		echo "welcome to Hidden Park api";
+		echo "api controller";
 	}
 
 	//get Image Source
@@ -782,17 +782,138 @@ class ApiController extends BaseController {
 
 	}
 
+	public function getCreateuser()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
 
-    public function getTentangKami(){
-        return View::make('frontend/tentangkami');
-    }
-    
-    public function getTentangRTH(){
-        return View::make('frontend/tentangrth');
-    }
-    
-    public function getDetailEvent(){
-        return View::make('frontend/detailevent');
-    }
+		$input				= Input::all();
+		$nama				= (isset($input['nama'])) 	  ? $input['nama']:null;
+		$username			= (isset($input['username'])) ? $input['username']:null;
+		$password			= (isset($input['password'])) ? $input['password']:null;
+
+		
+		if(!isset($input['nama'])){
+			$missingParameter[] = "nama";
+		}
+		//if password didn't set
+		if(!isset($input['username'])){
+			$missingParameter[] = "username";
+		}
+
+		if(!isset($input['password'])){
+			$missingParameter[] = "password";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+			$admin = new Admin;
+
+			$admin->username = $username;
+			$admin->nama_lengkap 	 = $nama;
+			$admin->password = Hash::make($password);
+
+			$admin->save();
+			$response 	= "OK";
+			$statusCode = 200;
+			$message 	= "Create success.";
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
+
+	public function getEdituser()
+	{
+		//initialisation
+		$returnData			= array();
+		$response			= "FAILED";
+		$statusCode			= 400;
+		$result				= null;
+		$message			= "Something wrong.";
+		$isError			= true;
+		$missingParameter	= null;
+
+		$input				= Input::all();
+		$iduser				= (isset($input['iduser'])) 	  ? $input['iduser']:null;
+		$nama				= (isset($input['nama'])) 	  ? $input['nama']:null;
+		$username			= (isset($input['username'])) ? $input['username']:null;
+		$password			= (isset($input['password'])) ? $input['password']:null;
+
+		
+		if(!isset($input['nama'])){
+			$missingParameter[] = "nama";
+		}
+		//if password didn't set
+		if(!isset($input['username'])){
+			$missingParameter[] = "username";
+		}
+
+		if(!isset($input['password'])){
+			$missingParameter[] = "password";
+		}
+
+		//set message error
+		if(isset($missingParameter))
+		{
+			$message = "Missing parameters : {".implode(', ', $missingParameter)."}";
+		}
+		else
+		{
+			$isError = false;
+		}
+
+		//if valid
+		if(!$isError)
+		{
+				$admin = Admin::find($iduser);
+				
+				$admin->username 		= $username;
+				$admin->nama_lengkap 	= $nama;
+				$admin->password 		= Hash::make($password);
+
+
+				$admin->save();
+				$response 	= "OK";
+				$statusCode = 200;
+				$message 	= "Edit success.";
+		}
+
+		$returnData = array(
+            'response' => $response,
+            'status_code' => $statusCode,
+            'message' => $message,
+            'result' => $result
+        );
+
+		//response using JSON text
+		return Response::json($returnData, $statusCode)->header('access-control-allow-origin', '*');
+
+	}
 }
 

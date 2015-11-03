@@ -16,7 +16,6 @@ class UserController extends BaseController {
 
 	public function edit($id){
 		$admin = Admin::find($id);
-		Session::put('pathImage', $admin->foto);
 		return View::make('user/edit-user')->with('admin', $admin);
 	}
 
@@ -30,8 +29,6 @@ class UserController extends BaseController {
 	public function destroy($id)
 	{
 		$admin = Admin::find($id);
-		$destinationPath  = public_path().'/files/photos/user';
-		File::delete($destinationPath."/".$admin->foto);
 		$admin->delete();
 
 		return Redirect::to('user');

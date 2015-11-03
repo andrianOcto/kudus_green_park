@@ -5,10 +5,91 @@ var form_input 		= angular.module('form_input', ['angularFileUpload']);
 var formPark	 	= angular.module('formPark', ['angularFileUpload']);
 var updateUser	 	= angular.module('updateUser', ['angularFileUpload']);
 var updatePark	 	= angular.module('updatePark', ['angularFileUpload']);
-var kecamatan      = angular.module('kecamatan', []);
+var kecamatan       = angular.module('kecamatan', []);
 var desa            = angular.module('desa', []);
 var jenis           = angular.module('jenis', []);
 var video           = angular.module('video', []);
+var form_user       = angular.module('form_user', []);
+
+// kelola data user
+form_user.controller('userController',['$scope','$http',function($scope,$http)
+{   
+    $scope.isError  =false;
+    $scope.message  ="";
+    $scope.loading  =false;
+
+    $scope.createUser=function()
+    {
+        $scope.loading  =true;
+        //request get ke API
+        $http({
+            method  : 'GET',
+            url     : '../api/createuser',
+            params  : {
+                nama    : $scope.nama,
+                username: $scope.username,
+                password: $scope.password
+            }
+        }).success(function (data){
+            console.log(data);
+            if(data.response === "OK" && data.status_code == 200 && data.message === "Create success.")
+            {
+               window.location.href = '/user';
+            }
+            else
+            {
+                console.log("masuk");
+                $scope.loading  = false;
+                $scope.isError  = true;
+                $scope.message  = data.message;
+            }
+            
+            $scope.message  = data.message;
+        }).error(function(errMessage){
+            console.log("masuk");
+            $scope.loading  = false;
+            $scope.isError  = true;
+            $scope.message  = errMessage;
+        })
+    };
+
+    $scope.editUser=function()
+    {
+        $scope.loading  =true;
+        //request get ke API
+        $http({
+            method  : 'GET',
+            url     : '../../../api/edituser',
+            params  : {
+                iduser  : $scope.iduser,
+                nama    : $scope.nama,
+                username: $scope.username,
+                password: $scope.password
+            }
+        }).success(function (data){
+            console.log(data);
+            if(data.response === "OK" && data.status_code == 200 && data.message === "Edit success.")
+            {
+               window.location.href = '/user';
+            }
+            else
+            {
+                console.log("masuk");
+                $scope.loading  = false;
+                $scope.isError  = true;
+                $scope.message  = data.message;
+            }
+            
+            $scope.message  = data.message;
+        }).error(function(errMessage){
+            console.log("masuk");
+            $scope.loading  = false;
+            $scope.isError  = true;
+            $scope.message  = errMessage;
+        })
+    }
+}]);
+
 
 //Kecamatan proses request data
 kecamatan.controller('kecamatanController',['$scope','$http',function($scope,$http)

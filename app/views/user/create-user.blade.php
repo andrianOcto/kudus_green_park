@@ -5,15 +5,7 @@
 <div class="panel panel-success">
     <div class="panel-heading"></div>
     <div class="panel-body">
-        <form ng-app="form_input" ng-controller="submitController" uploader="uploader" ng-submit="uploader.uploadAll()"  filters="queueLimit, customFilter" class="form-horizontal" role="form">
-        <center>
-        <div ng-repeat="item in uploader.queue">
-        <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, height: 150 }"></div></div>
-        <input type="file" nv-file-select="" uploader="uploader" required/>
-        <div class="progress" style="">
-            <div class="progress-bar" role="progressbar" ng-style="{ 'width': uploader.progress + '%' }"></div>
-        </div>
-        </center>
+        <form ng-app="form_user" ng-controller="userController" ng-submit="createUser()" class="form-horizontal" role="form">
         <!-- halaman form -->
 
             <div class="form-group">
@@ -34,24 +26,7 @@
                     <input ng-model="password" type="password" required class="form-control" id="password">
                 </div>
             </div>
-            <div class="form-group">
-                <label for="email" class="col-sm-3 col-md-3 control-label">Email :</label>
-                <div class="col-sm-4 col-md-4">
-                    <input ng-model="email" type="email" required class="form-control" id="email">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="kontak" class="col-sm-3 col-md-3 control-label">Contact :</label>
-                <div class="col-sm-4 col-md-4">
-                    <input ng-model="contact" type="text" required class="form-control" id="kontak">
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="bio" class="col-sm-3 col-md-3 control-label">Bio :</label>
-                <div class="col-sm-7 col-md-7">
-                    <textarea ng-model="bio" rows="3" id="bio" class="form-control"></textarea>
-                </div>
-            </div>
+            
             &nbsp;
             <div class="form-group">
                 
