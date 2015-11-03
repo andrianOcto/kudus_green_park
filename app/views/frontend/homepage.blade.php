@@ -27,10 +27,10 @@
                     </div>
                 </div>
                 <div class="item">
+                    <img src="{{ URL::asset('images/c_rth_4.png') }}" style="width:100%">
+                </div>
+                <div class="item">
                     <img src="{{ URL::asset('images/c_rth_1.png') }}" style="width:100%">
-                    <div class="carousel-caption" style="margin-bottom:10px; left:0; right:0">
-                        
-                    </div>
                 </div>
             </div>
 
@@ -51,7 +51,7 @@
     <div class="container" >
         <div class="row" style="margin-top:50px; padding-bottom:70px">
             <div class="col-md-6">
-                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="#" style="color:black; font-size:1.5em; text-transform: uppercase;">
+                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="/detailevent" style="color:black; font-size:1.5em; text-transform: uppercase;">
                     <!-- judul post -->
                     Judul Artikel
                     </a></div>
@@ -64,10 +64,10 @@
                     <!-- post -->
                     Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait. Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait...
                 </p>
-                <a href="#" class="btn btn-success">selengkapnya</a>
+                <a href="/detailevent" class="btn btn-success">selengkapnya</a>
             </div>
             <div class="col-md-6">
-                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="#" style="color:black; font-size:1.5em; text-transform: uppercase;">
+                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="/detailevent" style="color:black; font-size:1.5em; text-transform: uppercase;">
                     <!-- judul post -->
                     Judul Artikel
                     </a></div>
@@ -80,10 +80,10 @@
                     <!-- post -->
                     Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait. Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait...
                 </p>
-                <a href="#" class="btn btn-success">selengkapnya</a>
+                <a href="/detailevent" class="btn btn-success">selengkapnya</a>
             </div>
             <div class="col-md-6">
-                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="#" style="color:black; font-size:1.5em; text-transform: uppercase;">
+                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="/detailevent" style="color:black; font-size:1.5em; text-transform: uppercase;">
                     <!-- judul post -->
                     Judul Artikel
                     </a></div>
@@ -96,13 +96,17 @@
                     <!-- post -->
                     Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait. Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait...
                 </p>
-                <a href="#" class="btn btn-success">selengkapnya</a>
+                <!-- detail post -->
+                <a href="/detailevent" class="btn btn-success">selengkapnya</a>
             </div>
             <div class="col-md-6">
-                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="#" style="color:black; font-size:1.5em; text-transform: uppercase;">
+                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px">
+                    
                     <!-- judul post -->
+                    <a href="/detailevent" style="color:black; font-size:1.5em; text-transform: uppercase;">
                     Judul Artikel
-                    </a></div>
+                    </a>
+                </div>
                 <p style="text-align:justify; padding:5px">
                     <!-- image post -->
                     <img style="float:left; width:150px; margin-right:20px; margin-bottom:20px; margin-top:5px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
@@ -112,7 +116,7 @@
                     <!-- post -->
                     Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait. Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait...
                 </p>
-                <a href="#" class="btn btn-success">selengkapnya</a>
+                <a href="/detailevent" class="btn btn-success">selengkapnya</a>
             </div>
         </div>
     </div>
