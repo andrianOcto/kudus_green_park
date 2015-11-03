@@ -4,7 +4,7 @@
         <center>
             <h1 style="color:whitesmoke; font-weight:400">PEMERINTAH KABUPATEN KUDUS</h1>
             <h3 style="color:whitesmoke; font-weight:400">Dinas Cipta Karya Dan Tata Ruang</h3>
-            <p style="padding-top:10px"> <b>RTH Kudus &copy; 2015</b> <br> <a style="color:black; text-decoration:none" href="http://www.nullpointermedia.com" target="_blank">created by nullpointer media</a> </p>
+            <p style="padding-top:10px"> <b>RTH Kudus &copy; 2015</b> | <a style="color:#333; text-decoration:none" href="http://www.nullpointermedia.com" target="_blank">created by nullpointer media</a> </p>
         </center>
     </div>
 

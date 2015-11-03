@@ -98,7 +98,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th width="50%">Name</th>
+                                <th width="50%">Image</th>
                                 <th ng-show="uploader.isHTML5">Size</th>
                                 <th ng-show="uploader.isHTML5">Progress</th>
                                 <th>Status</th>
@@ -151,7 +151,7 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th width="50%">Name</th>
+                                <th width="50%">Image</th>
                                 <th ng-show="uploader.isHTML5">Size</th>
                                 <th ng-show="uploader.isHTML5">Progress</th>
                                 <th>Status</th>
