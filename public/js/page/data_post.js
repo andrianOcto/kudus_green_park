@@ -169,6 +169,9 @@ kecamatan.controller('kecamatanController',['$scope','$http',function($scope,$ht
 
 desa.controller('desaController',['$scope','$http',function($scope,$http)
 {   
+
+
+
     $scope.isError  =false;
     $scope.message  ="";
     $scope.loading  =false;

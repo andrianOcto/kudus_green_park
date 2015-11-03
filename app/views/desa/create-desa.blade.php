@@ -22,10 +22,13 @@
                     </select>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="nama-user" class="col-sm-3 col-md-3 control-label">ID Desa :</label>
-                <div class="col-sm-3 col-md-3">
-                    <input ng-model="idDesa" type="text" required class="form-control" id="idDesa">
+            <div class="form-group row">
+                <label for="nama-user" class="col-sm-3 control-label">ID Desa :</label>
+                <div class="col-sm-2" ng-init="kecamatan_id=''">
+                    @{{kecamatan}}
+                </div>
+                <div class="col-sm-2">
+                    <input ng-model="idDesa" type="text" required class="form-control" style="width:100px;" id="idDesa">
                 </div>
             </div>
             <div class="form-group">
