@@ -6,6 +6,7 @@
     <div class="panel-heading"></div>
     <div class="panel-body">
         <a href="kecamatan/create"><button class="btn btn-primary" style="height:50px">Tambah kecamatan +</button></a>
+        <a href="{{URL::route('kecamatan.export')}}" style="float:right"><button class="btn btn-primary" style="height:50px">Export Excel</button></a>
 <br><br>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -27,7 +28,7 @@
     </table>
 </div>
 
-        @foreach($admin as $key => $value)
+@foreach($admin as $key => $value)
 <!-- Modal -->
 <div class="modal fade" id="modal-delete{{ $value->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">

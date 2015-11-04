@@ -28,7 +28,8 @@
         @endforeach
     </table>
 </div>
-
+        
+@foreach($admin as $key => $value)
 <!-- Modal -->
 <div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
@@ -49,7 +50,7 @@
     </div>
   </div>
 </div>
-
+@endforeach
     </div>
 </div>
 

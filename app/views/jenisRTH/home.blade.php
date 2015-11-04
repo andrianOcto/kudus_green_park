@@ -6,6 +6,7 @@
     <div class="panel-heading"></div>
     <div class="panel-body">
         <a href="jenis/create"><button class="btn btn-primary" style="height:50px">Tambah Jenis RTH +</button></a>
+        <a href="{{URL::route('jenisrth.export')}}" style="float:right"><button class="btn btn-primary" style="height:50px">Export Excel</button></a>
 <br><br>
 <div class="table-responsive">
     <table class="table table-striped">

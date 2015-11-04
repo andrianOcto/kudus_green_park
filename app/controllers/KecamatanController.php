@@ -118,5 +118,63 @@ class KecamatanController extends BaseController {
 
 	}
 	
+    public function exportToExcel(){
+        $query = Kecamatan::all();
+        
+        $i=0;
+        $datatabel = array();
+        foreach($query as $data1){
+            $result['id'] = $data1->id;
+            $result['nama'] = $data1->nama;
+            
+            $datatabel[$i] = $result;
+            $i++;
+        }
+        
+        $data = array(
+            //title
+            array('DAFTAR KECAMATAN DI KABUPATEN KUDUS'),
+            array(''),
+            //tabel header
+            array('Kode Kecamatan','Nama Kecamatan')
+            //tabel data
+        );
 
+        $i=0;
+        $startArray = 3;
+        foreach ($datatabel as $key) {
+            $data[$startArray] =$datatabel[$i]; 
+        $i++;
+        $startArray++;
+        }
+        
+        Excel::create('Daftar Kecamatan', function($excel) use($data) {
+            $excel->sheet('kecamatan', function($sheet) use($data){
+                
+                //document manipulation
+                $sheet->setOrientation('portrait');
+                $sheet->setAutoSize(true);
+                
+                //cells manupulation
+                $sheet->mergeCells('A1:C1');
+                $sheet->cells('A1:B1', function($cells){
+                    $cells->setFontSize(14);
+                    $cells->setFontWeight('bold');
+                    $cells->setAlignment('center');
+                });
+                $sheet->cells('A3:B3', function($cells){
+                    $cells->setAlignment('center');
+                    $cells->setFontWeight('bold');
+                    $cells->setBorder('solid','solid','solid','solid');
+                });
+                $sheet->cells('A4:B4', function($cells){
+                    $cells->setBorder('solid','solid','solid','solid');
+                });
+                
+                //data
+                $sheet->fromArray($data, null, 'A1', false, false);
+                
+            });
+        })->download('xlsx');
+    }
 }

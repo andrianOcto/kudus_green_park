@@ -6,6 +6,7 @@
     <div class="panel-heading"></div>
     <div class="panel-body">
         <a href="event/create"><button class="btn btn-primary" style="height:50px">Tambah Post +</button></a>
+        <a href="{{URL::route('event.export')}}" style="float:right"><button class="btn btn-primary" style="height:50px">Export Excel</button></a>
 <br><br>
 <div class="table-responsive">
     <table class="table table-striped">
@@ -34,7 +35,7 @@
             <td>{{ $value->created_at }}</td>
             <td class="text-center">
                 <a href="event/{{ $value->id_event }}/edit"><button type="button" class="btn btn-warning btn-sm"><span class="glyphicon glyphicon-pencil"></span> edit</button></a>
-                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete"><span class="glyphicon glyphicon-trash"></span> delete</button>
+                <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal-delete<?php echo $i+1 ?>"><span class="glyphicon glyphicon-trash"></span> delete</button>
             </td>
         </tr>
         <?php $i++ ?>
@@ -42,8 +43,10 @@
     </table>
 </div>
 
+<?php $i=1; ?>
+@foreach($event as $key => $value)
 <!-- Modal -->
-<div class="modal fade" id="modal-delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modal-delete<?php echo $i+1 ?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-sm">
     <div class="modal-content">
       <div class="modal-header">
@@ -62,7 +65,7 @@
     </div>
   </div>
 </div>
-
+@endforeach
     </div>
 </div>
 

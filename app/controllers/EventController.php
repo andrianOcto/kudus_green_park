@@ -110,5 +110,65 @@ class EventController extends BaseController {
 
 	}
 	
+    public function exportToExcel(){
+        $query = DB::table('m_kegiatan')->where('kategori','1')
+                -> get();
+        
+        $i=0;
+        $datatabel = array();
+        foreach($query as $data1){
+            $result['judul'] = $data1->judul;
+            $result['created_at'] = $data1->created_at;
+            $result['deskripsi'] = $data1->deskripsi;
+            
+            $datatabel[$i] = $result;
+            $i++;
+        }
+        
+        $data = array(
+            //title
+            array('DAFTAR EVENT RTH DI KABUPATEN KUDUS'),
+            array(''),
+            //tabel header
+            array('Judul Event','Tanggal Posting','Deskripsi Event')
+            //tabel data
+        );
 
+        $i=0;
+        $startArray = 3;
+        foreach ($datatabel as $key) {
+            $data[$startArray] =$datatabel[$i]; 
+        $i++;
+        $startArray++;
+        }
+        
+        Excel::create('Daftar Jenis RTH', function($excel) use($data) {
+            $excel->sheet('Jenis RTH', function($sheet) use($data){
+                
+                //document manipulation
+                $sheet->setOrientation('portrait');
+                $sheet->setAutoSize(true);
+                
+                //cells manupulation
+                $sheet->mergeCells('A1:C1');
+                $sheet->cells('A1:C1', function($cells){
+                    $cells->setFontSize(14);
+                    $cells->setFontWeight('bold');
+                    $cells->setAlignment('center');
+                });
+                $sheet->cells('A3:C3', function($cells){
+                    $cells->setAlignment('center');
+                    $cells->setFontWeight('bold');
+                    $cells->setBorder('solid','solid','solid','solid');
+                });
+                $sheet->cells('A4:C4', function($cells){
+                    $cells->setBorder('solid','solid','solid','solid');
+                });
+                
+                //data
+                $sheet->fromArray($data, null, 'A1', false, false);
+                
+            });
+        })->download('xlsx');
+    }
 }
