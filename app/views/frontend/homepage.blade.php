@@ -62,10 +62,16 @@
                     <!-- timestamp post -->
                     diposting: {{$value->created_at}}<br /> <br />
                     
-                    <!-- post -->
-                    {{$value->deskripsi}}
+                    <?php 
+                        $string = strip_tags($value->deskripsi);
+                        if (strlen($string) > 400) {
+                            $stringCut = substr($string, 0, 400);
+                            $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a href="/detailevent/{{$value->id_event}}" class="btn btn-success">selengkapnya</a>'; 
+                        }
+                        echo $string;
+                     ?>
                 </p>
-                <a href="/detailevent/{{$value->id_event}}" class="btn btn-success">selengkapnya</a>
+                
             </div>
             @endforeach
         </div>
