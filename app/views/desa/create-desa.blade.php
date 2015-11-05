@@ -14,7 +14,7 @@
             <div class="form-group">
                 <label for="nama-user" class="col-sm-3 col-md-3 control-label">Kecamatan :</label>
                 <div class="col-sm-3 col-md-3">
-                    <select class="form-control" ng-model="kecamatan" ng-init='kecamatan=0'>
+                    <select class="form-control" ng-model="kecamatan" ng-init='kecamatan=0' id="kecamatan">
                         <option value="0">-Pilih Kecamatan-</option>
                         @foreach($kecamatan as $key => $value)
                             <option value="{{$value->id}}">{{$value->id}} &nbsp {{$value->nama}}</option>
@@ -25,7 +25,7 @@
             <div class="form-group row">
                 <label for="nama-user" class="col-sm-3 control-label">ID Desa :</label>
                 <div class="col-sm-2" ng-init="kecamatan_id=''">
-                    @{{kecamatan}}
+                    <input ng-model="kecamatan_" type="text" required class="form-control" style="width:100px;" id="idKec">
                 </div>
                 <div class="col-sm-2">
                     <input ng-model="idDesa" type="text" required class="form-control" style="width:100px;" id="idDesa">
@@ -51,4 +51,12 @@
     </div>
 </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $('#kecamatan').change(function(){
+          var kode = $(this).val();
+          $('#idKec').val(kode);
+        });
+      });
+</script>
 @include('foot')

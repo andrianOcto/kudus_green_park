@@ -9,7 +9,7 @@
             <div class="form-group">
                 <label for="nama-user" class="col-sm-3 col-md-3 control-label">Kecamatan :</label>
                 <div class="col-sm-3 col-md-3">
-                    <select class="form-control" ng-model="kecamatan">
+                    <select class="form-control" ng-model="kecamatan" readonly>
                         <option value="0">-Pilih Kecamatan-</option>
                         @foreach($kecamatan as $key => $value)
                             <option value="{{$value->id}}">{{$value->id}} &nbsp {{$value->nama}}</option>

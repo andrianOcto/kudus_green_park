@@ -7,26 +7,9 @@
     <div class="panel-body">
         <form ng-app="formPark" ng-controller="ParkController" uploader="uploader" ng-submit="submitPark()" class="form-horizontal" filters="queueLimit, customFilter" role="form">
     <div class="form-group">
-        <label for="nama" class="col-sm-2 col-md-2 control-label">Kode RTH :</label>
-        <div class="col-sm-9 col-md-9">
-            <input ng-model="id_rth" type="text" class="form-control" id="id-rth" required>
-        </div>
-    </div>
-    <div class="form-group">
         <label for="nama" class="col-sm-2 col-md-2 control-label">Nama RTH :</label>
         <div class="col-sm-9 col-md-9">
             <input ng-model="nama_park" type="text" class="form-control" id="nama-taman" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="nama" class="col-sm-2 col-md-2 control-label">Jenis RTH :</label>
-        <div class="col-sm-9 col-md-9">
-            <select class="form-control" ng-model="jenis" id="jenis" ng-init='jenis=0'>
-                <option value="0">-Pilih Jenis-</option>
-                @foreach($jenisrth as $key => $value)
-                <option value="{{$value->id}}">{{$value->jenis}}</option>
-                @endforeach
-            </select> 
         </div>
     </div>
     <div class="form-group">
@@ -45,10 +28,30 @@
         <div class="col-sm-9 col-md-9">
             <select class="form-control" ng-model="desa" id="desa" ng-init="desa=0">
                 <option value="0">-Pilih Desa-</option>
-                @foreach($desa as $key =>$value)
-                    <option value="{{$value->id}}">{{$value->nama}}</option>
-                @endforeach
             </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Jenis RTH :</label>
+        <div class="col-sm-9 col-md-9">
+            <select class="form-control" ng-model="jenis" id="jenis" ng-init='jenis=0'>
+                <option value="0">-Pilih Jenis-</option>
+                @foreach($jenisrth as $key => $value)
+                <option value="{{$value->id}}">{{$value->jenis}}</option>
+                @endforeach
+            </select> 
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Kode RTH :</label>
+        <div class="col-sm-2">
+            <input ng-model="desa_" type="text" required class="form-control" style="width:100px;" id="idDesa">
+        </div>
+        <div class="col-sm-2">
+            <input ng-model="jenis_" type="text" required class="form-control" style="width:100px;" id="jenis_">
+        </div>
+        <div class="col-sm-2">
+            <input ng-model="id_rth" type="text" class="form-control" id="id-rth" required>
         </div>
     </div>
     <div class="form-group">
@@ -66,6 +69,18 @@
         <label for="nama" class="col-sm-2 col-md-2 control-label">Luas :</label>
         <div class="col-sm-9 col-md-9">
             <input ng-model="luas" type="text" class="form-control" id="luas" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Longitude :</label>
+        <div class="col-sm-9 col-md-9">
+            <input ng-model="longitude" type="text" class="form-control" id="longitude" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Latitude :</label>
+        <div class="col-sm-9 col-md-9">
+            <input ng-model="latitude" type="text" class="form-control" id="latitude" required>
         </div>
     </div>
     <div class="form-group">
@@ -163,4 +178,45 @@
 </form>
     </div>
 </div>
+<script type="text/javascript">
+    $(function () {
+        $('#desa').change(function(){
+          var kode = $(this).val();
+          $('#idDesa').val(kode);
+        });
+
+        $('#jenis').change(function(){
+          var kode = $(this).val();
+          $('#jenis_').val(kode);
+        });
+      });
+</script>
+<script type="text/javascript">
+        $('#kecamatan').change(function(){
+            var id_kecamatan = $(this).val();
+            console.log(id_kecamatan);
+            desa(id_kecamatan);
+
+        });
+
+        function desa(id){
+           $.ajax({
+          type: 'GET',
+          url:'http://localhost:8000/desa/'+id,
+          success: function(data) {
+            //called when successful
+            var nama = '<option value="all">-Pilih Desa-</option>';
+              for(var i in data){
+                  nama += '<option value="'+data[i].id+'">'+ data[i].nama+'</option>';                        
+              }
+              $('#desa').html(nama);    
+           console.log(data);
+          },
+          error: function(e) {
+            //called when there is an error
+            //console.log(e.message);
+          }
+        });
+       }
+    </script>
 @include("foot")

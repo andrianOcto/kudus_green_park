@@ -24,7 +24,7 @@ Route::get('desa/{id}', array('uses' => 'ApiController@getDesa'));
 Route::get('rth/{id}', array('uses' => 'ApiController@getDetailRTH'));
 Route::get('/findrth', array('uses' => 'ApiController@getRTH'));
 Route::get('/getKecamatan', array('uses' => 'ApiController@getKecamatan'));
-
+Route::get('detailevent/{id}', array('uses' => 'ApiController@getDetailEvent'));
 
 // Route::group(array('before' => 'guest'), function() {
 // 	Route::get('/', function()
@@ -94,13 +94,18 @@ App::missing(function($exception)
 
 Route::get('/', function(){
 	$video = Video::all();
+	$post  = Kegiatan::where('kategori', '=', 1)->get();
+	$testimoni = Kegiatan::where('kategori', '=', 2)->get();
 	$url="";
 	foreach ($video as $item)
 	{
 	    $url=$item->url;
 	}
 
-	return View::make('frontend/homepage')->with('url', $url);
+	return View::make('frontend/homepage')
+							->with('url',$url)
+							->with('post',$post)
+							->with('testimoni',$testimoni);
 });
 
 Route::get('/rth', function(){

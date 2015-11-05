@@ -1,4 +1,27 @@
 @include('head')
+<script type="text/javascript">
+     //    tinymce.init({
+     //    mode : "textareas",
+     //    theme: "modern",
+     //    width: 550,
+     //    height: 300,
+     //    plugins: [
+     //         "advlist autolink link image lists charmap print preview hr anchor pagebreak spellchecker",
+     //         "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+     //         "save table contextmenu directionality emoticons template paste textcolor"
+     //   ],
+     //   toolbar: "insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | forecolor backcolor emoticons", 
+     //   style_formats: [
+     //        {title: 'Bold text', inline: 'b'},
+     //        {title: 'Red text', inline: 'span', styles: {color: '#ff0000'}},
+     //        {title: 'Red header', block: 'h1', styles: {color: '#ff0000'}},
+     //        {title: 'Example 1', inline: 'span', classes: 'example1'},
+     //        {title: 'Example 2', inline: 'span', classes: 'example2'},
+     //        {title: 'Table styles'},
+     //        {title: 'Table row 1', selector: 'tr', classes: 'tablerow1'}
+     //    ]
+     // }); 
+    </script>
 <legend>
     <h1 style="font-weight:200">Crete Post</h1>
 </legend>
@@ -18,7 +41,7 @@
             <div class="form-group">
                 <label for="nama-user" class="col-sm-3 col-md-3 control-label">Kategori :</label>
                 <div class="col-sm-7 col-md-7">
-                    <select class="form-control" style="width:200px" ng-model="kategori" ng-init="kategori=0">
+                    <select class="form-control" style="width:200px" ng-model="kategori" ng-init="kategori=0" required>
                         <option value="0">-Pilih Kategori-</option>
                         <option value="1">Event</option>
                         <option value="2">Testimoni</option>
@@ -34,7 +57,7 @@
             <div class="form-group">
                 <label for="bio" class="col-sm-3 col-md-3 control-label">Deskripsi :</label>
                 <div class="col-sm-7 col-md-7">
-                    <textarea ng-model="deskripsi" rows="3" id="deskripsi" class="form-control"></textarea>
+                    <textarea ng-model="deskripsi" rows="10" id="deskripsi" class="form-control"></textarea>
                 </div>
             </div>
             &nbsp;

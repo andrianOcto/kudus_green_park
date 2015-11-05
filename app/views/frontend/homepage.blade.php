@@ -50,104 +50,45 @@
     <div style="background-image:url({{ URL::asset('images/watermark_rth.png') }}); background-repeat: no-repeat; background-attachment: fixed; background-position: center;">
     <div class="container" >
         <div class="row" style="margin-top:50px; padding-bottom:70px">
-            <div class="col-md-6">
-                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="/detailevent" style="color:black; font-size:1.5em; text-transform: uppercase;">
-                    <!-- judul post -->
-                    Judul Artikel
-                    </a></div>
-                <p style="text-align:justify; padding:5px">
-                    <!-- image post -->
-                    <img style="float:left; width:150px; margin-right:20px; margin-bottom:20px; margin-top:5px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
-                    <!-- timestamp post -->
-                    diposting: 10 oktober 2015 | 04:04<br /> <br />
-                    
-                    <!-- post -->
-                    Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait. Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait...
-                </p>
-                <a href="/detailevent" class="btn btn-success">selengkapnya</a>
-            </div>
-            <div class="col-md-6">
-                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="/detailevent" style="color:black; font-size:1.5em; text-transform: uppercase;">
-                    <!-- judul post -->
-                    Judul Artikel
-                    </a></div>
-                <p style="text-align:justify; padding:5px">
-                    <!-- image post -->
-                    <img style="float:left; width:150px; margin-right:20px; margin-bottom:20px; margin-top:5px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
-                    <!-- timestamp post -->
-                    diposting: 10 oktober 2015 | 04:04<br /> <br />
-                    
-                    <!-- post -->
-                    Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait. Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait...
-                </p>
-                <a href="/detailevent" class="btn btn-success">selengkapnya</a>
-            </div>
-            <div class="col-md-6">
-                <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px"><a href="/detailevent" style="color:black; font-size:1.5em; text-transform: uppercase;">
-                    <!-- judul post -->
-                    Judul Artikel
-                    </a></div>
-                <p style="text-align:justify; padding:5px">
-                    <!-- image post -->
-                    <img style="float:left; width:150px; margin-right:20px; margin-bottom:20px; margin-top:5px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
-                    <!-- timestamp post -->
-                    diposting: 10 oktober 2015 | 04:04<br /> <br />
-                    
-                    <!-- post -->
-                    Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait. Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait...
-                </p>
-                <!-- detail post -->
-                <a href="/detailevent" class="btn btn-success">selengkapnya</a>
-            </div>
+            @foreach($post as $key => $value)
             <div class="col-md-6">
                 <div style="margin-top:30px; background-image:url('{{ URL::asset('images/back_green.png') }}'); padding-top:10px; padding-left:10px; padding-right:10px; padding-bottom:5px; border-top-left-radius:5px; border-top-right-radius:5px">
-                    
-                    <!-- judul post -->
-                    <a href="/detailevent" style="color:black; font-size:1.5em; text-transform: uppercase;">
-                    Judul Artikel
-                    </a>
-                </div>
+                <a href="/detailevent/{{$value->id_event}}" style="color:black; font-size:1.5em; text-transform: uppercase;">
+                    {{$value->judul}}
+                    </a></div>
                 <p style="text-align:justify; padding:5px">
                     <!-- image post -->
-                    <img style="float:left; width:150px; margin-right:20px; margin-bottom:20px; margin-top:5px" class="media-object img-rounded" src="{{ URL::asset('files/photos/park/1444614147_aRnkiCF07Eok.JPG') }}">
+                    <img style="float:left; width:150px; margin-right:20px; margin-bottom:20px; margin-top:5px" class="media-object img-rounded" src="{{ URL::asset('files/photos/user')}}/{{$value->foto}}">
                     <!-- timestamp post -->
-                    diposting: 10 oktober 2015 | 04:04<br /> <br />
+                    diposting: {{$value->created_at}}<br /> <br />
                     
                     <!-- post -->
-                    Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait. Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait...
+                    {{$value->deskripsi}}
                 </p>
-                <a href="/detailevent" class="btn btn-success">selengkapnya</a>
+                <a href="/detailevent/{{$value->id_event}}" class="btn btn-success">selengkapnya</a>
             </div>
+            @endforeach
         </div>
     </div>
     
     <div class="container">
         <center><h2 style="font-weight:400; border-bottom:1px solid grey; width:30%; padding-bottom:5px">KATA BELIAU</h2></center>
         <div class="row" style="margin-top:50px">
+            @foreach($testimoni as $key => $value)
             <div class="col-sm-6">
                 <div class="media" style="padding-bottom:20px">
                     <div class="media-left">
-                        <img style="width:100px; height:100px" class="media-object img-circle" src="{{ URL::asset('files/photos/park/1444615029_G7Y9qohwdop2.jpg') }}">
+                        <img style="width:100px; height:100px" class="media-object img-circle" src="{{ URL::asset('files/photos/user')}}/{{$value->foto}}">
                     </div>
                     <div class="media-body" style="padding-left:20px">
-                        <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
+                        <p style="font-size:1.2em">{{$value->deskripsi}}</p>
                         <br>
-                        <p>Co Founder Null Pointer Media</p>
+                        <p>{{$value->judul}}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <div class="media" style="padding-bottom:20px">
-                    <div class="media-left">
-                        <img style="width:100px; height:100px" class="media-object img-circle" src="{{ URL::asset('files/photos/park/1444615029_G7Y9qohwdop2.jpg') }}">
-                    </div>
-                    <div class="media-body" style="padding-left:20px">
-                        <p style="font-size:1.2em">Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait Ini adalah deskripsi singkat mengenai artikel terkait.</p>
-                        <br>
-                        <p>Co Founder Null Pointer Media</p>
-                    </div>
-                </div>
-            </div>
+            @endforeach
+            
         </div>
     </div>
     

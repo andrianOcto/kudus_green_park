@@ -85,19 +85,23 @@ class ParkController extends BaseController {
         $desa				= (isset($input['desa'])) 		? $input['desa']:null;
         $status_lahan		= (isset($input['status_lahan'])) ? $input['status_lahan']:null;
         $luas				= (isset($input['luas'])) 		? $input['luas']:null;
+        $longitude			= (isset($input['longitude'])) 		? $input['longitude']:null;
+        $latitude			= (isset($input['latitude'])) 		? $input['latitude']:null;
         $jenis_tanaman		= (isset($input['jenis_tanaman'])) ? $input['jenis_tanaman']:null;
         $pengelola			= (isset($input['pengelola'])) 	? $input['pengelola']:null;
     	$alamat				= (isset($input['alamat'])) 	? $input['alamat']:null;
     	$fungsi				= (isset($input['fungsi'])) 	? $input['fungsi']:null;
     	$photos				= (isset($input['foto'])) 		? $input['foto']:null;
 
-    	$park->id_rth		= $id_rth;
+    	$park->id_rth		= $desa.".".$jenis.".".$id_rth;
     	$park->nama	 		= $nama;
     	$park->jenis 		= $jenis;
 		$park->kecamatan 	= $kecamatan;
 		$park->desa 		= $desa;
 		$park->status_lahan = $status_lahan;
 		$park->luas 		= $luas;
+		$park->longitude 	= $longitude;
+		$park->latitude 	= $latitude;
 		$park->jenis_tanaman= $jenis_tanaman;
 		$park->pengelola 	= $pengelola;
     	$park->alamat		= $alamat;
@@ -128,6 +132,8 @@ class ParkController extends BaseController {
         $desa				= (isset($input['desa'])) 		? $input['desa']:null;
         $status_lahan		= (isset($input['status_lahan'])) ? $input['status_lahan']:null;
         $luas				= (isset($input['luas'])) 		? $input['luas']:null;
+        $longitude			= (isset($input['longitude'])) 		? $input['longitude']:null;
+		$latitude			= (isset($input['latitude'])) 		? $input['latitude']:null;
         $jenis_tanaman		= (isset($input['jenis_tanaman'])) ? $input['jenis_tanaman']:null;
         $pengelola			= (isset($input['pengelola'])) 	? $input['pengelola']:null;
     	$alamat				= (isset($input['alamat'])) 	? $input['alamat']:null;
@@ -144,6 +150,8 @@ class ParkController extends BaseController {
 		$park->desa 		= $desa;
 		$park->status_lahan = $status_lahan;
 		$park->luas 		= $luas;
+		$park->longitude 	= $longitude;
+		$park->latitude 	= $latitude;
 		$park->jenis_tanaman= $jenis_tanaman;
 		$park->pengelola 	= $pengelola;
     	$park->alamat		= $alamat;

@@ -234,6 +234,12 @@ class ApiController extends BaseController {
 
     }
 
+    public function getDetailEvent($id){
+    	$detail = Kegiatan::find($id);
+
+    	return View::make('frontend/detailevent')->with('detail', $detail);
+    }
+
     public function getRTH(){
     	$id=1;
     	$input 				= Input::all();
@@ -412,7 +418,7 @@ class ApiController extends BaseController {
 		//if valid
 		if(!$isError)
 		{
-			$desa 		= Desa::find($idDesa);
+			$desa 		= Desa::find($idKecamatan.".".$idDesa);
 			
 			//Kecamatan sudah ada
 			if(isset($desa))
@@ -427,7 +433,7 @@ class ApiController extends BaseController {
 			{
 				$desa = new Desa;
 
-				$desa->id = $idDesa;
+				$desa->id = $idKecamatan.".".$idDesa;
 				$desa->id_kecamatan = $idKecamatan;
 				$desa->nama = $nama;
 
