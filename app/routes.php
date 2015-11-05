@@ -84,7 +84,21 @@ Route::group(array('before' => 'auth'), function() {
 
 	// Route delete user
 	Route::get('user/{id}/destroy',['as'=>'user.delete','uses'=>'UserController@destroy']);
-
+    
+    // Route export excel desa/kelurahan
+    Route::get('export', array('uses' => 'DesaController@exportToExcel', 'as' => 'desa.export'));
+    
+    // Route export excel kecamatan
+    Route::get('export', array('uses' => 'KecamatanController@exportToExcel', 'as' => 'kecamatan.export'));
+    
+    // Route export excel jenis rth
+    Route::get('export', array('uses' => 'JenisRTHController@exportToExcel', 'as' => 'jenisrth.export'));
+    
+    // Route export excel event
+    Route::get('export', array('uses' => 'EventController@exportToExcel', 'as' => 'event.export'));
+    
+    // Route export excel data rth
+    Route::get('export', array('uses' => 'ParkController@exportToExcel', 'as' => 'rth.export'));
 });
 
 App::missing(function($exception)

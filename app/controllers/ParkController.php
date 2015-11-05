@@ -221,4 +221,80 @@ class ParkController extends BaseController {
     	echo $json;
 
 	}
+    
+    public function exportToExcel(){
+        $query = DB::table('m_info_rth')
+                    -> join('s_kecamatan','s_kecamatan.id','=','m_info_rth.kecamatan')
+                    -> join('s_desa','s_desa.id','=','m_info_rth.desa')
+                    -> join('s_status_lahan','s_status_lahan.id','=','m_info_rth.status_lahan')
+                    -> join('s_jenis_rth','s_jenis_rth.id','=','m_info_rth.jenis')
+                    -> select('m_info_rth.id_rth', 's_jenis_rth.jenis', 's_kecamatan.nama as kecamatan', 's_desa.nama as desa', 'm_info_rth.nama as rth', 'm_info_rth.alamat', 's_status_lahan.status', 'm_info_rth.luas', 'm_info_rth.jenis_tanaman', 'm_info_rth.fungsi', 'm_info_rth.pengelola')
+                    -> orderBy('s_jenis_rth.jenis', 'asc')
+                    -> get();
+        
+        $i=0;
+        $datatabel = array();
+        foreach($query as $data1){
+            $result['id_rth'] = $data1->id_rth;
+            $result['jenis'] = $data1->jenis;
+            $result['kecamatan'] = $data1->kecamatan;
+            $result['desa'] = $data1->desa;
+            $result['rth'] = $data1->rth;
+            $result['alamat'] = $data1->alamat;
+            $result['luas'] = $data1->luas;
+            $result['status'] = $data1->jenis;
+            $result['jenis_tanaman'] = $data1->jenis_tanaman;
+            $result['fungsi'] = $data1->fungsi;
+            $result['pengelola'] = $data1->pengelola;
+            
+            $datatabel[$i] = $result;
+            $i++;
+        }
+        
+        $data = array(
+            //title
+            array('DATA RUANG TERBUKA HIJAU DI KABUPATEN KUDUS'),
+            array(''),
+            //tabel header
+            array('Kode RTH','Jenis RTH','Kecamatan','Desa/Kelurahan','Nama RTH','Alamat RTH','Luas RTH','Status Lahan','Jenis Tanaman','Fungsi RTH','Pengelola')
+            //tabel data
+        );
+
+        $i=0;
+        $startArray = 3;
+        foreach ($datatabel as $key) {
+            $data[$startArray] =$datatabel[$i]; 
+        $i++;
+        $startArray++;
+        }
+        
+        Excel::create('Data RTH Kab Kudus', function($excel) use($data) {
+            $excel->sheet('Data RTH', function($sheet) use($data){
+                
+                //document manipulation
+                $sheet->setOrientation('landscape');
+                $sheet->setAutoSize(true);
+                
+                //cells manupulation
+                $sheet->mergeCells('A1:K1');
+                $sheet->cells('A1:K1', function($cells){
+                    $cells->setFontSize(14);
+                    $cells->setFontWeight('bold');
+                    $cells->setAlignment('center');
+                });
+                $sheet->cells('A3:K3', function($cells){
+                    $cells->setAlignment('center');
+                    $cells->setFontWeight('bold');
+                    $cells->setBorder('solid','solid','solid','solid');
+                });
+                $sheet->cells('A4:K4', function($cells){
+                    $cells->setBorder('solid','solid','solid','solid');
+                });
+                
+                //data
+                $sheet->fromArray($data, null, 'A1', false, false);
+                
+            });
+        })->download('xlsx');
+    }
 }
