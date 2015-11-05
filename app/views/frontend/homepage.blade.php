@@ -57,21 +57,23 @@
                     {{$value->judul}}
                     </a></div>
                 <p style="text-align:justify; padding:5px">
-                    <!-- image post -->
                     <img style="float:left; width:150px; margin-right:20px; margin-bottom:20px; margin-top:5px" class="media-object img-rounded" src="{{ URL::asset('files/photos/user')}}/{{$value->foto}}">
-                    <!-- timestamp post -->
-                    diposting: {{$value->created_at}}<br /> <br />
+                    <?php 
+                        $originalDate = $value->created_at;
+                        $date = date("d-M-Y", strtotime($originalDate));
+                    ?>
+                    diposting: <?php echo $date; ?><br /> <br />
                     
                     <?php 
                         $string = strip_tags($value->deskripsi);
-                        if (strlen($string) > 400) {
-                            $stringCut = substr($string, 0, 400);
-                            $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a href="/detailevent/{{$value->id_event}}" class="btn btn-success">selengkapnya</a>'; 
+                        if (strlen($string) > 200) {
+                            $stringCut = substr($string, 0, 200);
+                            $string = substr($stringCut, 0, strrpos($stringCut, ' ')).'... '; 
                         }
                         echo $string;
                      ?>
                 </p>
-                
+                <a href="/detailevent/{{$value->id_event}}" class="btn btn-success">selengkapnya</a>
             </div>
             @endforeach
         </div>
