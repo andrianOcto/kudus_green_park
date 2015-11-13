@@ -23,16 +23,16 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="nama-user" class="col-sm-3 control-label">ID Desa :</label>
-                <div class="col-sm-2" ng-init="kecamatan_id=''">
-                    <input ng-model="kecamatan_" type="text" required class="form-control" style="width:100px;" id="idKec">
+                <label for="nama-user" class="col-sm-3 control-label">ID Desa/Kelurahan :</label>
+                <div class="col-sm-1" ng-init="kecamatan_id=''">
+                    <input ng-model="kecamatan_" type="text" required class="form-control" id="idKec">
                 </div>
                 <div class="col-sm-2">
-                    <input ng-model="idDesa" type="text" required class="form-control" style="width:100px;" id="idDesa">
+                    <input ng-model="idDesa" type="text" required class="form-control" id="idDesa">
                 </div>
             </div>
             <div class="form-group">
-                <label for="username" class="col-sm-3 col-md-3 control-label">Nama Desa :</label>
+                <label for="username" class="col-sm-3 col-md-3 control-label">Nama Desa/Kelurahan :</label>
                 <div class="col-sm-7 col-md-7">
                     <input ng-model="nama" type="text" required class="form-control" id="namaKecamatan">
                 </div>

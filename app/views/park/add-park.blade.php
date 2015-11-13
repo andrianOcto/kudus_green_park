@@ -27,7 +27,7 @@
         <label for="nama" class="col-sm-2 col-md-2 control-label">Desa :</label>
         <div class="col-sm-9 col-md-9">
             <select class="form-control" ng-model="desa" id="desa" ng-init="desa=0">
-                <option value="0">-Pilih Desa-</option>
+                <option value="0">-Pilih Desa/Kelurahan-</option>
             </select>
         </div>
     </div>
@@ -35,7 +35,7 @@
         <label for="nama" class="col-sm-2 col-md-2 control-label">Jenis RTH :</label>
         <div class="col-sm-9 col-md-9">
             <select class="form-control" ng-model="jenis" id="jenis" ng-init='jenis=0'>
-                <option value="0">-Pilih Jenis-</option>
+                <option value="0">-Pilih Jenis RTH-</option>
                 @foreach($jenisrth as $key => $value)
                 <option value="{{$value->id}}">{{$value->jenis}}</option>
                 @endforeach
@@ -45,10 +45,10 @@
     <div class="form-group row">
         <label for="nama" class="col-sm-2 col-md-2 control-label">Kode RTH :</label>
         <div class="col-sm-2">
-            <input ng-model="desa_" type="text" required class="form-control" style="width:100px;" id="idDesa">
+            <input ng-model="desa_" type="text" required class="form-control" id="idDesa">
         </div>
-        <div class="col-sm-2">
-            <input ng-model="jenis_" type="text" required class="form-control" style="width:100px;" id="jenis_">
+        <div class="col-sm-1">
+            <input ng-model="jenis_" type="text" required class="form-control" id="jenis_">
         </div>
         <div class="col-sm-2">
             <input ng-model="id_rth" type="text" class="form-control" id="id-rth" required>
@@ -205,7 +205,7 @@
           url:'http://localhost:8000/desa/'+id,
           success: function(data) {
             //called when successful
-            var nama = '<option value="all">-Pilih Desa-</option>';
+            var nama = '<option value="all">-Pilih Desa/Kelurahan-</option>';
               for(var i in data){
                   nama += '<option value="'+data[i].id+'">'+ data[i].nama+'</option>';                        
               }

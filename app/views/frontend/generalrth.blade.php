@@ -34,7 +34,7 @@ generalRth.controller('filterCtrl',['$scope','$http',function($scope,$http)
             {{ Form::open(array('url' => 'findrth', 'method' => 'GET', 'class'=>'form-inline')) }}
                 <div class="form-group" >
                     <select class="form-control" name="jenis" id="jenis">
-                        <option value="all">-Pilih Jenis RTH-</option>
+                        <option value="all">Semua Jenis RTH</option>
                         @foreach($jenis as $key => $value)
                             <option value="{{$value->id}}">{{$value->jenis}}</option>    
                         @endforeach
@@ -42,7 +42,7 @@ generalRth.controller('filterCtrl',['$scope','$http',function($scope,$http)
                 </div>
                 <div class="form-group">
                     <select class="form-control" name="kecamatan" id="kecamatan">
-                        <option value="all">-Pilih Kecamatan-</option>
+                        <option value="all">Semua Kecamatan</option>
                         @foreach($kecamatan as $key => $value)
                         <option value="{{ $value->id }}">{{ $value->nama }}</option>
                         @endforeach
@@ -50,7 +50,7 @@ generalRth.controller('filterCtrl',['$scope','$http',function($scope,$http)
                 </div>
                 <div class="form-group">
                     <select class="form-control" name="desa" id="desa">
-                        <option value="all">-Pilih desa-</option>
+                        <option value="all">Semua Desa/Kelurahan</option>
                     </select>
                 </div>
                 <input type="submit" class="btn btn-primary">
@@ -65,7 +65,7 @@ generalRth.controller('filterCtrl',['$scope','$http',function($scope,$http)
                 
                 $jml = count($park);
                 if($jml < 1){
-                    echo "tidak ditemukan";
+                    echo "<h2 style='margin:60px; font-weight:300'>"."Tidak Ada Data Ruang Terbuka Hijau"."</h2>";
                 }
                 ?>
 

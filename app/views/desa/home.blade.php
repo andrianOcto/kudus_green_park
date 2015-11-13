@@ -5,12 +5,8 @@
 <div class="panel panel-success">
     <div class="panel-heading"></div>
     <div class="panel-body">
-<<<<<<< HEAD
         <a href="sdesa/create"><button class="btn btn-primary" style="height:50px">Tambah Desa/kelurahan +</button></a>
-=======
-        <a href="jenis/create"><button class="btn btn-primary" style="height:50px">Tambah Desa/kelurahan +</button></a>
         <a href="{{URL::route('desa.export')}}" style="float:right"><button class="btn btn-primary" style="height:50px">Export Excel</button></a>
->>>>>>> 0d6fb3bc5cc06a79761b17d6a7ffb1f883e1d867
 <br><br>
 <div class="table-responsive">
     <table class="table table-striped">

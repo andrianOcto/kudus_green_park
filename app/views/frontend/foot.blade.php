@@ -27,7 +27,7 @@
           url:'http://localhost:8000/desa/'+id,
           success: function(data) {
             //called when successful
-            var nama = '<option value="all">-Pilih Desa-</option>';
+            var nama = '<option value="all">Semua Desa/Kelurahan</option>';
               for(var i in data){
                   nama += '<option value="'+data[i].id+'">'+ data[i].nama+'</option>';                        
               }

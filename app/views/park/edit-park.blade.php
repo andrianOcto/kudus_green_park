@@ -34,7 +34,7 @@
         <label for="nama" class="col-sm-2 col-md-2 control-label">Desa :</label>
         <div class="col-sm-9 col-md-9">
             <select class="form-control" ng-model="desa" id="desa" readonly>
-                <option value="0">-Pilih Desa-</option>
+                <option value="0">-Pilih Desa/Kelurahan-</option>
                 @foreach($desa as $key =>$value)
                     <option value="{{$value->id}}">{{$value->nama}}</option>
                 @endforeach
@@ -45,7 +45,7 @@
         <label for="nama" class="col-sm-2 col-md-2 control-label">Jenis RTH :</label>
         <div class="col-sm-9 col-md-9">
             <select class="form-control" ng-model="jenis" id="jenis" readonly>
-                <option value="0">-Pilih Jenis-</option>
+                <option value="0">-Pilih Jenis RTH-</option>
                 @foreach($jenisrth as $key => $value)
                 <option value="{{$value->id}}">{{$value->jenis}}</option>
                 @endforeach
