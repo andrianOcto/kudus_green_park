@@ -39,7 +39,18 @@ Route::group(array('before' => 'auth'), function() {
 	//menu utama
 	Route::get('/home', function()
 	{
-		return View::make('home');
+		$kecamatan = Kecamatan::all()->count();
+		$desa = Desa::all()->count();
+		$jenis = Jenis::all()->count();
+		$park = Park::all()->count();
+
+		return View::make('home')->with('kecamatan',$kecamatan)
+								->with('desa',$desa)
+								->with('jenis',$jenis)
+								->with('park',$park)
+
+
+		;
 	});
 	Route::get('/quote', function()
 	{

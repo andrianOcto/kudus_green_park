@@ -26,19 +26,19 @@
             <div class="container" style="width:90%">
                 <div class="col-sm-3 bg-info" style="margin:20px">
                     <h3 style="font-weight:300">Kecamatan:</h3>
-                    <h1>10</h1>
+                    <h1>{{$kecamatan}}</h1>
                 </div>
                 <div class="col-sm-3 bg-warning" style="margin:20px">
                     <h3 style="font-weight:300">Desa/Kelurahan:</h3>
-                    <h1>10</h1>
+                    <h1>{{$desa}}</h1>
                 </div>
                 <div class="col-sm-3 bg-danger" style="margin:20px">
                     <h3 style="font-weight:300">Jenis RTH:</h3>
-                    <h1>10</h1>
+                    <h1>{{$jenis}}</h1>
                 </div>
                 <div class="col-sm-3 bg-success" style="margin:20px">
                     <h3 style="font-weight:300">Data RTH:</h3>
-                    <h1>10</h1>
+                    <h1>{{$park}}</h1>
                 </div>
                 <div class="col-sm-3 bg-danger" style="margin:20px">
                     <h3 style="font-weight:300">Event:</h3>
