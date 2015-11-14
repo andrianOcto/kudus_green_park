@@ -20,6 +20,7 @@ Route::post('event/upload', array('uses' => 'EventController@upload'));
 Route::post('park/upload', array('uses' => 'ParkController@upload'));
 Route::post('event/{id_event}/updateImage', array('uses' => 'EventController@updateImage'));
 Route::post('park/{iduser}/updateImage', array('uses' => 'ParkController@upload'));
+Route::post('park/{iduser}/updateImageRencana', array('uses' => 'ParkController@uploadRencana'));
 Route::get('desa/{id}', array('uses' => 'ApiController@getDesa'));
 Route::get('rth/{id}', array('uses' => 'ApiController@getDetailRTH'));
 Route::get('/findrth', array('uses' => 'ApiController@getRTH'));
@@ -63,11 +64,14 @@ Route::group(array('before' => 'auth'), function() {
 	Route::post('/submitPark', array('uses' => 'ParkController@store'));
 	// update park's data route
 	Route::post('/updatePark/{idpark}', array('uses' => 'ParkController@update'));
+	//update rencana park
+	Route::post('/updateRencana/{idpark}', array('uses' => 'ParkController@updateRencana'));
 	// user delete route
 	Route::get('event/{id}/destroy',['as'=>'event.delete','uses'=>'EventController@destroy']);
 	// park delete route
 	Route::get('park/{id}/destroy',['as'=>'park.delete','uses'=>'ParkController@destroy']);
-
+	//park edit rencana/realisasi
+	Route::get('park/{id}/rencana',array('uses' => 'ParkController@rencana'));
 	//Route Kecamatan
 	Route::resource('kecamatan','KecamatanController');
 	Route::get('kecamatan/{id}/destroy',['as'=>'kecamatan.delete','uses'=>'KecamatanController@destroy']);

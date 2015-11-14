@@ -72,15 +72,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="nama" class="col-sm-2 col-md-2 control-label">Longitude :</label>
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Location :</label>
         <div class="col-sm-9 col-md-9">
-            <input ng-model="longitude" type="text" class="form-control" id="longitude" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="nama" class="col-sm-2 col-md-2 control-label">Latitude :</label>
-        <div class="col-sm-9 col-md-9">
-            <input ng-model="latitude" type="text" class="form-control" id="latitude" required>
+            <input ng-model="location" type="text" class="form-control" id="location" required>
         </div>
     </div>
     <div class="form-group">

@@ -62,8 +62,24 @@ class ParkController extends BaseController {
 											->with('kecamatan',$kecamatan)
 											->with('desa',$desa)
 				                            ->with('jenisrth',$jenisrth)
-				                            ->with('status',$status);
+				                            ->with('status',$status)
+                                            ->with('id',$id);
 	}
+
+    public function rencana($id)
+    {
+        $park = Park::find($id);
+        $foto   = Photo::where('id_rth', '=', $id)->get();
+        $kecamatan  = Kecamatan::all();
+        $desa       = Desa::all();
+        $jenisrth   = Jenis::all();
+        $status     = StatusTanah::all();
+        return View::make('park/edit-rencana')->with('park', $park)->with('foto',$foto)
+                                            ->with('kecamatan',$kecamatan)
+                                            ->with('desa',$desa)
+                                            ->with('jenisrth',$jenisrth)
+                                            ->with('status',$status);
+    }
 
 	public function show($id)
 	{
@@ -85,8 +101,7 @@ class ParkController extends BaseController {
         $desa				= (isset($input['desa'])) 		? $input['desa']:null;
         $status_lahan		= (isset($input['status_lahan'])) ? $input['status_lahan']:null;
         $luas				= (isset($input['luas'])) 		? $input['luas']:null;
-        $longitude			= (isset($input['longitude'])) 		? $input['longitude']:null;
-        $latitude			= (isset($input['latitude'])) 		? $input['latitude']:null;
+        $location			= (isset($input['location'])) 		? $input['location']:null;
         $jenis_tanaman		= (isset($input['jenis_tanaman'])) ? $input['jenis_tanaman']:null;
         $pengelola			= (isset($input['pengelola'])) 	? $input['pengelola']:null;
     	$alamat				= (isset($input['alamat'])) 	? $input['alamat']:null;
@@ -100,8 +115,7 @@ class ParkController extends BaseController {
 		$park->desa 		= $desa;
 		$park->status_lahan = $status_lahan;
 		$park->luas 		= $luas;
-		$park->longitude 	= $longitude;
-		$park->latitude 	= $latitude;
+		$park->location 	= $location;
 		$park->jenis_tanaman= $jenis_tanaman;
 		$park->pengelola 	= $pengelola;
     	$park->alamat		= $alamat;
@@ -132,8 +146,7 @@ class ParkController extends BaseController {
         $desa				= (isset($input['desa'])) 		? $input['desa']:null;
         $status_lahan		= (isset($input['status_lahan'])) ? $input['status_lahan']:null;
         $luas				= (isset($input['luas'])) 		? $input['luas']:null;
-        $longitude			= (isset($input['longitude'])) 		? $input['longitude']:null;
-		$latitude			= (isset($input['latitude'])) 		? $input['latitude']:null;
+        $location			= (isset($input['location'])) 		? $input['location']:null;
         $jenis_tanaman		= (isset($input['jenis_tanaman'])) ? $input['jenis_tanaman']:null;
         $pengelola			= (isset($input['pengelola'])) 	? $input['pengelola']:null;
     	$alamat				= (isset($input['alamat'])) 	? $input['alamat']:null;
@@ -150,8 +163,7 @@ class ParkController extends BaseController {
 		$park->desa 		= $desa;
 		$park->status_lahan = $status_lahan;
 		$park->luas 		= $luas;
-		$park->longitude 	= $longitude;
-		$park->latitude 	= $latitude;
+		$park->location 	= $location;
 		$park->jenis_tanaman= $jenis_tanaman;
 		$park->pengelola 	= $pengelola;
     	$park->alamat		= $alamat;
@@ -185,6 +197,49 @@ class ParkController extends BaseController {
 
 
     }
+
+    public function updateRencana($idpark)
+    {
+        $input              = Input::all();
+        $id_rth             = (isset($input['id_rth']))     ? $input['id_rth']:null; 
+        $rencana            = (isset($input['rencana']))  ? $input['rencana']:null;
+        $realisasi          = (isset($input['realisasi']))      ? $input['realisasi']:null;
+        $listDel            = (isset($input['listDel']))    ? $input['listDel']:null;
+        $photos             = (isset($input['foto']))       ? $input['foto']:null;
+
+
+        $park               = Park::find($id_rth);
+
+        if($rencana!=null)
+            $park->tahun_rencana      = $rencana;
+        if($realisasi!=null)
+            $park->tahun_realisasi    = $realisasi;
+        
+
+
+        $arrayPhoto             = json_decode($listDel, true);
+        $arrayPhotoAdd          = json_decode($photos, true);
+
+        $destinationPath  = public_path().'/files/photos/park';
+
+        $arrayPhoto         = json_decode($photos, true);
+
+        if($rencana!=null)
+        for($i=0;$i<count($arrayPhotoAdd);$i++)
+        {
+            $park->path_rencana = $arrayPhotoAdd[$i]."";
+        }
+
+        if($realisasi!=null)
+        for($i=0;$i<count($arrayPhotoAdd);$i++)
+        {
+            $park->path_realisasi = $arrayPhotoAdd[$i]."";
+        }
+
+        if($rencana!=null || $realisasi!=null)
+        $park->save();  
+    }
+
 
 	public function destroy($id)
 	{
@@ -221,6 +276,25 @@ class ParkController extends BaseController {
     	echo $json;
 
 	}
+    public function uploadRencana()
+    {
+
+        $foto             = Input::file('file') ;    
+        $destinationPath  = public_path().'/files/photos/park';
+        $extension        = $foto->getClientOriginalExtension();
+        $filename         = time()."_".str_random(12).".".$extension;
+        Session::put('pathImage', $filename);
+        $foto->move($destinationPath, $filename);
+
+
+        $img = Image::make($destinationPath."/".$filename)->resize(300, 200)->save($destinationPath."/thumb/".$filename);
+        
+        $answer = array( 'aaa' => $filename );
+        $json = json_encode( $answer );
+
+        echo $json;
+
+    }
     
     public function exportToExcel(){
         $query = DB::table('m_info_rth')

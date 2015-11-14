@@ -3,9 +3,9 @@
     <h1 style="font-weight:200">Edit Park</h1>
 </legend>
 <div class="panel panel-success">
-    <div class="panel-heading"></div>
+    <div class="panel-heading"><a href="../{{$id}}/rencana"><button type="button" class="btn btn-primary">Rencana/Realisasi</button></a></div>
     <div class="panel-body">
-<form ng-app="updatePark" ng-controller="updateParkController" uploader="uploader" ng-submit="submitPark()" ng-init="id_rth='{{ $park->id_rth }}';nama_park='{{ $park->nama }}';jenis='{{ $park->jenis }}';kecamatan='{{ $park->kecamatan }}';desa='{{ $park->desa }}';status_lahan='{{ $park->status_lahan }}';luas='{{ $park->luas }}';jenis_tanaman='{{ $park->jenis_tanaman }}';pengelola='{{ $park->pengelola }}';fungsi='{{ $park->fungsi }}';alamat='{{ $park->alamat }}';longitude='{{ $park->longitude }}';latitude='{{ $park->latitude }}';" class="form-horizontal" role="form">
+<form ng-app="updatePark" ng-controller="updateParkController" uploader="uploader" ng-submit="submitPark()" ng-init="id_rth='{{ $park->id_rth }}';nama_park='{{ $park->nama }}';jenis='{{ $park->jenis }}';kecamatan='{{ $park->kecamatan }}';desa='{{ $park->desa }}';status_lahan='{{ $park->status_lahan }}';luas='{{ $park->luas }}';jenis_tanaman='{{ $park->jenis_tanaman }}';pengelola='{{ $park->pengelola }}';fungsi='{{ $park->fungsi }}';alamat='{{ $park->alamat }}';location='{{ $park->location }}';" class="form-horizontal" role="form">
     <div class="form-group">
         <label for="nama" class="col-sm-2 col-md-2 control-label">Kode RTH :</label>
         <div class="col-sm-9 col-md-9">
@@ -70,15 +70,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="nama" class="col-sm-2 col-md-2 control-label">Longitude :</label>
+        <label for="nama" class="col-sm-2 col-md-2 control-label">Location :</label>
         <div class="col-sm-9 col-md-9">
-            <input ng-model="longitude" type="text" class="form-control" id="longitude" required>
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="nama" class="col-sm-2 col-md-2 control-label">Latitude :</label>
-        <div class="col-sm-9 col-md-9">
-            <input ng-model="latitude" type="text" class="form-control" id="latitude" required>
+            <input ng-model="location" type="text" class="form-control" id="location" required>
         </div>
     </div>
     <div class="form-group">

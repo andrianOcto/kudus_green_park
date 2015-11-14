@@ -744,8 +744,7 @@ formPark.controller('ParkController', ['$scope', '$http','FileUploader', functio
                 desa        : $scope.desa,
                 status_lahan        : $scope.status_lahan,
                 luas        : $scope.luas,
-                longitude   : $scope.longitude,
-                latitude    : $scope.latitude,
+                location   : $scope.location,
                 jenis_tanaman       : $scope.jenis_tanaman,
                 pengelola   : $scope.pengelola,
 				alamat		: $scope.alamat,
@@ -830,7 +829,7 @@ formPark
 
 updatePark.controller('updateParkController', ['$scope', '$http','FileUploader', function($scope, $http,FileUploader)
 {
-	   $scope.isError = false;
+	$scope.isError = false;
     $scope.message = "";
     $scope.loading = false;
     var arrayImageDel=new Array();
@@ -880,8 +879,7 @@ updatePark.controller('updateParkController', ['$scope', '$http','FileUploader',
                 desa        : $scope.desa,
                 status_lahan        : $scope.status_lahan,
                 luas        : $scope.luas,
-                longitude        : $scope.longitude,
-                latitude        : $scope.latitude,
+                location    : $scope.location,
                 jenis_tanaman       : $scope.jenis_tanaman,
                 pengelola   : $scope.pengelola,
                 alamat      : $scope.alamat,
@@ -919,8 +917,7 @@ updatePark.controller('updateParkController', ['$scope', '$http','FileUploader',
                 desa        : $scope.desa,
                 status_lahan        : $scope.status_lahan,
                 luas        : $scope.luas,
-                longitude        : $scope.longitude,
-                latitude        : $scope.latitude,
+                location    : $scope.location,
                 jenis_tanaman       : $scope.jenis_tanaman,
                 pengelola   : $scope.pengelola,
                 alamat      : $scope.alamat,
@@ -1011,3 +1008,166 @@ updatePark
             }
         };
     }]);
+
+
+updatePark.controller('rencanaParkController', ['$scope', '$http','FileUploader', function($scope, $http,FileUploader)
+{
+    $scope.isError = false;
+    $scope.message = "";
+    $scope.loading = false;
+    var arrayImageDel=new Array();
+    var arrayImage;
+
+
+    $scope.uploader = new FileUploader({
+            url: 'updateImage'
+        });
+
+    $scope.uploader2 = new FileUploader({
+            url: 'updateImage'
+        });
+
+    var uploader  =$scope.uploader;  //rencana
+    var uploader2 =$scope.uploader2; //realisasi
+
+
+     // FILTERS
+
+    uploader.filters.push({
+        name: 'customFilter',
+        fn: function(item /*{File|FileLikeObject}*/, options) {
+            return this.queue.length < 2;
+        }
+    });
+
+    uploader2.filters.push({
+        name: 'customFilter',
+        fn: function(item /*{File|FileLikeObject}*/, options) {
+            return this.queue.length < 2;
+        }
+    });
+
+
+
+    // CALLBACKS
+    uploader.onAfterAddingFile = function(fileItem) {
+            console.info('onAfterAddingFile', fileItem);
+        };
+
+    uploader.onCompleteItem = function(fileItem, response, status, headers) {
+
+       console.info('onCompleteItem', fileItem, response, status, headers);
+        
+        var arrayItem = JSON.parse(JSON.stringify(response));
+        arrayImage[arrayImage.length]=arrayItem.aaa;
+        console.log(arrayImage);
+    };
+
+    uploader.onCompleteAll = function() {
+        console.info(arrayImage);
+        $scope.loading = true;
+
+        $http({
+            method  : 'POST',
+            url      : 'http://localhost:8000/updateRencana/'+$scope.idpark,
+            params  : {
+                id_rth      : $scope.id_rth,
+                rencana     : $scope.rencana,
+                listDel     : JSON.stringify(arrayImageDel),
+                foto        : JSON.stringify(arrayImage)
+            }
+        }).success(function(data){
+            $scope.loading          = false;
+            $scope.message          = "Update Park Success";
+        }).error(function(errMessage){
+            $scope.loading = true;
+            $scope.message = errMessage;
+            $scope.isError = true; 
+        })
+        };
+
+     // CALLBACKS
+    uploader2.onAfterAddingFile = function(fileItem) {
+            console.info('onAfterAddingFile', fileItem);
+        };
+
+    uploader2.onCompleteItem = function(fileItem, response, status, headers) {
+
+       console.info('onCompleteItem', fileItem, response, status, headers);
+        
+        var arrayItem = JSON.parse(JSON.stringify(response));
+        arrayImage[arrayImage.length]=arrayItem.aaa;
+        console.log(arrayImage);
+    };
+    uploader2.onCompleteAll = function() {
+        console.info(arrayImage);
+        $scope.loading = true;
+
+        $http({
+            method  : 'POST',
+            url      : 'http://localhost:8000/updateRencana/'+$scope.idpark,
+            params  : {
+                id_rth      : $scope.id_rth,
+                realisasi   : $scope.realisasi,
+                listDel     : JSON.stringify(arrayImageDel),
+                foto        : JSON.stringify(arrayImage)
+            }
+        }).success(function(data){
+            $scope.loading          = false;
+            $scope.message          = "Update Park Success 2";
+            window.location.href    = '/park';
+        }).error(function(errMessage){
+            $scope.loading = true;
+            $scope.message = errMessage;
+            $scope.isError = true; 
+        })
+        };
+
+    $scope.addList=function(index)
+    {
+        arrayImageDel[arrayImageDel.length]=index;
+    }
+
+    $scope.updateParkData = function()
+    {
+        $scope.loading = true;
+
+        $http({
+            method  : 'POST',
+            url     : 'http://localhost:8000/updateRencana/'+$scope.idpark,
+            params  : {
+                id_rth      : $scope.id_rth,
+                rencana     : $scope.rencana,
+                realisasi   : $scope.realisasi,
+                listDel     : JSON.stringify(arrayImageDel)
+            }
+        }).success(function(data){
+            $scope.loading          = false;
+            $scope.message          = "Update Park Success";
+            window.location.href = '/park';
+        }).error(function(errMessage){
+            $scope.loading = true;
+            $scope.message = errMessage;
+            $scope.isError = true; 
+        })
+    }
+
+
+    $scope.submitPark = function()
+    {
+        arrayImage=new Array();
+        //when no new upload file
+        if(uploader.queue==0 && uploader2.queue==0)
+        {
+            console.log("masuk");
+            $scope.updateParkData();
+        }
+        //when there are new upload files
+        else
+        {
+            uploader.uploadAll();
+            uploader2.uploadAll();
+        }
+    }
+}
+]);

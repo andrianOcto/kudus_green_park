@@ -140,16 +140,17 @@
             <tr>
                 <td style="width:40%; vertical-align: text-top;">Tahun Perencanaan</td>
                 <td style="width:5%; vertical-align: text-top;">:</td>
-                <td style="width:20%; vertical-align: text-top;">2015</td>
+                <td style="width:20%; vertical-align: text-top;">{{$rth->tahun_rencana}}</td>
             </tr>
             <tr>
                 <td>Tahun Realisasi</td>
                 <td>:</td>
-                <td>2015</td>
+                <td>{{$rth->tahun_realisasi}}</td>
             </tr>
         </table>
         <br />
-        <center><img src="{{ URL::asset('images/lapanganpiji.png') }}" width="80%" class="img-rounded"></center>
+        <center><img src="{{ URL::asset('files/photos/park') }}/{{$rth->path_rencana}}" width="80%" class="img-rounded"></center>
+        <center><img src="{{ URL::asset('files/photos/park') }}/{{$rth->path_realisasi}}" width="80%" class="img-rounded"></center>
     </div>
   </div>
 
