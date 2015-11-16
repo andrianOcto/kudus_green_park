@@ -217,7 +217,7 @@ class ApiController extends BaseController {
     					->join('s_status_lahan', 'm_info_rth.status_lahan', '=', 's_status_lahan.id')
     					->join('s_jenis_rth', 'm_info_rth.jenis', '=', 's_jenis_rth.id')
     					->where('m_info_rth.id_rth', '=', $id)
-    					->select('m_info_rth.id_rth','m_info_rth.jenis_tanaman','m_info_rth.tahun_rencana','m_info_rth.tahun_realisasi','m_info_rth.path_rencana','m_info_rth.path_realisasi', 'm_info_rth.fungsi', 'm_info_rth.luas', 'm_info_rth.fungsi', 'm_info_rth.pengelola', 'm_info_rth.alamat', 'm_info_rth.nama as nama_rth', 's_jenis_rth.jenis', 's_desa.nama as desa', 's_kecamatan.nama as kecamatan', 's_status_lahan.status')
+    					->select('m_info_rth.id_rth', 'm_info_rth.jenis_tanaman', 'm_info_rth.tahun_rencana', 'm_info_rth.tahun_realisasi', 'm_info_rth.path_rencana', 'm_info_rth.path_realisasi', 'm_info_rth.fungsi', 'm_info_rth.luas', 'm_info_rth.fungsi', 'm_info_rth.pengelola', 'm_info_rth.alamat', 'm_info_rth.nama as nama_rth', 's_jenis_rth.jenis', 's_desa.nama as desa', 's_kecamatan.nama as kecamatan', 's_status_lahan.status','m_info_rth.location')
     					->first();
     	$kecamatan 	= Kecamatan::all();
 		$desa 		= Desa::all();
