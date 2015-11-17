@@ -8,9 +8,10 @@
     <meta name="author" content="">
     <title>RTH Kab. Kudus</title>
 
-        <script src="{{ URL::asset('js/jQuery-2.1.4.min.js') }}"></script>
     <link href="{{ URL::asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <script src="{{ URL::asset('js/lib/angular.min.js') }}"></script> 
+    <script src="{{ URL::asset('js/jQuery-2.1.4.min.js') }}"></script>
+    <script src="{{ URL::asset('js/lib/angular.min.js') }}"></script>
+    <script src="http://maps.googleapis.com/maps/api/js"></script>
     <style>
         .row{
             margin-left:0px;
@@ -41,9 +42,6 @@
     <!--  navigation  -->
     <div class="row" style="margin-top:10px">
         <a href="/"><img style="max-width:98%" src="{{ URL::asset('images/banner_rth.png') }}"></a>
-<!--        <h1 style="font-weight:400; position:absolute; top:20px">Kudus</h1><br>-->
-<!--        <h2 style="font-weight:300; position:absolute; top:30px">"Kota di tengah taman"</h2>-->
-<!--        <img src="{{ URL::asset('images/tex_logo.png') }}" style="width:700px; position:absolute; right:70px">-->
     </div>
     <nav class="navbar navbar-default" style="border-color:#4CAF50; background-color:#4CAF50; border-radius:0px; margin-bottom:0px">
         <div class="container-fluid">

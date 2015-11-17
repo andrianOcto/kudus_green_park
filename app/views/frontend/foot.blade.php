@@ -13,6 +13,7 @@
     <script src="{{ URL::asset('js/page/userSubmit.js') }}"></script> 
     <script src="{{ URL::asset('js/page/data_post.js') }}"></script>
     <script src="{{ URL::asset('js/jquery.elevatezoom.js') }}"></script>
+    
     <script type="text/javascript">
         $('#kecamatan').change(function(){
             var id_kecamatan = $(this).val();
@@ -41,6 +42,8 @@
         });
        }
     </script>
+
+    <!-- preview image rth -->
     <script>
     $(document).ready(function () {
         $("#zoom").elevateZoom({

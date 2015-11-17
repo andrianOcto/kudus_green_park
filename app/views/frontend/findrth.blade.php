@@ -132,7 +132,7 @@
             </tr>
         </table>
         <center>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.8299452059696!2d110.79948599999997!3d-6.790536999999971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e70dcac333a0f6d%3A0x4027a76e352f320!2sKaliwungu%2C+Kudus+Regency%2C+Central+Java!5e0!3m2!1sen!2sid!4v1441844808618" width="70%" height="200" frameborder="0" style="border:0; text:align:right; margin-top:50px" allowfullscreen></iframe>
+            <div id="map" style="width: 70%; height: 300px; margin-top:50px"></div>
         </center>
     </div>
     <div role="tabpanel" class="tab-pane" id="profile">
@@ -158,4 +158,15 @@
     </div>
 </div>
 </div>
+
+<script type="text/javascript"> 
+  var myOptions = {
+     zoom: 8,
+     center: new google.maps.LatLng(51.49, -0.12),
+     mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+  var map = new google.maps.Map(document.getElementById("map"), myOptions);
+</script> 
+
 @include('frontend/foot')
