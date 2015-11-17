@@ -159,14 +159,35 @@
 </div>
 </div>
 
-<script type="text/javascript"> 
-  var myOptions = {
-     zoom: 8,
-     center: new google.maps.LatLng(51.49, -0.12),
-     mapTypeId: google.maps.MapTypeId.ROADMAP
+<script>
+var myCenter=new google.maps.LatLng({{$rth->location}});
+
+function initialize()
+{
+var mapProp = {
+  center:myCenter,
+  zoom:15,
+  mapTypeId:google.maps.MapTypeId.ROADMAP
   };
 
-  var map = new google.maps.Map(document.getElementById("map"), myOptions);
-</script> 
+var map=new google.maps.Map(document.getElementById("map"),mapProp);
+
+var marker=new google.maps.Marker({
+  position:myCenter,
+  });
+
+marker.setMap(map);
+
+var infowindow = new google.maps.InfoWindow({
+  content:"{{$rth->nama_rth}}"
+  });
+
+google.maps.event.addListener(marker, 'click', function() {
+  infowindow.open(map,marker);
+  });
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 
 @include('frontend/foot')

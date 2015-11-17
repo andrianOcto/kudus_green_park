@@ -230,14 +230,12 @@ class ApiController extends BaseController {
 							->with('desa', $desa)
 							->with('foto',$foto)
 							->with('jenis', $jenis);
-    					// return Response::json($mbuh);
-
     }
 
     public function getDetailEvent($id){
     	$detail = Kegiatan::find($id);
-
-    	return View::make('frontend/detailevent')->with('detail', $detail);
+    	$post  = Kegiatan::where('kategori', '=', 1)->take(4)->get();
+    	return View::make('frontend/detailevent')->with('detail', $detail)->with('post', $post);
     }
 
     public function getRTH(){

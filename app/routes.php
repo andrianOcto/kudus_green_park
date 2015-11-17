@@ -123,7 +123,7 @@ App::missing(function($exception)
 
 Route::get('/', function(){
 	$video = Video::all();
-	$post  = Kegiatan::where('kategori', '=', 1)->get();
+	$post  = Kegiatan::where('kategori', '=', 1)->take(6)->get();
 	$testimoni = Kegiatan::where('kategori', '=', 2)->get();
 	$url="";
 	foreach ($video as $item)
