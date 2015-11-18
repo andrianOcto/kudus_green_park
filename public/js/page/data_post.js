@@ -915,10 +915,10 @@ updatePark.controller('updateParkController', ['$scope', '$http','FileUploader',
                 jenis       : $scope.jenis,
                 kecamatan   : $scope.kecamatan,
                 desa        : $scope.desa,
-                status_lahan        : $scope.status_lahan,
+                status_lahan: $scope.status_lahan,
                 luas        : $scope.luas,
                 location    : $scope.location,
-                jenis_tanaman       : $scope.jenis_tanaman,
+                jenis_tanaman: $scope.jenis_tanaman,
                 pengelola   : $scope.pengelola,
                 alamat      : $scope.alamat,
                 fungsi      : $scope.fungsi,
@@ -1079,6 +1079,8 @@ updatePark.controller('rencanaParkController', ['$scope', '$http','FileUploader'
         }).success(function(data){
             $scope.loading          = false;
             $scope.message          = "Update Park Success";
+            if(uploader2.queue==0)
+                window.location.href    = '/park';
         }).error(function(errMessage){
             $scope.loading = true;
             $scope.message = errMessage;
@@ -1142,6 +1144,7 @@ updatePark.controller('rencanaParkController', ['$scope', '$http','FileUploader'
                 listDel     : JSON.stringify(arrayImageDel)
             }
         }).success(function(data){
+
             $scope.loading          = false;
             $scope.message          = "Update Park Success";
             window.location.href = '/park';
@@ -1159,14 +1162,16 @@ updatePark.controller('rencanaParkController', ['$scope', '$http','FileUploader'
         //when no new upload file
         if(uploader.queue==0 && uploader2.queue==0)
         {
-            console.log("masuk");
-            $scope.updateParkData();
+                $scope.updateParkData();
         }
         //when there are new upload files
         else
         {
-            uploader.uploadAll();
-            uploader2.uploadAll();
+
+                if(uploader.queue!=0)
+                    uploader.uploadAll();
+                if(uploader2.queue!=0)
+                    uploader2.uploadAll();
         }
     }
 }
