@@ -35,7 +35,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          <h5>are you sure want to delete this user?</h5>
+          <h5>Apakah anda yakin untuk menghapus kecamatan ini?</h5>
       </div>
        <?php if(isset($value)) 
       {
